@@ -21,8 +21,3 @@ Purple (#332335)
     margin-right: 30px; */
     cursor: pointer;
 }
-
-.login {
-    display: flex;
-    flex-direction: column;
-}
