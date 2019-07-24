@@ -1,5 +1,28 @@
+/* COLOR PALETTE
+Dust color: #b5b69c	(181,182,156)
+Grey: #7d7e73	(125,126,115)
+Dirty Pink: #876969	(135,105,105)
+Liver: #6d4141	(109,65,65)
+Dark Blood: #422020	(66,32,32) 
+Blood (#8A0303), 
+Blood Red (#660000), 
+Root Beer (#260703) 
+Tuscany (#C89498)
+Zombie Skin (#415E3C)
+Jungle (#4A7842)
+Moss Green (#81913F)
+Summer Wheat yellow (#DBC667)
+Purple (#332335)
+
+.*/
+
 .togglePwd {
-  margin-left: -30px;
-  margin-right: 30px;
-  cursor: pointer;
+    /* margin-left: -30px;
+    margin-right: 30px; */
+    cursor: pointer;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
 }
