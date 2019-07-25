@@ -8,7 +8,7 @@ const zombieSchema = new Schema({
     origin: Array,
     image: String,
     price: Number
-}, {collection : 'zombies'})
+}, { collection: 'zombies' })
 
 const Zombie = mongoose.model('zombies', zombieSchema);
 module.exports = Zombie;

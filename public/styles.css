@@ -137,3 +137,24 @@ p {
     width: 100px;
     margin: 20px;
 }
+
+
+/* catalog page */
+
+.catalog img {
+    width: 100%;
+}
+
+.catalog {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.catalog a {
+    color: #260703;
+}
+
+.catalog div {
+    width: 20%;
+}
