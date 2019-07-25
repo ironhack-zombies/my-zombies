@@ -36,9 +36,6 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-document.getElementById("defaultOpen").click();
+// document.getElementById("defaultOpen").click();
 
-window.onload = function() {
-    strap;
-    openTab;
-};
+window.onload = strap;
