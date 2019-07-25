@@ -26,14 +26,19 @@ body {
 }
 
 
-/* home page */
+/* nav bar */
 
-.col-lg-6 {
-    padding: 50px;
+.navbar {
+    background-color: #422020;
 }
 
-.btn {
-    width: 120px;
+.navbar a {
+    text-decoration: none;
+    color: #b5b69c;
+}
+
+.navbar a:hover {
+    color: #7d7e73;
 }
 
 
@@ -41,14 +46,35 @@ body {
 
 #sticky-footer {
     flex-shrink: none;
+    background-color: #422020;
 }
 
 .fa-facebook-square,
 .fa-envelope-square,
 .fa-instagram,
 .fa-pinterest-square {
-    color: lightgrey;
+    color: #b5b69c;
     padding-right: 10px;
+}
+
+
+/* home page */
+
+.col-lg-6 {
+    padding: 50px;
+}
+
+.homePage {
+    background-color: #DBC667;
+}
+
+.btn {
+    width: 120px;
+}
+
+.homePage h1,
+p {
+    color: #260703;
 }
 
 
