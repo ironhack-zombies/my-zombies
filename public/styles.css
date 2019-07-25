@@ -26,6 +26,17 @@ body {
 }
 
 
+/* home page */
+
+.col-lg-6 {
+    padding: 50px;
+}
+
+.btn {
+    width: 120px;
+}
+
+
 /* footer */
 
 #sticky-footer {
