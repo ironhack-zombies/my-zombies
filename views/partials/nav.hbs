@@ -12,12 +12,24 @@
                     <a class="dropdown-item" href="/superZombies">super zombies</a>
                 </div>
             </li>
+            {{#if login}}
+            <li class="nav-item">
+                <a class="nav-link" href="/user">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/village">Village</a>
+            </li>           
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+            {{else}}
             <li class="nav-item">
                 <a class="nav-link" href="/signup">Register</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/login">Log in</a>
             </li>
+            {{/if}}
         </ul>
     </div>
 </nav>

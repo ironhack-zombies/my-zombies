@@ -1,7 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var passport = require('passport');
-var dotenv = require('dotenv');
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser')
 
 dotenv.config();
 
@@ -10,7 +11,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('login', {
-    successRedirect: '/profile',
+    successRedirect: ('/user'),
     failureRedirect: '/',
     failureFlash: true
 }));
@@ -21,8 +22,8 @@ router.get('/signup', function(req, res) {
 
 /* Handle Registration POST */
 router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/',
-    failureRedirect: '/',
+    successRedirect: '/login',
+    failureRedirect: '/signup',
     failureFlash: true
 }));
 
