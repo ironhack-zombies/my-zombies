@@ -3,89 +3,106 @@
     "description": ["Not as threatening as Runners", "Major threat to humans"],
     "ability": ["Attack in group", "Shocking durability"],
     "origin": ["The Walking Dead", "Night of the Living Dead"],
-    "image": ""
+    "image": "",
+    "price": 10
 }, {
     "type": "Runner",
     "description": ["Can never be outrun", "Little or Non-decaying", "Extremely dangerous"],
     "ability": ["Run at full sprint", "Run for long duration", "Lose durability fast"],
     "origin": ["World War Z", "Dawn if the Dead"],
-    "image": ""
+    "image": "",
+    "price": 25
 }, {
     "type": "Voodoo Zombie",
     "description": ["Resurrected by a witch doctor", "No need to feed on Brains"],
     "ability": ["Can turn back to human"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 50
+
 }, {
     "type": "Ghoul",
     "description": ["Victim of nuclear radiation"],
     "ability": ["Spread radiation when attacking"],
     "origin": ["Fallout"],
-    "image": ""
+    "image": "",
+    "price": 100
+
 }, {
     "type": "The Infected",
     "description": ["Walking disease locker"],
     "ability": ["Infectious slime that can poison people from distance"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 70
 }, {
     "type": "Ankle Biter",
     "description": ["No lower body", "Can only crawl"],
     "ability": ["Very annoying", "Hard to spot", "Highly dangerous", "Ability to launch themselves at victims"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 120
 }, {
     "type": "Screamer",
     "description": ["Rarely engage in direct combat"],
     "ability": ["Ear-piercing wail", "Calling for nearby zombie to attack together", "Not dangerous on their own"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 180
 }, {
     "type": "Bonie",
     "description": ["The alpha of any zombie pack", "Only heavily blackened, necrotic skin", "Most of the flesh has rotted", "No eyes"],
     "ability": ["Slow and deliberate in their actions", "High position within zombie", "Other zombies follow their lead"],
     "origin": ["Warm bodies"],
-    "image": ""
+    "image": "",
+    "price": 300
 }, {
     "type": "Puker",
     "description": ["Quite weak and slow", "Serve as a distraction while other zombies attack"],
     "ability": ["Ranged attack with vomitting", "Causing infections in victims"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 180
 }, {
     "type": "Stalker",
     "description": ["Move on all fours", "Head jerks around continously"],
     "ability": ["Harder to hit Stalker with ballistic weapon", "Move faster than Walker", "Harder to spot"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 200
 }, {
     "type": "Spitter",
     "description": ["Toxics from Spitter can cause burn or infections", "Powerful and unique", "Have tattered clothes or burned body parts"],
     "ability": ["Launch toxic", "Able to peform ranged attack"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 250
 }, {
     "type": "Exploder",
     "description": ["Willingly explode on target or explode when attacked", "Extremely dangerous at close range", "Cannot be identify from other type of zombies"],
     "ability": ["Spreading infectious materials, bone fragments in all directions"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 115
 }, {
     "type": "Tank",
     "description": ["Mutated", "Very muscular"],
     "ability": ["Extreme strength", "Throw cars and heavy objects"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 270
 }, {
     "type": "Nazi Zombie",
     "description": ["Former German Nazi soldiers", "Infected with Element 115", "Mutated"],
     "ability": ["Incredible strength"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 225
 }, {
     "type": "Sleeper",
     "description": ["Can be found lying on roads or in cities", "Only wake up when provoked"],
     "ability": ["Extremely dangerous when disturbed"],
     "origin": [],
-    "image": ""
+    "image": "",
+    "price": 90
 }]
