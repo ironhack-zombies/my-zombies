@@ -17,6 +17,7 @@ router.use(function(req, res, next) {
 // import all other routes from sufiles
 router.use(require("./auth"));
 router.use(require("./index"));
+router.use(require("./zombiesForSale"))
 router.use(require("./login"));
 router.use(require("./users"));
 
