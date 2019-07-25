@@ -59,3 +59,38 @@ body {
     margin-right: 30px; */
     cursor: pointer;
 }
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login div {
+    width: 25%;
+}
+
+
+/* register page */
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-form input {
+    width: 30%;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.register-form div {
+    display: flex;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 12px;
+}
