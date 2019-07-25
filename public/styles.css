@@ -16,6 +16,30 @@ Purple (#332335)
 
 .*/
 
+html,
+body {
+    height: 100%;
+}
+
+#page-content {
+    flex: 1 0 auto;
+}
+
+#sticky-footer {
+    flex-shrink: none;
+}
+
+.fa-facebook-square,
+.fa-envelope-square,
+.fa-instagram,
+.fa-pinterest-square {
+    color: lightgrey;
+    padding-right: 10px;
+}
+
+
+/* log in page */
+
 .togglePwd {
     /* margin-left: -30px;
     margin-right: 30px; */
