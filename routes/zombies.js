@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Zombie = require('../models/Zombie')
+const Zombie = require('../models/zombie')
 
 router.get('/zombies-for-sale', (req, res, next) => {
     Zombie.find({})
