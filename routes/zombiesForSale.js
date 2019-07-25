@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Zombie = require('../models/zombie')
 
-router.get('/zombies-for-sale', (req, res, next) => {
+router.get('/zombiesForSale', (req, res, next) => {
     Zombie.find({})
         .then((zombies) => {
-            res.render('zombies-for-sale', { zombies });
+            res.render('zombiesForSale', { zombies });
         })
         .catch((err) => {
             res.status(500).send(err);
