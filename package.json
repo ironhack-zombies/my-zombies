@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.0.0",
     "cookie-parser": "^1.4.4",
@@ -19,7 +21,7 @@
     "mongoose": "^5.6.6",
     "nodemon": "^1.19.1",
     "passport": "^0.4.0",
-    "passport-auth0": "^1.1.0"
+    "passport-local": "^1.0.0"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,6 @@
   "bugs": {
     "url": "https://github.com/ironhack-zombies/my-zombies/issues"
   },
-  "homepage": "https://github.com/ironhack-zombies/my-zombies#readme",
+  "homepage": "http://myzombies.nikl.me",
   "description": ""
 }
