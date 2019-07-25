@@ -69,6 +69,12 @@ body {
 
 .login div {
     width: 25%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login button {
+    width: 100px;
 }
 
 
@@ -84,7 +90,13 @@ body {
 .register-form input {
     width: 30%;
     margin-bottom: 20px;
-    padding: 5px;
+    padding: 5px 10px;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    border-radius: 3px;
+    color: #495057;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .register-form div {
@@ -93,4 +105,9 @@ body {
     justify-content: center;
     align-items: center;
     padding-bottom: 12px;
+}
+
+.register-form button {
+    width: 100px;
+    margin: 20px;
 }
