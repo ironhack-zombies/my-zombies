@@ -1,1 +1,20 @@
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Profile')" id="defaultOpen">Profile</button>
+  <button class="tablinks" onclick="openTab(event, 'Zombies')">Zombies</button>
+  <button class="tablinks" onclick="openTab(event, 'Gadgets')">Gadgets</button>
+  <button class="tablinks" onclick="openTab(event, 'Food')">Food</button>
+</div>
+<div id="Profile" class="tabcontent">
 Welcome {{ user.username }}
+</div>
+<div id="Zombies" class="tabcontent">
+  <h3>Zombies</h3>
+</div>
+
+<div id="Gadgets" class="tabcontent">
+  <h3>Gadgets</h3>
+</div>
+
+<div id="Food" class="tabcontent">
+  <h3>Food</h3>
+</div>
