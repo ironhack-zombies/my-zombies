@@ -18,8 +18,6 @@ router.use(function(req, res, next) {
 router.use("/auth", require("./auth"));
 router.use(require("./index"));
 router.use(require("./zombiesForSale"))
-router.use(require("./register"));
-router.use(require("./login"));
 router.use(require("./users"));
 
 
