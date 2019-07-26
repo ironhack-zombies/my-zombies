@@ -16,6 +16,7 @@ const userSchema = new Schema({
         required: true
     },
     zombiesOwned: [{ type: ObjectId, ref: 'ownedZombies' }],
+    likedStories: [{ type: ObjectId, ref: 'stories' }],
     profileImage: {
         type: String
     },
