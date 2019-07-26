@@ -1,0 +1,30 @@
+.zombieDetail {
+    display: flex;
+}
+
+.zombImage {
+    width: 40%;
+}
+
+.zombImage img {
+    width: 100%;
+}
+
+.details {
+    width: 60%;
+    padding: 10% 0;
+}
+
+@media screen and (max-width: 600px) {
+    .zombieDetail {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .buy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,1 +1,30 @@
-<h3>{{zombie.type}}</h3>
+<div class="zombieDetail">
+    <div class="zombImage">
+        <img src="/images/image1.jpeg">
+    </div>
+    <div class="details">
+    <div class="buy">
+            <h3>{{zombie.type}}</h3>
+            <p><span>{{zombie.price}}</span> <i class="fas fa-brain fa-3x"></i></p>
+            <button type="submit">BUY</button>
+    </div>
+    <div>
+        <div>
+            <h5>Description: </h5>
+            <ul>
+                {{#each zombie.description}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+        <div>
+            <h5>Ability: </h5>
+            <ul>
+                {{#each zombie.abilities}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    </div>
+</div>

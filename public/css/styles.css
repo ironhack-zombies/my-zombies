@@ -22,6 +22,7 @@ Purple (#332335)
 @import "form.css";
 @import "catalogPage.css";
 @import "profilePage.css";
+@import "zombieDetail.css";
 html,
 body {
     box-sizing: border-box;

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const zombieSchema = new Schema({
     type: { type: String },
-    desciption: [{ type: String }],
+    description: [{ type: String }],
     abilities: [{ type: String }],
     references: [{ type: String }],
     image: { type: String },
