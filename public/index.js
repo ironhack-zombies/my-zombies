@@ -17,18 +17,40 @@ function strap() {
     })
 }
 
-function checkConfirmPassword() {
-    if (!document.getElementById('password').value || !document.getElementById('password_conf').value) return;
-    if (document.getElementById('password').value ==
-        document.getElementById('password_conf').value) {
-        document.getElementById('password').classList.remove("notMatching");
-        document.getElementById('password_conf').classList.remove("notMatching");
+function checkRegisterForm() {
+    let valid = true;
+    if (document.getElementById('password').value && document.getElementById('password_conf').value) {
+        if (document.getElementById('password').value ==
+            document.getElementById('password_conf').value) {
+            document.getElementById('password').classList.remove("notValid");
+            document.getElementById('password_conf').classList.remove("notValid");
+        } else {
+            document.getElementById('password').classList.add("notValid");
+            document.getElementById('password_conf').classList.add("notValid");
+        }
+    } else {
+        valid = false;
+    }
+
+    if (!document.getElementById('registerEmail').value) {
+        valid = false;
+    } else if (!/^\S+@\S+\.\S+$/.test(document.getElementById('registerEmail').value)) {
+        valid = false;
+        document.getElementById('registerEmail').classList.add("notValid");
+    } else {
+        document.getElementById('registerEmail').classList.remove("notValid");
+    }
+
+    if (!document.getElementById('registerUsername').value) {
+        markRegisterForm(false)
+    } else {
+        // @Todo username taken validation
+    }
+
+    if (valid) {
         document.getElementById('registerBtn').removeAttribute("disabled");
     } else {
-        document.getElementById('passwordConfMessage').classList.remove("hidden");
         document.getElementById('registerBtn').setAttribute("disabled", "");
-        document.getElementById('password').classList.add("notMatching");
-        document.getElementById('password_conf').classList.add("notMatching");
     }
 }
 

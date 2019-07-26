@@ -124,7 +124,7 @@ p {
     margin-bottom: 20px;
     padding: 5px 10px;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 2px solid #ced4da;
     border-radius: .25rem;
     border-radius: 3px;
     color: #495057;
@@ -144,8 +144,13 @@ p {
     margin: 20px;
 }
 
+<<<<<<< HEAD
 .register-form input.notMatching {
     border-color: red;
+=======
+.register-form input.notValid {
+    border-color: red; 
+>>>>>>> b6751aefe95d87b0e6428cbbb0b51b4e8ddf0737
     color: red;
 }
 
