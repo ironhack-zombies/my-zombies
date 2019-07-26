@@ -1,9 +1,15 @@
+<div>
+    <form action="/zombiesForSale" method="POST">
+        <input type="text" name="zombieType" placeholder="Search for your zombie">
+        <input type="submit" value="Search">
+    </form>
+</div>
 <div class="catalog">
-    {{#each zombies}}
+    {{#each zombie}}
     <div>
-    <img src="/images/image1.jpeg">
-    <a href="/zombieDetails"><h3>{{type}}</h3></a>
-    <p>{{price}}</p>
+        <img src="/images/image1.jpeg">
+        <a href="/zombieDetail?zombie_id={{_id}}"><h3>Zombie Type: {{type}}</h3></a>
+        <p><span>{{price}}</span> <i class="fas fa-brain fa-lg"></i></p>
     </div>
     {{/each}}
 </div>

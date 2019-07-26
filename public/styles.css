@@ -160,6 +160,8 @@ p {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .catalog a {
@@ -167,7 +169,17 @@ p {
 }
 
 .catalog div {
-    width: 25%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.fa-brain {
+    color: rgb(230, 114, 114);
 }
 
 
