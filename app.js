@@ -12,6 +12,13 @@ var flash = require('connect-flash');
 var passport = require('passport');
 const bodyParser = require('body-parser')
 
+hbs.registerHelper('ifIn', function (elem, list, options) {
+    if (list.indexOf(elem) > -1) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
+});
+
 // Connection to the database "recipeApp"
 mongoose.connect(process.env.MONGODB_URI, {
         useCreateIndex: true,
@@ -34,7 +41,9 @@ app.use(session({
     }),
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: app.get('env') === 'production' }
+    cookie: {
+        secure: app.get('env') === 'production'
+    }
 }))
 
 app.use(passport.initialize());
@@ -45,7 +54,7 @@ var initPassport = require('./passport/init');
 initPassport(passport);
 
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 }));
 
 app.set('views', path.join(__dirname, 'views'));
