@@ -144,7 +144,7 @@ p {
     margin: 20px;
 }
 
-.register-form input.notValid {
+.register-form input.notMatching {
     border-color: red;
     color: red;
 }
