@@ -1,33 +1,47 @@
 <a href="/zombiesForSale"><i class="fas fa-arrow-left fa-3x"></i></a>
 <div class="zombieDetail">
     <div class="zombImage">
-        <img src="/images/image1.jpeg">
+    {{#if buy}}
+        <div>
+            <p class="bought">Zombie has been added to your collection <a href="/user">VIEW</a></p>
+        </div>
+    {{/if}}
+     {{#if notEnoughBrain}}
+        <div>
+            <p class="notEnoughBrain">You have not enough BRAINS!</p>
+        </div>
+    {{/if}}
+        <div>
+            <img src="/images/image1.jpeg">
+        </div>
     </div>
+
     <div class="details">
-    <div class="buy">
-            <h3>{{zombie.type}}</h3>
-            <p><span>{{zombie.price}}</span> <i class="fas fa-brain fa-3x"></i></p>
-            <form action="/zombieDetail?zombie_id={{zombie._id}}" method="POST">
-                <button type="submit">BUY</button>
-            </form>
-    </div>
-    <div>
-        <div>
-            <h5>Description: </h5>
-            <ul>
-                {{#each zombie.description}}
-                <li>{{this}}</li>
-                {{/each}}
-            </ul>
+        <div class="buy">
+                <h3>{{zombie.type}}</h3>
+                <p><span>{{zombie.price}}</span> <i class="fas fa-brain fa-3x"></i></p>
+                <form action="/zombieDetail?zombie_id={{zombie._id}}" method="POST">
+                    <button type="submit">BUY</button>
+                </form>
         </div>
+ 
         <div>
-            <h5>Ability: </h5>
-            <ul>
-                {{#each zombie.abilities}}
-                <li>{{this}}</li>
-                {{/each}}
-            </ul>
+            <div>
+                <h5>Description: </h5>
+                <ul>
+                    {{#each zombie.description}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div>
+                <h5>Ability: </h5>
+                <ul>
+                    {{#each zombie.abilities}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
         </div>
-    </div>
     </div>
 </div>

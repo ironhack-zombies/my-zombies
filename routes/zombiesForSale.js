@@ -37,7 +37,7 @@ router.get('/zombieDetail', (req, res, next) => {
     let zombieId = req.query.zombie_id;
     Zombie.findOne({ _id: zombieId })
         .then((zombie) => {
-            res.render('../views/partials/zombieDetail.hbs', { zombie });
+            res.render('../views/partials/zombieDetail', { zombie });
         })
         .catch((err) => {
             res.send(err);
@@ -51,7 +51,7 @@ router.post('/zombieDetail', (req, res, next) => {
         Zombie.findOne({ _id: zombieId })
             .then((zombie) => {
                 if (zombie.price > req.user.brains) {
-                    res.send("You have not enough BRAINS!");
+                    res.render('../views/partials/zombieDetail', { zombie, notEnoughBrain: true });
                 } else {
                     let id = zombie._id
                     var newOwnedZombie = new OwnedZombie({
@@ -66,7 +66,7 @@ router.post('/zombieDetail', (req, res, next) => {
                             User.findByIdAndUpdate(userId, userOwned, { new: true })
                                 .then((user) => {
                                     User.populate(ownedzombie, 'zombiesOwned')
-                                    res.redirect('/user');
+                                    res.render('../views/partials/zombieDetail', { zombie, buy: true });
                                 })
                         })
                         .catch(err => {
