@@ -1,3 +1,8 @@
+.fa-arrow-left {
+    color: #7d7e73;
+    margin: 10px 0 0 10px;
+}
+
 .zombieDetail {
     display: flex;
 }
