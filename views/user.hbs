@@ -1,5 +1,6 @@
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'Profile')" id="defaultOpen">Profile</button>
+  <button class="tablinks" onclick="openTab(event, 'Gift')"><i class="fas fa-gifts"></i>Daily Package</button>
   <button class="tablinks" onclick="openTab(event, 'Zombies')">Zombies</button>
   <button class="tablinks" onclick="openTab(event, 'Gadgets')">Gadgets</button>
   <button class="tablinks" onclick="openTab(event, 'Food')">Food</button>
@@ -7,6 +8,11 @@
 <div id="Profile" class="tabcontent">
 Welcome {{ user.username }}
 </div>
+
+<div id="Gift" class="tabcontent">
+  <h3>Daily Package</h3>
+</div>
+
 <div id="Zombies" class="tabcontent">
   <h3>Zombies</h3>
 </div>
