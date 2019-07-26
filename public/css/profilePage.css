@@ -1,0 +1,86 @@
+/* user profile */
+
+
+/* Style the horizontal tab */
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #b8b9a9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab button.active {
+    background-color: #959689;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    height: 100%;
+}
+
+.tabbutton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabbutton.icons {
+    width: 30px;
+}
+
+
+/* style the vertical tab */
+
+.tabVertical {
+    float: left;
+    border-right: 1px solid #b8b9a9;
+    width: 15%;
+    height: 100%;
+    margin: 0;
+}
+
+.tabVertical button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.tabVertical button.active {
+    background-color: #959689;
+}
+
+.tabcontent1 {
+    float: left;
+    padding: 0px 12px;
+    /* border: 1px solid #ccc; */
+    width: 80%;
+    border-left: none;
+    height: 100%;
+    display: none;
+}

@@ -1,0 +1,14 @@
+/* footer */
+
+#sticky-footer {
+    flex-shrink: none;
+    background-color: #422020;
+}
+
+.fa-facebook-square,
+.fa-envelope-square,
+.fa-instagram,
+.fa-pinterest-square {
+    color: #b5b69c;
+    padding-right: 10px;
+}

@@ -1,0 +1,21 @@
+/* home page */
+
+.col-lg-6 {
+    padding: 50px;
+}
+
+.homePage {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 120px;
+}
+
+.homePage h1,
+p {
+    color: #260703;
+}
