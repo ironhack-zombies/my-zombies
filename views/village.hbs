@@ -1,1 +1,5 @@
-{{stories}}
+{{#each stories}}
+  {{> story story=this user=user}}
+{{/each}}
+<br><br>
+<a href="/stories/new" class="btn btn-primary">Publish a new story</a>

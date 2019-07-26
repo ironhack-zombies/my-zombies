@@ -20,7 +20,9 @@ router.get('/story/:id', function (req, res, next) {
             res.redirect("/village")
             return;
         }
-        res.render("story", {story})
+        res.render("story", {
+            story
+        })
     }).catch(error => {
         console.error(error)
         next(error)
@@ -28,7 +30,24 @@ router.get('/story/:id', function (req, res, next) {
 });
 
 router.post('/story/:id/like', secured(), function (req, res, next) {
-
+    Story.findById(req.params.id).then(story => {
+        if (!story) {
+            res.redirect("/village")
+            return;
+        }
+        let userID = req.user._id;
+        console.log(story.likes)
+        if (story.likes.indexOf(userID) > -1) {}
+        story.update({
+                $addToSet: {
+                    likes: userID
+                }
+            })
+            .then(res.redirect(`/story/${story._id}`))
+    }).catch(error => {
+        console.error(error)
+        next(error)
+    })
 });
 
 router.get('/stories/new', secured(), function (req, res, next) {
