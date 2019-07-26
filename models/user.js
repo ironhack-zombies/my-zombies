@@ -16,10 +16,8 @@ const userSchema = new Schema({
         required: true
     },
     zombiesOwned: [{ type: ObjectId, ref: 'ownedZombies' }],
-    image: {
-        // will make an object for Images that user upload as profile picture 
-        type: ObjectId,
-        ref: 'images'
+    profileImage: {
+        type: String
     },
     brains: {
         type: Number
