@@ -92,59 +92,26 @@ p {
     cursor: pointer;
 }
 
-.login {
+.login, .register {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.login div {
-    width: 25%;
+.login > div, .register > div {
+    width: 400px;
+    max-width: 100%;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.login button {
+.login button, .register button {
     width: 100px;
 }
 
-
-/* register page */
-
-.register-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.register-form input {
-    width: 30%;
-    margin-bottom: 20px;
-    padding: 5px 10px;
-    background-clip: padding-box;
-    border: 2px solid #ced4da;
-    border-radius: .25rem;
-    border-radius: 3px;
-    color: #495057;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
-
-.register-form div {
-    display: flex;
-    width: 30%;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 12px;
-}
-
-.register-form button {
-    width: 100px;
-    margin: 20px;
-}
-
-.register-form input.notMatching {
+.register input.notValid,
+.login input.notMatching {
     border-color: red;
     color: red;
 }

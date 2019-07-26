@@ -1,8 +1,10 @@
 function strap() {
-    let checkboxes = document.getElementsByClassName("togglePwd");
-    if (checkboxes && checkboxes.length > 0) checkboxes[0].addEventListener("click", e => {
-        e.currentTarget.classList.toggle("fa-eye")
-        e.currentTarget.classList.toggle("fa-eye-slash")
+    let togglePwd = document.getElementsByClassName("togglePwd");
+    if (togglePwd && togglePwd.length > 0) togglePwd[0].addEventListener("click", e => {
+        let icon = e.currentTarget.childNodes[0];
+        //e.currentTarget.classList.toggle("btn-secondary")
+        icon.classList.toggle("fa-eye")
+        icon.classList.toggle("fa-eye-slash")
         let pwd = document.getElementById("password");
         if (pwd) {
             switch (pwd.getAttribute("type")) {
@@ -42,7 +44,7 @@ function checkRegisterForm() {
     }
 
     if (!document.getElementById('registerUsername').value) {
-        markRegisterForm(false)
+        valid = false;
     } else {
         // @Todo username taken validation
     }
