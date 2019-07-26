@@ -1,13 +1,10 @@
 <form id="signup" action="/signup" method="POST">
     <div class="register-form">
         <h1>Register</h1>
-        <input type="text" name="email" placeholder="E-mail" required>
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="text" name="firstName" placeholder="First Name" required>
-        <input type="text" name="lastName" placeholder="Last Name" required>
-        <input type="password" name="password" placeholder="Password" id="password" onkeyup='checkConfirmPassword();' required>
-        <input type="password" name="passwordConf" placeholder="Confirm Password" id="password_conf" onkeyup='checkConfirmPassword();' required>
-        <p id="passwordConfMessage"></p>
+        <input type="text" name="email" placeholder="E-mail" id="registerEmail" onkeyup='checkRegisterForm();' required>
+        <input type="text" name="username" placeholder="Username" id="registerUsername" onkeyup='checkRegisterForm();' required>
+        <input type="password" name="password" placeholder="Password" id="password" onkeyup='checkRegisterForm();' required>
+        <input type="password" name="passwordConf" placeholder="Confirm Password" id="password_conf" onkeyup='checkRegisterForm();' required>
         <button type="submit" id="registerBtn" disabled>Register</button>
     </div>
 </form>
