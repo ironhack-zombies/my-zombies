@@ -19,7 +19,7 @@ Purple (#332335)
 html,
 body {
     box-sizing: border-box;
-    height: 100vh;
+    height: 100%;
 }
 
 #page-content {
@@ -29,6 +29,8 @@ body {
 .hidden {
     display: none;
 }
+
+
 /* nav bar */
 
 .navbar {
@@ -68,7 +70,6 @@ body {
 }
 
 .homePage {
-    background-color: #DBC667;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -144,7 +145,7 @@ p {
 }
 
 .register-form input.notMatching {
-    border-color: red; 
+    border-color: red;
     color: red;
 }
 
@@ -172,15 +173,77 @@ p {
 
 /* user profile */
 
+
+/* Style the tab */
+
+.usernameTab {
+    text-align: center;
+}
+
 .tab {
-    float: left;
+    overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #DBC667;
-    width: 15%;
+    background-color: #b8b9a9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Style the buttons inside the tab */
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+
+/* Create an active/current tablink class */
+
+.tab button.active {
+    background-color: #959689;
+}
+
+
+/* Style the horizontal tab content */
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
     height: 100%;
 }
 
-.tab button {
+.tabbutton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabbutton.icons {
+    width: 30px;
+}
+
+
+/* style the vertical tab */
+
+.tabVertical {
+    float: left;
+    border-right: 1px solid #b8b9a9;
+    width: 15%;
+    height: 100%;
+    margin: 0;
+}
+
+.tabVertical button {
     display: block;
     background-color: inherit;
     color: black;
@@ -194,20 +257,16 @@ p {
     font-size: 15px;
 }
 
-.tab button.active {
-    background-color: rgb(177, 158, 75);
+.tabVertical button.active {
+    background-color: #959689;
 }
 
-.tabcontent {
+.tabcontent1 {
     float: left;
     padding: 0px 12px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     width: 80%;
     border-left: none;
     height: 100%;
     display: none;
-}
-
-.tablinks.fa {
-    width: 20px;
 }

@@ -1,26 +1,57 @@
+<div class="usernameTab">
+  <h2>{{user.firstName}} {{user.lastName}}</h2>
+</div>
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Profile')" id="defaultOpen">Profile</button>
-  <button class="tablinks" onclick="openTab(event, 'Gift')"><i class="fas fa-gifts"></i>Daily Package</button>
+  <button class="tablinks" onclick="openTab(event, 'Profile')" id="defaultOpen">
+    <i class="fa fa-user"></i> 
+    <span>Profile</span>
+  </button>
+  <button class="tablinks" onclick="openTab(event, 'Gift')">
+    <i class="fa fa-gift"></i> 
+    <span>Daily Package</span>
+  </button>
+  <button class="tablinks" onclick="openTab(event, 'Collections')">
+    <i class="fa fa-shopping-bag"></i> 
+    <span>Collections</span>
+  </button>
+{{!--   
   <button class="tablinks" onclick="openTab(event, 'Zombies')">Zombies</button>
   <button class="tablinks" onclick="openTab(event, 'Gadgets')">Gadgets</button>
-  <button class="tablinks" onclick="openTab(event, 'Food')">Food</button>
+  <button class="tablinks" onclick="openTab(event, 'Food')">Food</button> --}}
 </div>
 <div id="Profile" class="tabcontent">
-Welcome {{ user.username }}
+  Welcome {{ user.username }}
 </div>
 
 <div id="Gift" class="tabcontent">
-  <h3>Daily Package</h3>
+  <h3>Daily Gift Package</h3>
 </div>
 
-<div id="Zombies" class="tabcontent">
-  <h3>Zombies</h3>
+<div id="Collections" class="tabcontent">
+  <div class="tabVertical">
+    <button class="tablinks1 vertical" onclick="openTab1(event, 'Zombies')">Zombies</button>
+    <button class="tablinks1 vertical" onclick="openTab1(event, 'Gadgets')">Gadgets</button>
+    <button class="tablinks1 vertical" onclick="openTab1(event, 'Food')">Food</button>
+  </div>
+  
+  <div id="Zombies" class="tabcontent1">
+    <h3>Zombies</h3>
+  </div>
+
+  <div id="Gadgets" class="tabcontent1">
+    <h3>Gadgets</h3>
+  </div>
+
+  <div id="Food" class="tabcontent1">
+    <h3>Food</h3>
+  </div>
+
 </div>
 
-<div id="Gadgets" class="tabcontent">
+{{!-- <div id="Gadgets" class="tabcontent">
   <h3>Gadgets</h3>
 </div>
 
 <div id="Food" class="tabcontent">
   <h3>Food</h3>
-</div>
+</div> --}}
