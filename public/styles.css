@@ -19,7 +19,7 @@ Purple (#332335)
 html,
 body {
     box-sizing: border-box;
-    height: 100%;
+    min-height: 100vh;
 }
 
 #page-content {
