@@ -5,8 +5,9 @@
         <input type="text" name="username" placeholder="Username" required>
         <input type="text" name="firstName" placeholder="First Name" required>
         <input type="text" name="lastName" placeholder="Last Name" required>
-        <input type="password" name="password" placeholder="Password" id="password" required>
-        <input type="password" name="passwordConf" placeholder="Confirm Password" id="password_conf" required>
-        <button type="submit">Register</button>
+        <input type="password" name="password" placeholder="Password" id="password" onkeyup='checkConfirmPassword();' required>
+        <input type="password" name="passwordConf" placeholder="Confirm Password" id="password_conf" onkeyup='checkConfirmPassword();' required>
+        <p id="passwordConfMessage"></p>
+        <button type="submit" id="registerBtn" disabled>Register</button>
     </div>
 </form>

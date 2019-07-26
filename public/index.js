@@ -17,6 +17,21 @@ function strap() {
     })
 }
 
+function checkConfirmPassword() {
+    if (!document.getElementById('password').value || !document.getElementById('password_conf').value) return;
+    if (document.getElementById('password').value ==
+        document.getElementById('password_conf').value) {
+        document.getElementById('password').classList.remove("notMatching");
+        document.getElementById('password_conf').classList.remove("notMatching");
+        document.getElementById('registerBtn').removeAttribute("disabled");
+    } else {
+        document.getElementById('passwordConfMessage').classList.remove("hidden");
+        document.getElementById('registerBtn').setAttribute("disabled", "");
+        document.getElementById('password').classList.add("notMatching");
+        document.getElementById('password_conf').classList.add("notMatching");
+    }
+}
+
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     // Get all elements with class="tabcontent" and hide them
