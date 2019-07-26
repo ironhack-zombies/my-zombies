@@ -8,7 +8,10 @@
             voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum
             defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv
             ingdead.</p>
-        <a href="/signup"><button class="btn btn-dark btn-lg" type="submit">Register</button></a>
-        <a href="/login"><button class="btn btn-dark btn-lg" type="submit">Log in</button></a>
+        {{#if user}}
+        {{else}}
+            <a href="/signup"><button class="btn btn-dark btn-lg" type="submit">Register</button></a>
+            <a href="/login"><button class="btn btn-dark btn-lg" type="submit">Log in</button></a>
+        {{/if}}
     </div>
 </div>
