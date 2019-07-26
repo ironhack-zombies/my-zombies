@@ -7,7 +7,9 @@
     <div class="buy">
             <h3>{{zombie.type}}</h3>
             <p><span>{{zombie.price}}</span> <i class="fas fa-brain fa-3x"></i></p>
-            <button type="submit">BUY</button>
+            <form action="/zombieDetail?zombie_id={{zombie._id}}" method="POST">
+                <button type="submit">BUY</button>
+            </form>
     </div>
     <div>
         <div>
