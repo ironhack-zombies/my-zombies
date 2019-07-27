@@ -42,7 +42,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        secure: app.get('env') === 'production'
+        // can't use Heroku SSL with a free dino -.-
+        //secure: app.get('env') === 'production'
     }
 }))
 
