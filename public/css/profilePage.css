@@ -84,3 +84,10 @@
     height: 100%;
     display: none;
 }
+
+#Profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
