@@ -19,10 +19,11 @@
 
 .bought {
     font-size: 20px;
+    text-align: start;
+    position: absolute;
 }
 
-.zombImage p {
-    position: absolute;
+.bought {
     margin-left: 50px;
     -webkit-animation: cssAnimation 0s ease-in 2s forwards;
 }
@@ -64,4 +65,11 @@
         justify-content: center;
         align-items: center;
     }
+}
+
+.buyButton {
+    width: 90px;
+    background-color: #7d7e73;
+    color: white;
+    border-radius: 5px;
 }

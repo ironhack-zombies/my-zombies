@@ -62,7 +62,11 @@ router.post('/zombieDetail', (req, res, next) => {
                         .then((ownedzombie) => {
                             let userId = req.user._id;
                             let ownedZombieId = mongoose.Types.ObjectId(ownedzombie._id);
-                            let userOwned = { zombiesOwned: ownedZombieId }
+                            let brainsLeft = req.user.brains - zombie.price;
+                            let userOwned = {
+                                zombiesOwned: ownedZombieId,
+                                brains: brainsLeft
+                            }
                             User.findByIdAndUpdate(userId, userOwned, { new: true })
                                 .then((user) => {
                                     User.populate(ownedzombie, 'zombiesOwned')
