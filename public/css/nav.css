@@ -25,3 +25,7 @@
 .dropdown-item {
     color: #b5b69c !important;
 }
+
+ul.collapse.navbar-collapse {
+    margin: 0px;
+}

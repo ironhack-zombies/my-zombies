@@ -1,14 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-   <a class="navbar-brand" href="/">myZombies</a>
-    
-    {{#if user}}
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+    <a class="navbar-brand" href="/">myZombies</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto">
+            {{#if user}}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/zombies" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                <a class="nav-link dropdown-toggle" href="/zombies" id="dropdown01" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Shop</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/zombiesForSale">zombies for sale</a>
                     <a class="dropdown-item" href="/gadgets">gadgets</a>
@@ -20,19 +21,19 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/village">Village</a>
-            </li>           
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/logout">Log Out</a>
             </li>
-            {{!-- {{else}}
+            {{else}}
             <li class="nav-item">
                 <a class="nav-link" href="/signup">Register</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/login">Log in</a>
-            </li> --}}
+            </li>
+            {{/if}}
         </ul>
-    </div>
-    {{/if}}
+    </ul>
 
 </nav>
