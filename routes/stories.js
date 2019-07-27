@@ -4,7 +4,7 @@ const router = express.Router();
 const Story = require('../models/story')
 
 router.get('/village', (req, res, next) => {
-    Story.find({}).then(stories => {
+    Story.find({}).populate("author").then(stories => {
         res.render("village", {
             stories
         })

@@ -4,24 +4,19 @@
     height: 100%;
     margin: 0;
     position: relative;
-    left: 17%;
 }
 
 .villageBoard {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 50px;
+    padding: 20px 10%;
 }
 
 .villageBoard hr {
     width: 100%;
     height: 3px;
     color: grey;
-}
-
-.villageBoard div {
-    width: 60%;
 }
 
 .eachStory {
@@ -33,4 +28,13 @@
 
 .storyForm {
     margin: 5px;
+}
+
+.storyHeader {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
 }
