@@ -1,6 +1,41 @@
 /* catalog page */
 
+.search {
+    border: 2px solid #7d7e73;
+    overflow: auto;
+}
+
+.search input[type="text"] {
+    border: 0px;
+    width: 67%;
+    padding: 10px 10px;
+}
+
+.search input[type="text"]:focus {
+    outline: 0;
+}
+
+.search input[type="submit"] {
+    border: 0px;
+    background: none;
+    background-color: #7d7e73;
+    color: #fff;
+    float: right;
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 150px) and (max-width: 780px) {
+    {}
+    .search {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+
 .catalog {
+    margin-top: 40px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -14,18 +49,23 @@
 
 .catalog div {
     width: 30%;
-    display: flex;
+    /* height: 30%; */
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin: 0;
+    align-items: center; */
     padding: 20px;
+    background-color: white;
 }
 
 .fa-brain {
     color: rgb(230, 114, 114);
 }
 
+.eachZombie div.img {
+    width: 60%;
+}
+
 .eachZombie img {
-    width: 50%;
+    width: 100%;
 }
