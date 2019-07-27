@@ -20,9 +20,10 @@ router.post('/village', secured(), function(req, res, next) {
     let newStory = {
         author: req.user._id,
         title: req.body.title,
-        text: req.body.text
+        text: req.body.text.split("\n")
     }
-    newStory.save(
+    let story = new Story(newStory)
+    story.save(
             Story.populate(newStory, 'author'))
         .then(story => {
             res.redirect(`/story/${story._id}`)

@@ -35,15 +35,15 @@
     height: 100%;
 }
 
+.tabcontent.profile {
+    display: block;
+}
+
 .tabbutton {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.tabbutton.icons {
-    width: 30px;
 }
 
 

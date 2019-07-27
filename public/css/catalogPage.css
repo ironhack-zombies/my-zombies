@@ -1,26 +1,5 @@
 /* catalog page */
 
-.search {
-    margin: 20px 50px;
-}
-
-
-/* 
-.search input {
-    margin: 0;
-    padding: 0 10px;
-    border-radius: 3px;
-    border: solid 1px lightgray;
-}
-
-.search input[type=text] {
-    width: 70%;
-}
-
-.search input[type=submit] {
-    width: 15%;
-} */
-
 .catalog img {
     width: 100%;
 }

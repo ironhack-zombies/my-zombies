@@ -9,7 +9,7 @@
             {{#if user}}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/zombies" id="dropdown01" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">Shop</a>
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-store"></i> Shop</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/zombiesForSale">zombies for sale</a>
                     <a class="dropdown-item" href="/gadgets">gadgets</a>
@@ -17,20 +17,20 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user">Profile</a>
+                <a class="nav-link" href="/user"><i class="fas fa-home"></i> Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/village">Village</a>
+                <a class="nav-link" href="/village"><i class="fas fa-users"></i> Village</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/logout">Log Out</a>
+                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
             </li>
             {{else}}
             <li class="nav-item">
-                <a class="nav-link" href="/signup">Register</a>
+                <a class="nav-link" href="/signup"><i class="fas fa-user-plus"></i> Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Log in</a>
+                <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Log in</a>
             </li>
             {{/if}}
         </ul>
