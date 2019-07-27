@@ -35,6 +35,11 @@
 
   <div id="Zombies" class="tabcontent1">
     <h3>Zombies</h3>
+    {{#each user.zombiesOwned}}
+    <div>
+      <h3>{{user.zombiesOwned.origin.type}}</h3>
+    </div>
+    {{/each}}
   </div>
 
   <div id="Gadgets" class="tabcontent1">
