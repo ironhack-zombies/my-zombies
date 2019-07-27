@@ -4,14 +4,18 @@ const router = express.Router();
 const Story = require('../models/story')
 
 router.get('/village', (req, res, next) => {
-    Story.find({}).then(stories => {
-        res.render("village", {
-            stories
+    Story.find({})
+        .populate("author")
+        .then(stories => {
+            console.log(stories[0].author)
+
+            res.render("village", {
+                stories
+            })
+        }).catch(error => {
+            console.error(error)
+            next(error)
         })
-    }).catch(error => {
-        console.error(error)
-        next(error)
-    })
 });
 
 router.post('/village', secured(), function(req, res, next) {
@@ -20,12 +24,15 @@ router.post('/village', secured(), function(req, res, next) {
         title: req.body.title,
         text: req.body.text
     }
-    Story.create(newStory).then(story => {
-        res.redirect(`/story/${story._id}`)
-    }).catch(error => {
-        console.error(error)
-        next(error)
-    })
+    newStory.save(
+            Story.populate(newStory, 'author'))
+        .then(story => {
+            res.redirect(`/story/${story._id}`)
+        })
+        .catch(error => {
+            console.error(error)
+            next(error)
+        })
 });
 
 router.get('/story/:id', function(req, res, next) {

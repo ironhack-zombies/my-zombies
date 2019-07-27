@@ -1,8 +1,9 @@
 <div class="eachStory">
-    <h3>{{story.author.username}}</h3>
+    <h3><i class="fa fa-user"></i> {{story.author.username}}</h3>
+    <hr>
     <h5>{{story.title}}</h5>
     <p>{{story.text}}</p>
     <form action="/story/{{story._id}}/like" method="POST">
-        <input type="submit" value="{{#ifIn user.id story.likes }}Liked{{else}}Like{{/ifIn}}" {{#ifIn user.id story.likes }}disabled{{/ifIn}}>
+       <button class="likeButton" type="submit" value="{{#ifIn user.id story.likes }}Liked{{else}}Like{{/ifIn}}" {{#ifIn user.id story.likes }}disabled{{/ifIn}}> <span><i class="far fa-thumbs-up"></i></span></button>
     </form>
 </div>

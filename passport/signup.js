@@ -34,14 +34,16 @@ module.exports = function(passport) {
                         newUser.email = req.param('email');
 
                         // save the user
-                        newUser.save(function(err) {
-                            if (err) {
-                                console.log('Error in Saving user: ' + err);
-                                throw err;
-                            }
-                            console.log('User Registration succesful');
-                            return done(null, newUser);
-                        });
+                        newUser.save()
+                            // User.populate(newUser, 'author'))
+                            .then(function(err) {
+                                if (err) {
+                                    console.log('Error in Saving user: ' + err);
+                                    throw err;
+                                }
+                                console.log('User Registration succesful');
+                                return done(null, newUser);
+                            });
                     }
                 });
             };
