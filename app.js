@@ -33,6 +33,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 const app = express();
 
+const favicon = require('serve-favicon');
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
+
 app.use(session({
     secret: process.env.SECRET,
     store: new MongoStore({
