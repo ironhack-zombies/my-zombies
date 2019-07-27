@@ -65,7 +65,7 @@ router.post('/zombieDetail', (req, res, next) => {
                             let ownedZombieId = mongoose.Types.ObjectId(ownedzombie._id);
                             let brainsLeft = req.user.brains - zombie.price;
                             let zombArr = req.user.zombiesOwned;
-                            zombArr.push(ownedZombieId)
+                            zombArr.push(ownedZombieId);
                             let userOwned = {
                                 zombiesOwned: zombArr,
                                 brains: brainsLeft

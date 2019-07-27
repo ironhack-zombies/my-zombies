@@ -9,8 +9,9 @@ router.get('/user', (req, res, next) => {
             path: 'zombiesOwned',
             populate: { path: 'origin' }
         })
-        .then((user) => {
-            res.render('user', { user });
+        .then((userId) => {
+            console.log(userId)
+            res.render('user', { userId });
         })
 
 });
