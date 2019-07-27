@@ -1,7 +1,12 @@
 /* footer */
 
-#sticky-footer {
-    flex-shrink: none;
+footer {
+    padding: 0 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
     background-color: #422020;
 }
 
