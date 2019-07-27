@@ -58,7 +58,7 @@ router.post('/stories/new', secured(), function (req, res, next) {
     let newStory = {
         author: req.user._id,
         title: req.body.title,
-        text: req.body.text
+        text: req.body.text.split("\n")
     }
     Story.create(newStory).then(story => {
         res.redirect(`/story/${story._id}`)
