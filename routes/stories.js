@@ -29,18 +29,19 @@ router.post('/village', secured(), function(req, res, next) {
 });
 
 router.get('/story/:id', function(req, res, next) {
-    Story.findById(req.params.id).then(story => {
-        if (!story) {
-            res.redirect("/village")
-            return;
-        }
-        res.render("story", {
-            story
+    Story.findById(req.params.id)
+        .populate("author")
+        .then(story => {
+            if (!story) {
+                res.redirect("/village")
+                return;
+            } else {
+                res.render("story", { story })
+            }
+        }).catch(error => {
+            console.error(error)
+            next(error)
         })
-    }).catch(error => {
-        console.error(error)
-        next(error)
-    })
 });
 
 

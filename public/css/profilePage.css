@@ -65,7 +65,7 @@
     width: 100%;
     border: none;
     outline: none;
-    text-align: left;
+    /* text-align: left; */
     cursor: pointer;
     transition: 0.3s;
     font-size: 15px;
@@ -85,9 +85,10 @@
     display: none;
 }
 
-#Profile {
+
+/* .profile {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */

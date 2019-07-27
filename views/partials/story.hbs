@@ -1,5 +1,5 @@
 <div class="eachStory">
-    <h3>{{user.username}}</h3>
+    <h3>{{story.author.username}}</h3>
     <h5>{{story.title}}</h5>
     <p>{{story.text}}</p>
     <form action="/story/{{story._id}}/like" method="POST">
