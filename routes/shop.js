@@ -1,23 +1,36 @@
 const express = require('express');
 const router = express.Router();
 const Zombie = require('../models/zombie');
+const Gadget = require('../models/gadget');
 const OwnedZombie = require('../models/ownedZombie');
 const mongoose = require('mongoose');
-const ObjectId = mongoose.Schema.Types.ObjectId;
 const User = require('../models/user')
 
-router.get('/zombiesForSale', (req, res, next) => {
+router.get('/zombies', (req, res, next) => {
     Zombie.find({})
         .then((zombie) => {
-            console.log(zombie)
-            res.render('zombiesForSale', { zombie });
+            res.render('shop/zombies', { zombie });
         })
         .catch((err) => {
-            res.status(500).send(err);
+            next(err);
         })
 })
 
-router.post('/zombiesForSale', (req, res, next) => {
+router.get('/gadgets', (req, res, next) => {
+    Gadget.find({})
+        .then((gadgets) => {
+            res.render('shop/gadgets', { gadgets });
+        })
+        .catch((err) => {
+            next(err);
+        })
+})
+
+router.get('/food', (req, res, next) => {
+    res.render('shop/food');
+})
+
+router.post('/zombies', (req, res, next) => {
     let zombieType = req.body.zombieType;
     let str = zombieType.toLowerCase();
     let search = str.split('');
@@ -27,7 +40,7 @@ router.post('/zombiesForSale', (req, res, next) => {
     let searchStr = search.join('');
     Zombie.find({ type: searchStr })
         .then((zombie) => {
-            res.render('zombiesForSale', { zombie });
+            res.render('shop/zombies', { zombie });
         })
         .catch((err) => {
             res.send(err);
@@ -77,7 +90,7 @@ router.post('/zombieDetail', (req, res, next) => {
                                 })
                         })
                         .catch(err => {
-                            res.status(500).send("ERROR");
+                            res.status(500).send("ERROR (BRAAIIIIINS)");
                         })
                 }
             })

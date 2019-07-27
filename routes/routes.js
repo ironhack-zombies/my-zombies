@@ -18,7 +18,7 @@ router.use(function(req, res, next) {
 router.use("/", require("./auth"));
 router.use(require("./index"));
 router.use(require("./stories"));
-router.use(require("./zombiesForSale"))
+router.use("/shop", require("./shop"))
 router.use(require("./users"));
 
 
