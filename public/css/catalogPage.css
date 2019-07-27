@@ -1,9 +1,5 @@
 /* catalog page */
 
-.catalog img {
-    width: 100%;
-}
-
 .catalog {
     display: flex;
     flex-direction: row;
@@ -28,4 +24,8 @@
 
 .fa-brain {
     color: rgb(230, 114, 114);
+}
+
+.eachZombie img {
+    width: 50%;
 }
