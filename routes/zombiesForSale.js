@@ -65,9 +65,6 @@ router.post('/zombieDetail', (req, res, next) => {
                             let brainsLeft = req.user.brains - zombie.price;
                             let zombArr = req.user.zombiesOwned;
                             zombArr.push(ownedZombieId)
-                            console.log(zombArr)
-
-                            debugger
                             let userOwned = {
                                 zombiesOwned: zombArr,
                                 brains: brainsLeft

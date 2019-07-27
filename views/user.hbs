@@ -17,7 +17,7 @@
   <button class="tablinks" onclick="openTab(event, 'Food')">Food</button> --}}
 </div>
 <div id="Profile" class="tabcontent profile">
-  <h3>Welcome back{{ user.username }}</h3>
+  <h3>Welcome back {{ user.username }}</h3>
   <p>Your zombies miss you!</p>
   <p>You have : {{ user.brains }} <i class="fas fa-brain fa-2x"></i> left.</p>
 </div>
@@ -36,7 +36,7 @@
   <div id="Zombies" class="tabcontent1">
     <h3>Zombies</h3>
     {{#each user.zombiesOwned}}
-      <div class="catalog">
+      <div>
         <h3>{{origin.type}}</h3>
         <ul>
         {{#each origin.description}}
