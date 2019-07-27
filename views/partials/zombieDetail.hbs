@@ -1,4 +1,4 @@
-<a href="/zombiesForSale"><i class="fas fa-arrow-left fa-3x"></i></a>
+<a href="/shop/zombies"><i class="fas fa-arrow-left fa-3x"></i></a>
 {{#if buy}}
     <div>
         <p class="bought">Zombie has been added to your collection <a href="/user">VIEW</a></p>
@@ -20,7 +20,7 @@
         <div class="buy">
                 <h3>{{zombie.type}}</h3>
                 <p><span>{{zombie.price}}</span> <i class="fas fa-brain fa-3x"></i></p>
-                <form action="/zombieDetail?zombie_id={{zombie._id}}" method="POST">
+                <form action="/shop/zombies?zombie_id={{zombie._id}}" method="POST">
                     <button  class="buyButton" type="submit">BUY</button>
                 </form>
         </div>
