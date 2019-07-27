@@ -64,7 +64,6 @@ hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
-// app.use(require("./routes/auth"));
 app.use(require("./routes/routes"))
 
 let server = http.createServer(app);

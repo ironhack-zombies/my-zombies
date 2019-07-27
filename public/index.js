@@ -1,22 +1,19 @@
-function strap() {
-    let togglePwd = document.getElementsByClassName("togglePwd");
-    if (togglePwd && togglePwd.length > 0) togglePwd[0].addEventListener("click", e => {
-        let icon = e.currentTarget.childNodes[0];
-        //e.currentTarget.classList.toggle("btn-secondary")
-        icon.classList.toggle("fa-eye")
-        icon.classList.toggle("fa-eye-slash")
-        let pwd = document.getElementById("password");
-        if (pwd) {
-            switch (pwd.getAttribute("type")) {
-                case "password":
-                    pwd.setAttribute("type", "text")
-                    break;
-                case "text":
-                    pwd.setAttribute("type", "password")
-                    break;
-            }
+function togglePwd(e) {
+    let icon = e.currentTarget.childNodes[0];
+    //e.currentTarget.classList.toggle("btn-secondary")
+    icon.classList.toggle("fa-eye")
+    icon.classList.toggle("fa-eye-slash")
+    let pwd = document.getElementById("password");
+    if (pwd) {
+        switch (pwd.getAttribute("type")) {
+            case "password":
+                pwd.setAttribute("type", "text")
+                break;
+            case "text":
+                pwd.setAttribute("type", "password")
+                break;
         }
-    })
+    }
 }
 
 function checkRegisterForm() {
@@ -67,13 +64,13 @@ function openTab(evt, tabName) {
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].classList.remove("active");
 
     }
 
     // Show the current tab, and add an "active" class to the link that opened the tab
     document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
+    evt.currentTarget.classList.add("active");
 }
 
 function openTab1(evt, tabName) {
@@ -87,12 +84,10 @@ function openTab1(evt, tabName) {
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks1");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].classList.remove("active");
     }
 
     // Show the current tab, and add an "active" class to the link that opened the tab
     document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
+    evt.currentTarget.classList.add("active");
 }
-
-window.onload = strap;
