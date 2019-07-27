@@ -9,6 +9,7 @@ const User = require('../models/user')
 router.get('/zombiesForSale', (req, res, next) => {
     Zombie.find({})
         .then((zombie) => {
+            console.log(zombie)
             res.render('zombiesForSale', { zombie });
         })
         .catch((err) => {

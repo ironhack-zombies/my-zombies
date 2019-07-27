@@ -1,178 +1,177 @@
-[
-  {
-    "type": "Walker",
-    "description": ["Not as threatening as Runners", "Major threat to humans"],
-    "abilities": ["Attack in group", "Shocking durability"],
-    "references": ["The Walking Dead", "Night of the Living Dead"],
-    "image": "",
-    "price": 10
-  },
-  {
-    "type": "Runner",
-    "description": [
-      "Can never be outrun",
-      "Little or Non-decaying",
-      "Extremely dangerous"
-    ],
-    "abilities": [
-      "Run at full sprint",
-      "Run for long duration",
-      "Lose durability fast"
-    ],
-    "references": ["World War Z", "Dawn if the Dead"],
-    "image": "",
-    "price": 25
-  },
-  {
-    "type": "Voodoo Zombie",
-    "description": [
-      "Resurrected by a witch doctor",
-      "No need to feed on Brains"
-    ],
-    "abilities": ["Can turn back to human"],
-    "references": [],
-    "image": "",
-    "price": 50
-  },
-  {
-    "type": "Ghoul",
-    "description": ["Victim of nuclear radiation"],
-    "abilities": ["Spread radiation when attacking"],
-    "references": ["Fallout"],
-    "image": "",
-    "price": 100
-  },
-  {
-    "type": "The Infected",
-    "description": ["Walking disease locker"],
-    "abilities": ["Infectious slime that can poison people from distance"],
-    "references": [],
-    "image": "",
-    "price": 70
-  },
-  {
-    "type": "Ankle Biter",
-    "description": ["No lower body", "Can only crawl"],
-    "abilities": [
-      "Very annoying",
-      "Hard to spot",
-      "Highly dangerous",
-      "Ability to launch themselves at victims"
-    ],
-    "references": [],
-    "image": "",
-    "price": 120
-  },
-  {
-    "type": "Screamer",
-    "description": ["Rarely engage in direct combat"],
-    "abilities": [
-      "Ear-piercing wail",
-      "Calling for nearby zombie to attack together",
-      "Not dangerous on their own"
-    ],
-    "references": [],
-    "image": "",
-    "price": 180
-  },
-  {
-    "type": "Bonie",
-    "description": [
-      "The alpha of any zombie pack",
-      "Only heavily blackened, necrotic skin",
-      "Most of the flesh has rotted",
-      "No eyes"
-    ],
-    "abilities": [
-      "Slow and deliberate in their actions",
-      "High position within zombie",
-      "Other zombies follow their lead"
-    ],
-    "references": ["Warm bodies"],
-    "image": "",
-    "price": 300
-  },
-  {
-    "type": "Puker",
-    "description": [
-      "Quite weak and slow",
-      "Serve as a distraction while other zombies attack"
-    ],
-    "abilities": [
-      "Ranged attack with vomitting",
-      "Causing infections in victims"
-    ],
-    "references": [],
-    "image": "",
-    "price": 180
-  },
-  {
-    "type": "Stalker",
-    "description": ["Move on all fours", "Head jerks around continously"],
-    "abilities": [
-      "Harder to hit Stalker with ballistic weapon",
-      "Move faster than Walker",
-      "Harder to spot"
-    ],
-    "references": [],
-    "image": "",
-    "price": 200
-  },
-  {
-    "type": "Spitter",
-    "description": [
-      "Toxics from Spitter can cause burn or infections",
-      "Powerful and unique",
-      "Have tattered clothes or burned body parts"
-    ],
-    "abilities": ["Launch toxic", "Able to peform ranged attack"],
-    "references": [],
-    "image": "",
-    "price": 250
-  },
-  {
-    "type": "Exploder",
-    "description": [
-      "Willingly explode on target or explode when attacked",
-      "Extremely dangerous at close range",
-      "Cannot be identify from other type of zombies"
-    ],
-    "abilities": [
-      "Spreading infectious materials, bone fragments in all directions"
-    ],
-    "references": [],
-    "image": "",
-    "price": 115
-  },
-  {
-    "type": "Tank",
-    "description": ["Mutated", "Very muscular"],
-    "abilities": ["Extreme strength", "Throw cars and heavy objects"],
-    "references": [],
-    "image": "",
-    "price": 270
-  },
-  {
-    "type": "Nazi Zombie",
-    "description": [
-      "Former German Nazi soldiers",
-      "Infected with Element 115",
-      "Mutated"
-    ],
-    "abilities": ["Incredible strength"],
-    "references": [],
-    "image": "",
-    "price": 225
-  },
-  {
-    "type": "Sleeper",
-    "description": [
-      "Can be found lying on roads or in cities",
-      "Only wake up when provoked"
-    ],
-    "abilities": ["Extremely dangerous when disturbed"],
-    "references": [],
-    "image": "",
-    "price": 90
-  }
+[{
+        "type": "Walker",
+        "description": ["Not as threatening as Runners", "Major threat to humans"],
+        "abilities": ["Attack in group", "Shocking durability"],
+        "references": ["The Walking Dead", "Night of the Living Dead"],
+        "image": "/images/zombie1.png",
+        "price": 10
+    },
+    {
+        "type": "Runner",
+        "description": [
+            "Can never be outrun",
+            "Little or Non-decaying",
+            "Extremely dangerous"
+        ],
+        "abilities": [
+            "Run at full sprint",
+            "Run for long duration",
+            "Lose durability fast"
+        ],
+        "references": ["World War Z", "Dawn if the Dead"],
+        "image": "/images/zombie3.png",
+        "price": 25
+    },
+    {
+        "type": "Voodoo Zombie",
+        "description": [
+            "Resurrected by a witch doctor",
+            "No need to feed on Brains"
+        ],
+        "abilities": ["Can turn back to human"],
+        "references": [],
+        "image": "/images/zombie3.png",
+        "price": 50
+    },
+    {
+        "type": "Ghoul",
+        "description": ["Victim of nuclear radiation"],
+        "abilities": ["Spread radiation when attacking"],
+        "references": ["Fallout"],
+        "image": "/images/zombie3.png",
+        "price": 100
+    },
+    {
+        "type": "The Infected",
+        "description": ["Walking disease locker"],
+        "abilities": ["Infectious slime that can poison people from distance"],
+        "references": [],
+        "image": "/images/zombie1.png",
+        "price": 70
+    },
+    {
+        "type": "Ankle Biter",
+        "description": ["No lower body", "Can only crawl"],
+        "abilities": [
+            "Very annoying",
+            "Hard to spot",
+            "Highly dangerous",
+            "Ability to launch themselves at victims"
+        ],
+        "references": [],
+        "image": "/images/zombie2.png",
+        "price": 120
+    },
+    {
+        "type": "Screamer",
+        "description": ["Rarely engage in direct combat"],
+        "abilities": [
+            "Ear-piercing wail",
+            "Calling for nearby zombie to attack together",
+            "Not dangerous on their own"
+        ],
+        "references": [],
+        "image": "/images/zombie1.png",
+        "price": 180
+    },
+    {
+        "type": "Bonie",
+        "description": [
+            "The alpha of any zombie pack",
+            "Only heavily blackened, necrotic skin",
+            "Most of the flesh has rotted",
+            "No eyes"
+        ],
+        "abilities": [
+            "Slow and deliberate in their actions",
+            "High position within zombie",
+            "Other zombies follow their lead"
+        ],
+        "references": ["Warm bodies"],
+        "image": "/images/zombie2.png",
+        "price": 300
+    },
+    {
+        "type": "Puker",
+        "description": [
+            "Quite weak and slow",
+            "Serve as a distraction while other zombies attack"
+        ],
+        "abilities": [
+            "Ranged attack with vomitting",
+            "Causing infections in victims"
+        ],
+        "references": [],
+        "image": "/images/zombie1.png",
+        "price": 180
+    },
+    {
+        "type": "Stalker",
+        "description": ["Move on all fours", "Head jerks around continously"],
+        "abilities": [
+            "Harder to hit Stalker with ballistic weapon",
+            "Move faster than Walker",
+            "Harder to spot"
+        ],
+        "references": [],
+        "image": "/images/zombie3.png",
+        "price": 200
+    },
+    {
+        "type": "Spitter",
+        "description": [
+            "Toxics from Spitter can cause burn or infections",
+            "Powerful and unique",
+            "Have tattered clothes or burned body parts"
+        ],
+        "abilities": ["Launch toxic", "Able to peform ranged attack"],
+        "references": [],
+        "image": "/images/zombie1.png",
+        "price": 250
+    },
+    {
+        "type": "Exploder",
+        "description": [
+            "Willingly explode on target or explode when attacked",
+            "Extremely dangerous at close range",
+            "Cannot be identify from other type of zombies"
+        ],
+        "abilities": [
+            "Spreading infectious materials, bone fragments in all directions"
+        ],
+        "references": [],
+        "image": "/images/zombie1.png",
+        "price": 115
+    },
+    {
+        "type": "Tank",
+        "description": ["Mutated", "Very muscular"],
+        "abilities": ["Extreme strength", "Throw cars and heavy objects"],
+        "references": [],
+        "image": "/images/zombie1.png",
+        "price": 270
+    },
+    {
+        "type": "Nazi Zombie",
+        "description": [
+            "Former German Nazi soldiers",
+            "Infected with Element 115",
+            "Mutated"
+        ],
+        "abilities": ["Incredible strength"],
+        "references": [],
+        "image": "/images/zombie3.png",
+        "price": 225
+    },
+    {
+        "type": "Sleeper",
+        "description": [
+            "Can be found lying on roads or in cities",
+            "Only wake up when provoked"
+        ],
+        "abilities": ["Extremely dangerous when disturbed"],
+        "references": [],
+        "image": "/images/zombie3.png",
+        "price": 90
+    }
 ]
