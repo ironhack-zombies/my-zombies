@@ -5,10 +5,42 @@
 
 .zombieDetail {
     display: flex;
+    display: relative;
 }
 
 .zombImage {
     width: 40%;
+}
+
+.notEnoughBrain {
+    color: red;
+    font-size: 30px;
+}
+
+.bought {
+    font-size: 20px;
+}
+
+.zombImage p {
+    position: absolute;
+    margin-left: 50px;
+    -webkit-animation: cssAnimation 0s ease-in 2s forwards;
+}
+
+@keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+@-webkit-keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
 }
 
 .zombImage img {

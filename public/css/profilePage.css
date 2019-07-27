@@ -30,7 +30,7 @@
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-top: none;
     height: 100%;
 }
@@ -51,8 +51,8 @@
 
 .tabVertical {
     float: left;
-    border-right: 1px solid #b8b9a9;
-    width: 15%;
+    /* border-right: 1px solid #b8b9a9; */
+    width: 8%;
     height: 100%;
     margin: 0;
 }
@@ -65,7 +65,7 @@
     width: 100%;
     border: none;
     outline: none;
-    text-align: left;
+    /* text-align: left; */
     cursor: pointer;
     transition: 0.3s;
     font-size: 15px;
@@ -84,3 +84,11 @@
     height: 100%;
     display: none;
 }
+
+
+/* .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */

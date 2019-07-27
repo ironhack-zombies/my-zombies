@@ -1,0 +1,36 @@
+.village {
+    background-color: #cdcec3;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    left: 17%;
+}
+
+.villageBoard {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 50px;
+}
+
+.villageBoard hr {
+    width: 100%;
+    height: 3px;
+    color: grey;
+}
+
+.villageBoard div {
+    width: 60%;
+}
+
+.eachStory {
+    margin: 5px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.storyForm {
+    margin: 5px;
+}

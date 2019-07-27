@@ -1,13 +1,15 @@
-<div>
+<div class="input-group search">
     <form action="/zombiesForSale" method="POST">
         <input type="text" name="zombieType" placeholder="Search for your zombie" required>
-        <input type="submit" value="Search">
+        <div class="input-group-append">
+            <input type="submit" value="Search">
+        </div>
     </form>
 </div>
 <div class="catalog">
     {{#each zombie}}
     <div>
-        <img src="/images/image1.jpeg">
+        <img src="/images/zombie1.png">
         <a href="/zombieDetail?zombie_id={{_id}}"><h3>Zombie Type: {{type}}</h3></a>
         <p><span>{{price}}</span> <i class="fas fa-brain fa-3x"></i></p>
     </div>

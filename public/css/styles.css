@@ -23,6 +23,7 @@ Purple (#332335)
 @import "catalogPage.css";
 @import "profilePage.css";
 @import "zombieDetail.css";
+@import "village.css";
 html,
 body {
     box-sizing: border-box;
@@ -31,6 +32,7 @@ body {
 
 #page-content {
     flex: 1 0 auto;
+    background-color: #cdcec3;
 }
 
 .hidden {
