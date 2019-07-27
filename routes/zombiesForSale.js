@@ -63,8 +63,13 @@ router.post('/zombieDetail', (req, res, next) => {
                             let userId = req.user._id;
                             let ownedZombieId = mongoose.Types.ObjectId(ownedzombie._id);
                             let brainsLeft = req.user.brains - zombie.price;
+                            let zombArr = req.user.zombiesOwned;
+                            zombArr.push(ownedZombieId)
+                            console.log(zombArr)
+
+                            debugger
                             let userOwned = {
-                                zombiesOwned: ownedZombieId,
+                                zombiesOwned: zombArr,
                                 brains: brainsLeft
                             }
                             User.findByIdAndUpdate(userId, userOwned, { new: true })

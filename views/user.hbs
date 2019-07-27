@@ -36,9 +36,14 @@
   <div id="Zombies" class="tabcontent1">
     <h3>Zombies</h3>
     {{#each user.zombiesOwned}}
-    <div>
-      <h3>{{user.zombiesOwned.origin.type}}</h3>
-    </div>
+      <div class="catalog">
+        <h3>{{origin.type}}</h3>
+        <ul>
+        {{#each origin.description}}
+          <li>{{this}}</li>
+        {{/each}}
+        </ul>
+      </div>
     {{/each}}
   </div>
 
