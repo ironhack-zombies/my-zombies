@@ -5,11 +5,12 @@
 
 .tab {
     overflow: hidden;
-    background-color: #b8b9a9;
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    /* border-bottom: 1px solid #959689; */
 }
 
 .tab button {
@@ -23,12 +24,12 @@
 }
 
 .tab button.active {
-    background-color: #959689;
+    background-color: #b8b9a9;
 }
 
 .tabcontent {
     display: none;
-    padding: 6px 12px;
+    /* padding: 6px 12px; */
     /* border: 1px solid #ccc; */
     border-top: none;
     height: 100%;
@@ -84,10 +85,12 @@
     display: none;
 }
 
+.profile {
+    padding-left: 40px;
+    padding-top: 20px;
+}
 
-/* .profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
+.gift {
+    padding-left: 40px;
+    padding-top: 20px;
+}

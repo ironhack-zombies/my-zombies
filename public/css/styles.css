@@ -32,7 +32,8 @@ body {
 
 #page-content {
     flex: 1 0 auto;
-    background-color: #e1e2d8;
+    background-color: #b8b9a9;
+    color: #260703;
 }
 
 .hidden {
