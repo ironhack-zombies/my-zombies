@@ -12,7 +12,7 @@
 <div class="zombieDetail">
     <div class="zombImage">
         <div>
-            <img src="/images/zombie1.png">
+            <img src="{{zombie.image}}">
         </div>
     </div>
 
@@ -20,7 +20,7 @@
         <div class="buy">
                 <h3>{{zombie.type}}</h3>
                 <p><span>{{zombie.price}}</span> <i class="fas fa-brain fa-3x"></i></p>
-                <form action="/shop/zombies?zombie_id={{zombie._id}}" method="POST">
+                <form action="/shop/zombieDetail?zombie_id={{zombie._id}}" method="POST">
                     <button  class="buyButton" type="submit">BUY</button>
                 </form>
         </div>

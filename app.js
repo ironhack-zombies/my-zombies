@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var passport = require('passport');
 const bodyParser = require('body-parser')
 
-hbs.registerHelper('ifIn', function (elem, list, options) {
+hbs.registerHelper('ifIn', function(elem, list, options) {
     if (list.indexOf(elem) > -1) {
         return options.fn(this);
     }
@@ -61,6 +61,7 @@ app.use(bodyParser.urlencoded({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
+hbs.registerPartials(path.join(__dirname, 'views', 'profile'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 

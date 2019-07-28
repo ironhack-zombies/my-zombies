@@ -10,7 +10,6 @@ router.get('/user', (req, res, next) => {
             populate: { path: 'origin' }
         })
         .then((userId) => {
-            console.log(userId)
             res.render('user', { userId });
         })
 

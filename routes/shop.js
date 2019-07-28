@@ -48,6 +48,7 @@ router.post('/zombies', (req, res, next) => {
 })
 
 router.get('/zombieDetail', (req, res, next) => {
+    debugger
     let zombieId = req.query.zombie_id;
     Zombie.findOne({ _id: zombieId })
         .then((zombie) => {
