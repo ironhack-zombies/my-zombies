@@ -7,13 +7,14 @@
 
 <div class="catalog">
     {{#each zombie}}
-    <div class="eachZombie">
-        <div class="image">
-        <img src="{{image}}">
+    <div class="shopZombie">
+        <a href="/shop/zombieDetail?zombie_id={{_id}}"></a>
+        <h2>{{type}}</h2>
+        <div class="imageWrap">
+            <img src="{{image}}">
         </div>
         <div>
-        <a href="/shop/zombieDetail?zombie_id={{_id}}"><p>Zombie Type: {{type}}</p></a>
-        <p><span>{{price}}</span> <i class="fas fa-brain fa-3x"></i></p>
+            <p><span>{{price}}</span> <i class="fas fa-brain"></i></p>
         </div>
     </div>
     {{/each}}
