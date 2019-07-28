@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var passport = require('passport');
 const bodyParser = require('body-parser')
 
-hbs.registerHelper('ifIn', function(elem, list, options) {
+hbs.registerHelper('ifIn', function (elem, list, options) {
     if (list.indexOf(elem) > -1) {
         return options.fn(this);
     }
@@ -41,11 +41,28 @@ app.use(session({
     }),
     resave: false,
     saveUninitialized: true,
+    proxy: app.get('env') === 'production',
     cookie: {
-        // can't use Heroku SSL with a free dino -.-
-        //secure: app.get('env') === 'production'
+        secure: app.get('env') === 'production'
     }
 }))
+
+if (app.get('env') === 'production') {
+    // enforce https and deny put requests over http
+    app.use(function (req, res, next) {
+        let isHttps = req.secure || (req.headers["x-forwarded-proto"] || '').substring(0,5) === 'https';
+        if(isHttps) next();
+        else {
+            if(req.method === "GET" || req.method === "HEAD") {
+                // enforce heroku subdomain for now
+                let host = "myzombies.herokuapp.com";
+                res.redirect(301, "https://" + host + req.originalUrl);
+            } else {
+                res.status(403).send("Data can only be submitted to this server via https")
+            }
+        }
+    });
+}
 
 app.use(passport.initialize());
 app.use(passport.session());
