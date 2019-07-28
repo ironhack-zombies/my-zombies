@@ -24,6 +24,7 @@ Purple (#332335)
 @import "profilePage.css";
 @import "zombieDetail.css";
 @import "village.css";
+@import "dailyGift.css";
 html,
 body {
     box-sizing: border-box;

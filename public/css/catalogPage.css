@@ -64,8 +64,8 @@
     position: relative;
 }
 
-.shopZombie .imageWrap {
-    width: 80%;
+.shopZombie img {
+    width: 70%;
     margin: auto;
 }
 
