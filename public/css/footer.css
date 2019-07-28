@@ -10,8 +10,26 @@ footer {
     background-color: #422020;
 }
 
-footer .socilaLinks i {
+footer i {
     color: #b5b69c;
+}
+
+footer a {
+    color: rgba(255,255,255,.5) !important;
+    text-decoration: none;
+}
+
+footer a:hover, footer a:active {
+    color: rgba(255,255,255,.5) !important;
+    text-decoration: none;
+}
+
+footer .footerInfo {
+    text-align: center;
+    padding: 15px 0px;
+}
+
+footer .socilaLinks i {
     padding: 0px 7px;
 }
 
