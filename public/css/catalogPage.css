@@ -1,13 +1,13 @@
 /* catalog page */
 
 .search {
-    border: 2px solid #7d7e73;
+    /* border: 2px solid #7d7e73; */
     overflow: auto;
 }
 
 .search input[type="text"] {
     border: 0px;
-    width: 67%;
+    width: 85%;
     padding: 10px 10px;
 }
 
@@ -23,11 +23,12 @@
     float: right;
     padding: 10px;
     cursor: pointer;
+    width: 15%;
 }
 
 @media only screen and (min-width: 150px) and (max-width: 780px) {
     .search {
-        width: 95%;
+        /* width: 95%; */
         margin: 0 auto;
     }
 }
