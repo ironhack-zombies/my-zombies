@@ -30,16 +30,7 @@
   </div>
 
   <div id="Zombies" class="tabcontent1">
-    {{#each userId.zombiesOwned}}
-      <div>
-        <h3>{{origin.type}}</h3>
-        <ul>
-        {{#each origin.description}}
-          <li>{{this}}</li>
-        {{/each}}
-        </ul>
-      </div>
-    {{/each}}
+   {{>zombiesOwned}}
   </div>
 
   <div id="Gadgets" class="tabcontent1">
