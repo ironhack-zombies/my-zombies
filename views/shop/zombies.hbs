@@ -1,12 +1,10 @@
-<div class="search">
-    <form class="search-form" action="/shop/zombies" method="POST">
-        <input name="zombieType" type="text" placeholder="Search for zombies...">
-        <input type="submit" value="Search">
-    </form>
-</div>
+<form class="search-form" action="/shop/zombies" method="GET">
+    <input name="search" type="text" placeholder="Search for zombies..." {{#if search}} value="{{search}}" {{/if}}>
+    <input type="submit" value="Search">
+</form>
 
 <div class="catalog">
-    {{#each zombie}}
+    {{#each zombies}}
     <div class="shopZombie">
         <a href="/shop/zombieDetail?zombie_id={{_id}}"></a>
         <h2>{{type}}</h2>
