@@ -1,44 +1,26 @@
 <div class="tab">
   <button class="tablinks active" onclick="openTab(event, 'Profile')">
     <i class="fa fa-user"></i> 
-    <span>Profile</span>
+    <span>Zombies</span>
   </button>
   <button class="tablinks" onclick="openTab(event, 'Gift')">
     <i class="fa fa-gift"></i> 
-    <span>Daily Package</span>
+    <span>Gadgets</span>
   </button>
   <button class="tablinks" onclick="openTab(event, 'Collections')">
     <i class="fa fa-shopping-bag"></i> 
-    <span>Collections</span>
+    <span>Food</span>
   </button>
 </div>
-<div id="Profile" class="tabcontent profile">
-  <h3>Welcome back {{ user.username }}</h3>
-  <p>Your zombies miss you!</p>
-  <p>You have : {{ user.brains }} <i class="fas fa-brain fa-2x"></i> left.</p>
-</div>
 
-<div id="Gift" class="tabcontent gift">
-  <h3>Daily Gift Package</h3>
-</div>
-
-<div id="Collections" class="tabcontent">
-  <div class="tabVertical">
-    <button class="tablinks1 vertical" onclick="openTab1(event, 'Zombies')">Zombies</button>
-    <button class="tablinks1 vertical" onclick="openTab1(event, 'Gadgets')">Gadgets</button>
-    <button class="tablinks1 vertical" onclick="openTab1(event, 'Food')">Food</button>
-  </div>
-
-  <div id="Zombies" class="tabcontent1">
+  <div id="Zombies" class="tabcontent">
    {{>zombiesOwned}}
   </div>
 
-  <div id="Gadgets" class="tabcontent1">
+  <div id="Gadgets" class="tabcontent">
     <h3>Gadgets</h3>
   </div>
 
-  <div id="Food" class="tabcontent1">
+  <div id="Food" class="tabcontent">
     <h3>Food</h3>
   </div>
-
-</div>
