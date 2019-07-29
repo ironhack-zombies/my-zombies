@@ -7,6 +7,16 @@ router.get('/village', (req, res, next) => {
     Story.find({})
         .populate("author")
         .then(stories => {
+            for (let story of stories) {
+                if(story.text[0].length > 100) {
+                    story.short = []
+                    story.short[0] = story.text[0].substring(0, 100) + "..."
+                } else if (story.text.length > 1){
+                    story.short = []
+                    story.short[0] = story.text[0]
+                    story.short[1] = "..."
+                }
+            }
             res.render("village", {
                 stories
             })

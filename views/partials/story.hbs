@@ -3,10 +3,17 @@
     <h3>{{story.title}}</h3>
     <small>by <strong>{{story.author.username}}</strong></small>
   </div>
-  {{#each story.text}}
-  <p>{{this}}</p>
-  {{/each}}
-  <form action="/story/{{story._id}}/like" method="POST">
-    <button class="likeButton" type="submit" value="{{#ifIn user.id story.likes }}Liked{{else}}Like{{/ifIn}}" {{#ifIn user.id story.likes }}disabled{{/ifIn}}> <span><i class="far fa-thumbs-up"></i></span></button>
-  </form>
+  {{#if story.short}}
+    {{#each story.short}}
+      <p>{{this}}</p>
+    {{/each}}
+  {{else}}
+    {{#each story.text}}
+      <p>{{this}}</p>
+    {{/each}}
+  {{/if}}
+  <div class="buttons">
+    <button class="likeButton"{{#ifIn user.id story.likes }} disabled{{/ifIn}} onclick="likeStory(event, '{{story._id}}', '{{user.id}}');"><span><i class="far fa-thumbs-up"></i></span></button>
+    {{#if story.short}}<button class="moreButton"><a href="/story/{{story._id}}"></a>Show more</button>{{/if}}
+  </div>
 </div>
