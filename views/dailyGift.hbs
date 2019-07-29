@@ -1,6 +1,11 @@
+{{#if notYet}}
+<div>
+  <p>Next package arrives in: {{user.hourLeft}}: {{user.minLeft}}: {{user.secLeft}}</p>
+</div>
+{{else}}
 <div class="wrapper">
   <div class="giftName">
-    <h3>A bucket of roten garbage</h3>
+    <h3>A bucket of roten brains</h3>
     <p>10 <i class="fas fa-brain fa-2x"></i></p>
   </div>
   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="giftBox" x="0" y="0" viewBox="0 0 370.1 340.1" xml:space="preserve" enable-background="new 0 0 270.1 140.1">      
@@ -47,5 +52,7 @@
 </div>
 
 <div class="nextPackage">
-  <p>Next package arrives in: </p>
+<p>Next package arrives in: {{user.hourLeft}}: {{user.minLeft}}: {{user.secLeft}}</p>
 </div>
+
+{{/if}}

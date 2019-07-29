@@ -29,7 +29,7 @@ module.exports = function(passport) {
                         newUser.username = username;
                         newUser.password = createHash(password);
                         newUser.email = req.body.email;
-
+                        newUser.timeStart = new Date(new Date().setDate(new Date().getDate() + 1));
                         // save the user
                         new User(newUser).save()
                             .then(user => {
@@ -37,10 +37,10 @@ module.exports = function(passport) {
                                 // login
                                 req.login(user, function(err) {
                                     if (err) {
-                                      console.log(err);
+                                        console.log(err);
                                     }
                                     return done(null, user);
-                                  });
+                                });
                             })
                             .catch(error => {
                                 console.error(error)

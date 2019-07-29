@@ -24,9 +24,20 @@ const userSchema = new Schema({
         type: Number,
         default: 0
     },
-    timeStamp: {
-        type: Date,
-        default: Date.now
+    timeStart: {
+        type: Date
+    },
+    hourLeft: {
+        type: Number,
+        default: 0
+    },
+    minLeft: {
+        type: Number,
+        default: 0
+    },
+    secLeft: {
+        type: Number,
+        default: 0
     }
 }, {
     collection: 'users'

@@ -126,6 +126,8 @@ $(document).ready(function() {
         $(".giftName").addClass("active");
         setTimeout(() => {
             $(".wrapper").addClass("active");
+        }, 2000)
+        setTimeout(() => {
             $(".nextPackage").addClass("active");
         }, 2000)
     });
