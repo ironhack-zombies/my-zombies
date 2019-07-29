@@ -91,7 +91,7 @@ router.get('/story/:id', function (req, res, next) {
         .then(story => {
             if (!story) {
                 req.flash("message", "Story not found!")
-                res.redirect("/village")
+                res.redirect("/village/storyBoard")
                 return;
             } else {
                 res.render("story", {
@@ -100,7 +100,8 @@ router.get('/story/:id', function (req, res, next) {
             }
         }).catch(error => {
             console.error(error)
-            next(error)
+            req.flash("message", error.message)
+            res.redirect("/village/storyBoard")
         })
 });
 

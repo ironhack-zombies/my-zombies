@@ -26,19 +26,8 @@ const userSchema = new Schema({
         default: 0
     },
     timeStart: {
-        type: Date
-    },
-    hourLeft: {
-        type: Number,
-        default: 0
-    },
-    minLeft: {
-        type: Number,
-        default: 0
-    },
-    secLeft: {
-        type: Number,
-        default: 0
+        type: Date,
+        default: Date.now
     }
 }, {
     collection: 'users'
