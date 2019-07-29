@@ -1,0 +1,9 @@
+<div class="villageBoard">
+  {{#if message}}
+  <p>{{message}}</p>
+  {{/if}}
+  {{>storyForm}}
+  {{#each stories}}
+  {{> story story=this user=../user}}
+  {{/each}}
+</div>

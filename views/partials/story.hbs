@@ -1,7 +1,7 @@
 <div class="eachStory">
   <div class="storyHeader">
     <h3>{{story.title}}</h3>
-    <small>by <strong>{{story.author.username}}</strong></small>
+    <small>by <strong>{{story.author.username}}</strong>, {{story.niceTime}}</small>
   </div>
   {{#if story.short}}
     {{#each story.short}}
@@ -14,6 +14,6 @@
   {{/if}}
   <div class="buttons">
     <button class="likeButton"{{#ifIn user.id story.likes }} disabled{{/ifIn}} onclick="likeStory(event, '{{story._id}}', '{{user.id}}');"><span><i class="far fa-thumbs-up"></i></span></button>
-    {{#if story.short}}<button class="moreButton"><a href="/story/{{story._id}}"></a>Show more</button>{{/if}}
+    {{#unless details}}<button class="moreButton"><a href="/story/{{story._id}}"></a>Show more</button>{{/unless}}
   </div>
 </div>

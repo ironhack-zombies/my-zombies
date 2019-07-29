@@ -8,19 +8,11 @@ function togglePwd(e) {
         switch (pwd.getAttribute("type")) {
             case "password":
                 pwd.setAttribute("type", "text")
+                if (pwd_conf) pwd_conf.setAttribute("type", "text")
                 break;
             case "text":
                 pwd.setAttribute("type", "password")
-                break;
-        }
-    }
-    if (pwd_conf) {
-        switch (pwd_conf.getAttribute("type")) {
-            case "password":
-                pwd_conf.setAttribute("type", "text")
-                break;
-            case "text":
-                pwd_conf.setAttribute("type", "password")
+                if (pwd_conf) pwd_conf.setAttribute("type", "password")
                 break;
         }
     }

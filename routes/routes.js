@@ -17,7 +17,7 @@ router.use(function(req, res, next) {
 // import all other routes from subfiles
 router.use("/", require("./auth"));
 router.use(require("./index"));
-router.use(require("./stories"));
+router.use(require("./village"));
 router.use("/shop", require("./shop"))
 router.use(require("./users"));
 router.use(require("./dailyGift"));
