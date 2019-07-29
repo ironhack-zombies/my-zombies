@@ -3,10 +3,20 @@
     margin: 80px auto 0 auto;
     z-index: 1;
     position: relative;
+    display: block;
+    opacity: 1;
+}
+
+.wrapper.active {
+    display: none;
+    opacity: 0;
+    -webkit-animation: fadeIn 3s;
+    animation: fadeIn 3s;
 }
 
 #giftBox {
     width: 300px;
+    margin-top: 80px;
 }
 
 .box {
@@ -18,6 +28,7 @@
     display: none;
     opacity: 0;
     transition: opacity 10s ease-out;
+    position: absolute;
 }
 
 .giftName.active {
