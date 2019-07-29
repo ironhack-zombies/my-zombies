@@ -1,6 +1,5 @@
 function togglePwd(e) {
     let icon = e.currentTarget.childNodes[0];
-    //e.currentTarget.classList.toggle("btn-secondary")
     icon.classList.toggle("fa-eye")
     icon.classList.toggle("fa-eye-slash")
     let pwd = document.getElementById("password");
