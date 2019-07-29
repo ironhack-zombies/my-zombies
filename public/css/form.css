@@ -18,6 +18,10 @@
     width: 100px;
 }
 
+.login small a {
+    text-decoration: none;
+}
+
 .register input.notValid,
 .login input.notMatching {
     border-color: red;

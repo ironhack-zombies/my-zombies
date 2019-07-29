@@ -16,14 +16,14 @@ router.post('/login', passport.authenticate('login', {
     failureFlash: true
 }));
 
-router.get('/signup', function(req, res) {
+router.get('/register', function(req, res) {
     res.render('../views/partials/registerForm', { message: req.flash('message') });
 });
 
 /* Handle Registration POST */
 router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/',
-    failureRedirect: '/signup',
+    successRedirect: '/user',
+    failureRedirect: '/register',
     failureFlash: true
 }));
 
