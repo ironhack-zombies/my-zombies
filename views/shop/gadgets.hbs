@@ -1,5 +1,10 @@
+<div class="catalog">
 {{#each gadgets}}
+<div class="shopGadget">
+<a href="/shop/gadgetDetail?gadget={{_id}}"></a>
 <img src="{{icon}}">
-<h3>{{name}}</h3>
-<p>{{price}}</p>
+<h5>{{name}}</h5>
+<p>{{price}} <i class="fas fa-brain fa-2x"></i></p>
+</div>
 {{/each}}
+</div>

@@ -23,4 +23,24 @@
     "tier": "Good",
     "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/superSword.png",
     "price": 200
+}, {
+    "name": "Cave Man's Log",
+    "tier": "Good",
+    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/caveManLog.png",
+    "price": 80
+}, {
+    "name": "Fist of Fury",
+    "tier": "Good",
+    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/fistOfFury.png",
+    "price": 30
+}, {
+    "name": "Robin Hood's Bow",
+    "tier": "Good",
+    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/robinHoodsBow.png",
+    "price": 120
+}, {
+    "name": "Gandalf Staff",
+    "tier": "Good",
+    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/gandalfStick.png",
+    "price": 280
 }]
