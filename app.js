@@ -37,7 +37,7 @@ app.use(session({
     secret: process.env.SECRET,
     store: new MongoStore({
         url: process.env.MONGODB_URI,
-        ttl: 24 * 60 * 60
+        ttl: 2 * 60 * 60
     }),
     resave: false,
     saveUninitialized: true,
