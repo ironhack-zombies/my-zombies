@@ -20,6 +20,7 @@ router.use(require("./index"));
 router.use(require("./stories"));
 router.use("/shop", require("./shop"))
 router.use(require("./users"));
+router.use(require("./dailyGift"));
 
 
 // catch 404 and render a not-found.hbs template

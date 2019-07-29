@@ -73,61 +73,44 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add("active");
 }
 
-function openTab1(evt, tabName) {
-    var i, tabcontent, tablinks;
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent1");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
+$(document).ready(function() {
 
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks1");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
-
-    // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.classList.add("active");
-}
+    var $Presents = $('#Presents'),
+        $box = $('.box'),
+        $PresentB = $('#PresentB'),
+        $sIcons = $('.sIcon'),
+        $socialLinkP = $('.socialLinkP');
 
 
-var $Presents = $('#Presents'),
-    $box = $('.box'),
-    $PresentB = $('#PresentB'),
-    $sIcons = $('.sIcon'),
-    $socialLinkP = $('.socialLinkP');
+    $box.click(function() {
+        event.preventDefault();
+        debugger
+        $thisBox = this,
+            $PresentBoxRibbon = $(this).find('.PresentBoxRibbon'),
+            $PresentBoxTop = $(this).find('.boxTop'),
+            $PresentBoxTopShadow = $(this).find('.boxTopShadow'),
+            $PresentRibbonSide = $(this).find('.ribbonSide'),
+            $socialLinkP = $(this).find('.socialLinkP');
 
+        /* Open Present */
+        tlOpenPresent = new TimelineMax({ paused: true });
+        tlOpenPresent
+            .to($PresentBoxRibbon, 0.4, { yPercent: 252, ease: Power4.easeInOut })
+            .to($PresentBoxTop, 0.4, { yPercent: -80, ease: Power4.easeOut }, "0")
+            .to($PresentBoxTopShadow, 0.2, { autoAlpha: 0 }, "0")
+            .to($PresentRibbonSide, 0.4, { scaleY: 0.4, transformOrigin: "bottom center", onComplete: stopHover, onCompleteParams: [$thisBox] }, "0.2")
 
-$box.click(function(){
-  event.preventDefault();
+        .to($PresentBoxTop, 0.4, { rotation: -90, transformOrigin: "left center", ease: Power4.easeInOut }, "0")
+            .to($PresentBoxTop, 0.3, { yPercent: 400, transformOrigin: "left center", ease: Bounce.easeOut }, "0.4")
+            .to($PresentBoxTop, 0.4, { rotation: -180, transformOrigin: "left center", ease: Power4.easeIn }, "0.7")
+            .to($socialLinkP, 0.6, { scale: 1.4, yPercent: -130, transformOrigin: "top center", ease: Power4.easeInOut }, "-=0.4");
 
-  $thisBox = this,
-    $PresentBoxRibbon = $(this).find('.PresentBoxRibbon'),
-    $PresentBoxTop = $(this).find('.boxTop'),
-    $PresentBoxTopShadow = $(this).find('.boxTopShadow'),
-    $PresentRibbonSide = $(this).find('.ribbonSide'),
-    $socialLinkP = $(this).find('.socialLinkP');
+        tlOpenPresent.play();
 
-  /* Open Present */
-  tlOpenPresent = new TimelineMax({paused: true});
-  tlOpenPresent
-  .to($PresentBoxRibbon, 0.4, {yPercent: 252, ease:Power4.easeInOut})
-  .to($PresentBoxTop, 0.4, {yPercent: -80, ease:Power4.easeOut}, "0")
-  .to($PresentBoxTopShadow, 0.2, {autoAlpha: 0}, "0")
-  .to($PresentRibbonSide, 0.4, {scaleY: 0.3, transformOrigin:"bottom center", onComplete: stopHover, onCompleteParams: [$thisBox]}, "0.2")
+        function stopHover(element) {
+            $(element).unbind('mouseenter click');
+            $(element).css('cursor: default');
+        }
 
-  .to($PresentBoxTop, 0.4, {rotation: -90, transformOrigin:"left center", ease:Power4.easeInOut}, "0")
-  .to($PresentBoxTop, 0.3, {yPercent: 400, transformOrigin:"left center", ease:Bounce.easeOut}, "0.4")
-  .to($PresentBoxTop, 0.4, {rotation: -180, transformOrigin:"left center", ease:Power4.easeIn}, "0.7")
-  .to($socialLinkP, 0.6, {scale: 1.4, yPercent: -130, transformOrigin:"top center", ease:Power4.easeInOut}, "-=0.4");
-
-  tlOpenPresent.play();
-
-  function stopHover(element){
-    $(element).unbind('mouseenter click');
-    $(element).css('cursor: default');
-  }
-
-});
+    });
+})
