@@ -3,6 +3,7 @@ function togglePwd(e) {
     icon.classList.toggle("fa-eye")
     icon.classList.toggle("fa-eye-slash")
     let pwd = document.getElementById("password");
+    let pwd_conf = document.getElementById("password_conf");
     if (pwd) {
         switch (pwd.getAttribute("type")) {
             case "password":
@@ -10,6 +11,16 @@ function togglePwd(e) {
                 break;
             case "text":
                 pwd.setAttribute("type", "password")
+                break;
+        }
+    }
+    if (pwd_conf) {
+        switch (pwd_conf.getAttribute("type")) {
+            case "password":
+                pwd_conf.setAttribute("type", "text")
+                break;
+            case "text":
+                pwd_conf.setAttribute("type", "password")
                 break;
         }
     }
