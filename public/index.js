@@ -109,6 +109,9 @@ $(document).ready(function() {
             $(element).css('cursor: default');
         }
         $(".giftName").addClass("active");
-        setTimeout(() => { $(".wrapper").addClass("active") }, 2000)
+        setTimeout(() => {
+            $(".wrapper").addClass("active");
+            $(".nextPackage").addClass("active");
+        }, 2000)
     });
 })
