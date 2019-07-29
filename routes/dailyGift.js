@@ -7,7 +7,7 @@ router.get('/dailyGift', (req, res, next) => {
     let endDate = new Date();
     User.findOne({ _id: req.user.id })
         .then((user) => {
-            let timeStart = user.timeStart.getTime();
+            let timeStart = user.timeStart;
             console.log(timeStart);
             if (endDate >= timeStart) {
                 console.log(timeStart);
