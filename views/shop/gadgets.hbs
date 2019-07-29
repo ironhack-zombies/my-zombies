@@ -1,10 +1,22 @@
-<div class="catalog">
+{{#if buy}}
+<div>
+    <p class="bought">Gadget has been added to your collection <a href="/user">VIEW</a></p>
+</div>
+{{/if}}
+{{#if notEnoughBrain}}
+<div>
+    <p class="notEnoughBrain">You have not enough BRAINS!</p>
+</div>
+{{/if}}
+<div class="catalog gadgetsCatalog">
 {{#each gadgets}}
 <div class="shopGadget">
-<a href="/shop/gadgetDetail?gadget={{_id}}"></a>
 <img src="{{icon}}">
 <h5>{{name}}</h5>
 <p>{{price}} <i class="fas fa-brain fa-2x"></i></p>
+<form action="/shop/gadgets?gadget_id={{_id}}" method="POST">
+    <button class="buyButton" type="submit">BUY</button>
+</form>
 </div>
 {{/each}}
 </div>

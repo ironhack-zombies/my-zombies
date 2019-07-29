@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const User = require('../models/user')
 
 router.get('/zombies', (req, res, next) => {
-    if (req.query.search && req.query.search !=="") {
+    if (req.query.search && req.query.search !== "") {
         Zombie.find({
                 type: {
                     $regex: ".*" + req.query.search + ".*",
@@ -47,6 +47,7 @@ router.get('/gadgets', (req, res, next) => {
             next(err);
         })
 })
+
 
 router.get('/food', (req, res, next) => {
     res.render('shop/food');
@@ -121,4 +122,45 @@ router.post('/zombieDetail', (req, res, next) => {
 
 })
 
+router.post('/gadgets', (req, res, next) => {
+    let gadgetId = req.query.gadget_id;
+    Gadget.findOne({ _id: gadgetId })
+        .then((gadget) => {
+            if (gadget.price > req.user.brains) {
+                Gadget.find()
+                    .then(gadgets => {
+                        res.render('../views/shop/gadgets', {
+                            gadgets,
+                            notEnoughBrain: true
+                        });
+                    })
+            } else {
+                let userId = req.user._id;
+                let ownedGadgetId = mongoose.Types.ObjectId(gadget._id);
+                let brainsLeft = req.user.brains - gadget.price;
+                let gadgetArr = req.user.gadgetsOwned;
+                gadgetArr.push(ownedGadgetId);
+                let userOwned = {
+                    gadgetsOwned: gadgetArr,
+                    brains: brainsLeft
+                }
+                User.findByIdAndUpdate(userId, userOwned, {
+                        new: true
+                    })
+                    .then((user) => {
+                        debugger
+                        User.populate(gadget, 'gadgetsOwned')
+                        Gadget.find()
+                            .then(gadgets => {
+                                res.render('../views/shop/gadgets', {
+                                    gadgets,
+                                    buy: true
+                                });
+                            })
+
+                    })
+            }
+
+        })
+})
 module.exports = router;

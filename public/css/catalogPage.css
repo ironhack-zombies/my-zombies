@@ -38,6 +38,10 @@
     align-items: end;
 }
 
+.gadgetsCatalog {
+    margin-top: 30px;
+}
+
 .catalog a {
     color: #260703;
 }

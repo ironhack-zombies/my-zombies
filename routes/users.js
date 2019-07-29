@@ -9,7 +9,9 @@ router.get('/user', (req, res, next) => {
             path: 'zombiesOwned',
             populate: { path: 'origin' }
         })
+        .populate('gadgetsOwned')
         .then((userId) => {
+            console.log(userId);
             res.render('user', { userId });
         })
 

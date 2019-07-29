@@ -1,5 +1,9 @@
+<div class="catalog">
 {{#each userId.zombiesOwned}}
-      <div class="ownedZombie">
+      <div class="ownedZombie shopZombie">
+        <div class="imageWrap">
+            <img src="{{origin.image}}">
+        </div>
         <h3>{{origin.type}}</h3>
         <ul>
         {{#each origin.description}}
@@ -8,3 +12,4 @@
         </ul>
       </div>
 {{/each}}
+</div>

@@ -22,10 +22,12 @@
     font-size: 20px;
     text-align: start;
     position: absolute;
+    padding: 5px;
 }
 
 .bought {
     margin-left: 50px;
+    margin-bottom: 20px;
     -webkit-animation: cssAnimation 0s ease-in 2s forwards;
 }
 

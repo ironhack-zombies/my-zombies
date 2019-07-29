@@ -27,15 +27,13 @@
     background-color: #b8b9a9;
 }
 
-.tabcontent {
-    display: none;
-    /* padding: 6px 12px; */
-    /* border: 1px solid #ccc; */
-    border-top: none;
+.tabcontent.zombies {
+    display: block;
 }
 
-.tabcontent.profile {
-    display: block;
+.tabcontent {
+    display: none;
+    border-top: none;
 }
 
 .tabbutton {
@@ -43,45 +41,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-
-/* style the vertical tab */
-
-.tabVertical {
-    float: left;
-    /* border-right: 1px solid #b8b9a9; */
-    width: 25%;
-    height: 100%;
-    margin: 0;
-}
-
-.tabVertical button {
-    display: block;
-    background-color: inherit;
-    color: black;
-    padding: 15px;
-    width: 100%;
-    border: none;
-    outline: none;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 15px;
-}
-
-.tabVertical button.active {
-    background-color: #959689;
-}
-
-.tabcontent1 {
-    float: left;
-    padding: 0px 12px;
-    /* border: 1px solid #ccc; */
-    width: 75%;
-    border-left: none;
-    height: 100%;
-    display: none;
 }
 
 .profile {

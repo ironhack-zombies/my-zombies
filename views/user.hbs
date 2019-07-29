@@ -1,5 +1,5 @@
 <div class="tab">
-  <button class="tablinks active" onclick="openTab(event, 'Zombies')">
+  <button class="tablinks active zombies" onclick="openTab(event, 'Zombies')">
   <i class="fas fa-walking"></i>    
   <span>Zombies</span>
   </button>
@@ -18,7 +18,7 @@
   </div>
 
   <div id="Gadgets" class="tabcontent">
-    <h3>Gadgets</h3>
+   {{>gadgetsOwned}}
   </div>
 
   <div id="Food" class="tabcontent">
