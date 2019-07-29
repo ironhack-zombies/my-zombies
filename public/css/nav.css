@@ -42,5 +42,9 @@ ul.collapse.navbar-collapse {
 }
 
 .dailyGiftImg {
-    margin-left: 250px;
+    margin-left: 200px;
+}
+
+#btnGift {
+    width: 20px;
 }

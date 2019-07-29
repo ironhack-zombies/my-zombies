@@ -1,7 +1,96 @@
 {{#if notYet}}
-<div>
-  <p>Next package arrives in: {{user.hourLeft}}: {{user.minLeft}}: {{user.secLeft}}</p>
+<div class="countDown">
+  <p>Next package arrives in: 
+    <span id="hrDec" class="number">0</span><span id="hrUni" class="number">0</span>
+    <span>:</span>
+    <span id="minDec" class="number">0</span><span id="minUni" class="number">0</span>
+    <span>:</span>
+    <span id="secDec" class="number">0</span><span id="secUni" class="number">0</span>
+  </p>
 </div>
+
+<script>
+  class Countdown {
+    constructor() {
+        this.userTime = {{user.timeStart}};
+        this.currentTime= new Date().getTime();
+        this.timeDifference=this.userTime - this.currentTime;
+        this.intervalId;
+    }
+    setTime() {
+        printHours();
+        printMinutes();
+        printSeconds();
+    }
+
+    increase() {
+        this.timeDifference--;
+        this.setTime();
+    }
+
+    startClick() {
+        this.intervalId = setInterval(this.increase(), 10);
+    }
+
+    getHours() {
+        this.hours = Math.floor((this.timeDifference/ 3600000) % 24);
+        this.splitHour= this.twoDigitsNumber(this.hours);
+        return this.splitHour.split("");
+    }
+    getMinutes() {
+        this.minutes = Math.floor((this.timeDifference/ 60000) % 60);
+        this.splitMin = this.twoDigitsNumber(this.minutes);
+        return this.splitMin.split("");
+    }
+
+    getSeconds() {
+        this.seconds = Math.floor((this.timeDifference / 1000) % 60);
+        this.splitSec = this.twoDigitsNumber(this.seconds);
+        return this.splitSec.split("");
+    }
+
+    twoDigitsNumber(number) {
+        if (number < 10) {
+            return `0${number}`;
+        } else {
+            return `${number}`;
+        }
+    }
+  }
+
+function printMinutes() {
+    let y = countdown.getMinutes();
+    minDec.innerHTML = y[0];
+    minUni.innerHTML = y[1];
+
+}
+
+function printSeconds() {
+    let x = countdown.getSeconds();
+    secDec.innerHTML = x[0];
+    secUni.innerHTML = x[1];
+
+}
+
+function printHours() {
+    let z = countdown.getHours();
+    hrDec.innerHTML = z[0];
+    hrUni.innerHTML = z[1];
+
+}
+
+function start() {
+    let hrDec = document.getElementById('hrDec');
+    let hrUni = document.getElementById('hrUni');
+    let minDec = document.getElementById('minDec');
+    let minUni = document.getElementById('minUni');
+    let secDec = document.getElementById('secDec');
+    let secUni = document.getElementById('secUni');
+    countdown.startClick();
+}
+
+let countdown = new Countdown();
+</script>
 {{else}}
 <div class="wrapper">
   <div class="giftName">
@@ -51,8 +140,7 @@
   </svg>
 </div>
 
-<div class="nextPackage">
+{{!-- <div class="nextPackage">
 <p>Next package arrives in: {{user.hourLeft}}: {{user.minLeft}}: {{user.secLeft}}</p>
-</div>
-
+</div> --}}
 {{/if}}
