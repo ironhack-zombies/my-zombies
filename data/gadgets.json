@@ -1,0 +1,26 @@
+[{
+    "name": "The Axe of Legend",
+    "tier": "Basic",
+    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/axe.png",
+    "price": 10
+}, {
+    "name": "Brain Juice Potion",
+    "tier": "Good",
+    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/healingPotion.png",
+    "price": 100
+}, {
+    "name": "Indiana Jones' Rope",
+    "tier": "Basic",
+    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/indianaJonesRope.png",
+    "price": 50
+}, {
+    "name": "The Lost Pirate Sword",
+    "tier": "Good",
+    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/pirateSword.png",
+    "price": 150
+}, {
+    "name": "Elf's Sword",
+    "tier": "Good",
+    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/superSword.png",
+    "price": 200
+}]

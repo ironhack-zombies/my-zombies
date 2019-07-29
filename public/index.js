@@ -132,3 +132,5 @@ $(document).ready(function() {
         }, 2000)
     });
 })
+
+console.log(new Date().getTime());

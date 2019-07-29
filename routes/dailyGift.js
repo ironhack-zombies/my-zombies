@@ -5,10 +5,10 @@ const User = require('../models/user')
 router.get('/dailyGift', (req, res, next) => {
     debugger
     let endDate = new Date();
-    console.log(endDate);
     User.findOne({ _id: req.user.id })
         .then((user) => {
-            let timeStart = user.timeStart;
+            let timeStart = user.timeStart.getTime();
+            console.log(timeStart);
             if (endDate >= timeStart) {
                 console.log(timeStart);
                 let newStart = new Date(new Date().setDate(new Date().getDate() + 1))
