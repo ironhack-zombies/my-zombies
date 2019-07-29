@@ -38,3 +38,30 @@
     flex-wrap: wrap;
     align-items: center;
 }
+
+.likeButton {
+    color: blue;
+}
+
+.likeButton[disabled] {
+    color: lightgray;
+}
+
+.eachStory .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eachStory .buttons .moreButton {
+    position: relative;
+}
+
+.eachStory .buttons .moreButton a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}

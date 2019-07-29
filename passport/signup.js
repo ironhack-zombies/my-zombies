@@ -24,25 +24,27 @@ module.exports = function(passport) {
                         console.log('User already exists with username: ' + username);
                         return done(null, false, req.flash('message', 'User Already Exists'));
                     } else {
-                        // if there is no user with that email
-                        // create the user
-                        var newUser = new User();
-
                         // set the user's local credentials
+                        let newUser = {}
                         newUser.username = username;
                         newUser.password = createHash(password);
-                        newUser.email = req.param('email');
+                        newUser.email = req.body.email;
 
                         // save the user
-                        newUser.save()
-                            // User.populate(newUser, 'author'))
-                            .then(function(err) {
-                                if (err) {
-                                    console.log('Error in Saving user: ' + err);
-                                    throw err;
-                                }
+                        new User(newUser).save()
+                            .then(user => {
                                 console.log('User Registration succesful');
-                                return done(null, newUser);
+                                // login
+                                req.login(user, function(err) {
+                                    if (err) {
+                                      console.log(err);
+                                    }
+                                    return done(null, user);
+                                  });
+                            })
+                            .catch(error => {
+                                console.error(error)
+                                return done(err);
                             });
                     }
                 });

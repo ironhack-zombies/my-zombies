@@ -73,6 +73,11 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add("active");
 }
 
+function likeStory(event, storyId, userId) {
+    console.log("User " + userId + " likes the story " + storyId)
+    event.currentTarget.setAttribute("disabled", "")
+}
+
 $(document).ready(function() {
 
     var $Presents = $('#Presents'),

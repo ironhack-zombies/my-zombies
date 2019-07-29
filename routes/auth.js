@@ -12,7 +12,7 @@ router.get('/login', function(req, res) {
 
 router.post('/login', passport.authenticate('login', {
     successRedirect: ('/user'),
-    failureRedirect: '/',
+    failureRedirect: '/login',
     failureFlash: true
 }));
 
@@ -22,7 +22,7 @@ router.get('/signup', function(req, res) {
 
 /* Handle Registration POST */
 router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/login',
+    successRedirect: '/',
     failureRedirect: '/signup',
     failureFlash: true
 }));
