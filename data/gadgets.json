@@ -1,46 +1,81 @@
 [{
     "name": "The Axe of Legend",
     "tier": "Basic",
-    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/axe.png",
+    "icon": "/images/gadgets/axe.png",
     "price": 10
 }, {
     "name": "Brain Juice Potion",
     "tier": "Good",
-    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/healingPotion.png",
+    "icon": "/images/gadgets/healingPotion.png",
     "price": 100
 }, {
     "name": "Indiana Jones' Rope",
     "tier": "Basic",
-    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/indianaJonesRope.png",
+    "icon": "/images/gadgets/indianaJonesRope.png",
     "price": 50
 }, {
     "name": "The Lost Pirate Sword",
     "tier": "Good",
-    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/pirateSword.png",
+    "icon": "/images/gadgets/pirateSword.png",
     "price": 150
 }, {
     "name": "Elf's Sword",
     "tier": "Good",
-    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/superSword.png",
+    "icon": "/images/gadgets/superSword.png",
     "price": 200
 }, {
     "name": "Cave Man's Log",
     "tier": "Good",
-    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/caveManLog.png",
+    "icon": "/images/gadgets/caveManLog.png",
     "price": 80
 }, {
     "name": "Fist of Fury",
     "tier": "Good",
-    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/fistOfFury.png",
+    "icon": "/images/gadgets/fistOfFury.png",
     "price": 30
 }, {
     "name": "Robin Hood's Bow",
     "tier": "Good",
-    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/robinHoodsBow.png",
+    "icon": "/images/gadgets/robinHoodsBow.png",
     "price": 120
 }, {
     "name": "Gandalf Staff",
     "tier": "Good",
-    "icon": "/images/ezgif-5-0b883754c544-png-32x32-sprite-png/gandalfStick.png",
+    "icon": "/images/gadgets/gandalfStick.png",
+    "price": 280
+}, {
+    "name": "Orange is the New Cone",
+    "tier": "Basic",
+    "icon": "/images/gadgets/cone.png",
+    "price": 175
+}, {
+    "name": "X-ray Glasses",
+    "tier": "Basic",
+    "icon": "/images/gadgets/glasses.png",
+    "price": 230
+}, {
+    "name": "Deep Sea Goggles",
+    "tier": "Good",
+    "icon": "/images/gadgets/goggles.png",
+    "price": 45
+}, {
+    "name": "Little Black Curly Hair",
+    "tier": "Good",
+    "icon": "/images/gadgets/hair.png",
+    "price": 220
+}, {
+    "name": "Lost Sea Bucket",
+    "tier": "Good",
+    "icon": "/images/gadgets/piratebucket.png",
+    "price": 300
+}, {
+    "name": "Good for Your Head",
+    "tier": "Good",
+    "icon": "/images/gadgets/rugby.png",
+    "price": 210
+}, {
+    "name": "A Bucket Head",
+    "tier": "Good",
+    "icon": "/images/gadgets/bucket.png",
     "price": 280
 }]

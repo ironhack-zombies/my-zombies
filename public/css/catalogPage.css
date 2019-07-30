@@ -86,13 +86,14 @@
     align-items: center;
     text-align: center;
     width: 150px;
-    height: 200px;
+    height: 250px;
     position: relative;
 }
 
 .shopGadget img {
     height: 80px;
     margin: auto;
+    /* width: 100%; */
 }
 
 .shopGadget h5 {
