@@ -11,6 +11,7 @@ router.get('/zombies', (req, res, next) => {
         Zombie.find({
                 type: {
                     $regex: ".*" + req.query.search + ".*",
+                    // case insensitive
                     $options: 'i'
                 }
             })

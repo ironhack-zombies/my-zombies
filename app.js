@@ -86,6 +86,7 @@ let giftCheck = function(req, res, next) {
     if (req.user) {
         let timeStart = req.user.timeStart;
         let timeNow = new Date().getTime();
+        console.log(timeNow);
         if (timeNow >= timeStart) {
             res.locals = { notYet: false };
             next();

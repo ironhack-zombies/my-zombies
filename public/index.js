@@ -77,16 +77,38 @@ function openTab(evt, tabName) {
 
 function likeStory(event, storyId) {
     axios.post('/story/' + storyId + '/like')
-        .then(function (response) {
+        .then(function(response) {
             console.log(response);
         })
-        .catch(function (error) {
+        .catch(function(error) {
             console.log(error);
         });
     event.currentTarget.setAttribute("disabled", "")
 }
 
-$(document).ready(function () {
+function openBox(event, userId) {
+    debugger
+    axios.post('/dailyGift/' + userId)
+        .then(response => {
+            console.log(response.data);
+            const brainsInBox = response.data.boxContent.brains;
+            const boxContentHtml =
+                `
+                <div class="giftName">
+                    <h3>A bucket of roten brains</h3>
+                    <p>${brainsInBox} <i class="fas fa-brain fa-2x"></i></p>
+                </div>
+                `;
+            document.getElementById("giftBox").innerHTML += boxContentHtml;
+            console.log('post successfull and the response is: ', response);
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+
+}
+
+$(document).ready(function() {
 
     var $Presents = $('#Presents'),
         $box = $('.box'),
@@ -95,7 +117,7 @@ $(document).ready(function () {
         $socialLinkP = $('.giftName');
 
 
-    $box.click(function () {
+    $box.click(function() {
         event.preventDefault();
         $thisBox = this,
             $PresentBoxRibbon = $(this).find('.PresentBoxRibbon'),
@@ -126,7 +148,7 @@ $(document).ready(function () {
                 onCompleteParams: [$thisBox]
             }, "0.2")
 
-            .to($PresentBoxTop, 0.4, {
+        .to($PresentBoxTop, 0.4, {
                 rotation: -90,
                 transformOrigin: "left center",
                 ease: Power4.easeInOut

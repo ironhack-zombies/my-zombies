@@ -19,17 +19,35 @@ router.get('/dailyGift', secured(), (req, res, next) => {
         })
 });
 
-router.post('/dailyGift', (req, res, next) => {
-    // let brainOwned = req.user.brains
-    let newStart = new Date(new Date().setDate(new Date().getDate() + 1)).getTime()
-    console.log(newStart);
-    let user = {
-        timeStart: newStart,
-    }
-    User.findByIdAndUpdate(req.user.id, user, { new: true })
-        .then(user => {
-            res.redirect('/dailyGift')
-        })
+router.post('/dailyGift', secured(), (req, res, next) => {
+    res.redirect('/dailyGift');
 })
 
+router.post('/dailyGift/:id', secured(), (req, res, next) => {
+    User.findById(req.params.id)
+        .then(user => {
+            if (!user) {
+                res.status(500).send(`{message: 'User not found'}`)
+                return;
+            }
+            debugger
+            let userId = req.params.id
+            let brainOwned = req.user.brains
+            let newStart = new Date(new Date().setDate(new Date().getDate() + 1)).getTime();
+            console.log(newStart);
+            let brainsInBox = Math.floor(Math.random() * 20)
+            user.updateOne({
+                    $addToSet: {
+                        brains: (brainOwned + brainsInBox),
+                        timeStart: newStart,
+                    }
+                })
+                .then(
+                    res.status(200).send({ boxContent: { brains: brainsInBox } }))
+                .catch(error => {
+                    res.status(500).send({ boxContent: { brains: 0 } })
+                })
+        })
+
+});
 module.exports = router;
