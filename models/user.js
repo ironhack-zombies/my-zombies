@@ -17,7 +17,6 @@ const userSchema = new Schema({
     },
     zombiesOwned: [{ type: ObjectId, ref: 'ownedZombies' }],
     gadgetsOwned: [{ type: ObjectId, ref: 'gadgets' }],
-    likedStories: [{ type: ObjectId, ref: 'stories' }],
     profileImage: {
         type: String
     },
@@ -28,15 +27,6 @@ const userSchema = new Schema({
     timeStart: {
         type: Number,
         default: 0
-    },
-    hourLeft: {
-        type: Number
-    },
-    minLeft: {
-        type: Number
-    },
-    secLeft: {
-        type: Number
     }
 }, {
     collection: 'users'
