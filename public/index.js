@@ -77,10 +77,7 @@ function openTab(evt, tabName) {
 
 function likeStory(event, storyId, userId) {
     console.log("User " + userId + " likes the story " + storyId)
-    axios.post('/story/' + storyId + '/like', {
-        firstName: 'Fred',
-        lastName: 'Flintstone'
-      })
+    axios.post('/story/' + storyId + '/like')
       .then(function (response) {
         console.log(response);
       })
