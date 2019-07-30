@@ -87,7 +87,6 @@ function likeStory(event, storyId) {
 }
 
 function openBox(event, userId) {
-    debugger
     openGift();
     axios.post('/dailyGift/' + userId)
         .then(response => {

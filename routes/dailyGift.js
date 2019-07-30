@@ -31,13 +31,16 @@ router.post('/dailyGift/:id', secured(), (req, res, next) => {
                 return;
             }
             debugger
-            let userId = req.params.id
-            let brainOwned = req.user.brains
-            let newStart = new Date(new Date().setDate(new Date().getDate() + 1)).getTime();
+            let userId = req.params.id;
+            let brainOwned = req.user.brains;
+            let timeWait = Math.random() * 1.5 * 3600000;
+            let newStart = new Date(new Date().setTime(new Date().getTime() + 5400000 + timeWait)).getTime();
             console.log(newStart);
             let brainsInBox = Math.floor(Math.random() * 20)
+            let totalBrains = brainOwned + brainsInBox;
+
             user.updateOne({
-                    brains: (brainOwned + brainsInBox),
+                    brains: totalBrains,
                     timeStart: newStart,
                 })
                 .then(
