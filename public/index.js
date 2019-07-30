@@ -153,18 +153,7 @@ $(document).ready(function () {
             $(".wrapper").addClass("active");
         }, 2000)
         setTimeout(() => {
-            $(".nextPackage").addClass("active");
+            $(".acceptBrains").addClass("active");
         }, 2000)
     });
 })
-
-function startwin() {
-    let btnGift = document.getElementById('btnGift');
-    btnGift.addEventListener('click', start);
-    let hrDec = document.getElementById('hrDec');
-    let hrUni = document.getElementById('hrUni');
-    let minDec = document.getElementById('minDec');
-    let minUni = document.getElementById('minUni');
-    let secDec = document.getElementById('secDec');
-    let secUni = document.getElementById('secUni');
-}
