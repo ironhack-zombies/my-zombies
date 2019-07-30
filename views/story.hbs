@@ -1,1 +1,5 @@
 {{> story details=true}}
+{{> commentForm id=story._id}}
+{{#each comments}}
+{{> comment comment=this}}
+{{/each}}

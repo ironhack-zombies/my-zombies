@@ -1,0 +1,8 @@
+<div class="eachComment">
+  <div class="commentHeader">
+    <small>by <strong>{{comment.author.username}}</strong>, {{comment.niceTime}}</small>
+  </div>
+    {{#each comment.text}}
+      <p>{{this}}</p>
+    {{/each}}
+</div>
