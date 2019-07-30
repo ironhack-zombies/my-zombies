@@ -113,16 +113,18 @@ router.post('/story/:id/like', secured(), function (req, res, next) {
         }
         let userID = req.user._id;
         console.log(story.likes)
-        if (story.likes.indexOf(userID) > -1) {}
+        if (story.likes.indexOf(userID) > -1) {
+            res.send(500, `{liked: false}`)
+            return;
+        }
         story.update({
                 $addToSet: {
                     likes: userID
                 }
             })
-            .then(res.redirect(`/story/${story._id}`))
+            .then(res.send(200, `{liked: true}`))
     }).catch(error => {
-        console.error(error)
-        next(error)
+        res.send(500, `{liked: false}`)
     })
 });
 

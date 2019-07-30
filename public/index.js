@@ -77,6 +77,13 @@ function openTab(evt, tabName) {
 
 function likeStory(event, storyId, userId) {
     console.log("User " + userId + " likes the story " + storyId)
+    axios.post('/story/' + storyId + '/like')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     event.currentTarget.setAttribute("disabled", "")
 }
 

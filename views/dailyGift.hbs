@@ -1,82 +1,74 @@
 {{#if notYet}}
 <div class="countDown">
-  <p>Next package arrives in: 
-    <span id="hrDec" class="number">0</span><span id="hrUni" class="number">0</span>
+  <p>Next package arrives in:
+    <span id="hours" class="number">00</span>
     <span>:</span>
-    <span id="minDec" class="number">0</span><span id="minUni" class="number">0</span>
+    <span id="minutes" class="number">00</span>
     <span>:</span>
-    <span id="secDec" class="number">0</span><span id="secUni" class="number">0</span>
+    <span id="seconds" class="number">00</span>
   </p>
 </div>
 
 <script>
   class Countdown {
     constructor() {
-        this.userTime = {{user.timeStart}};
-        this.currentTime= new Date().getTime();
-        this.timeDifference=this.userTime - this.currentTime;
-        this.intervalId;
+      this.userTime = {{ user.timeStart }};
+      this.currentTime = new Date().getTime();
+      this.timeDifference = this.userTime - this.currentTime;
     }
+
+    start() {
+      this.setTime();
+      this.startClick();
+    }
+
     setTime() {
-        printHours();
-        printMinutes();
-        printSeconds();
+      minutes.innerText = this.getMinutes();
+      seconds.innerText = this.getSeconds();
+      hours.innerText = this.getHours();
     }
 
     increase() {
-        this.timeDifference--;
-        this.setTime();
+      console.log("Hi")
+      this.currentTime = new Date().getTime();
+      this.timeDifference = this.userTime - this.currentTime;
+      this.setTime();
     }
 
     startClick() {
+<<<<<<< HEAD
         this.intervalId = setInterval(this.increase(), 1000);
+=======
+      this.intervalId = setInterval(this.increase.bind(this), 1000);
+>>>>>>> e54107ee351c6d20fc24990145d893633556f8b1
     }
 
     getHours() {
-        this.hours = Math.floor((this.timeDifference/ 3600000) % 24);
-        this.splitHour= this.twoDigitsNumber(this.hours);
-        return this.splitHour.split("");
+      return this.twoDigitsNumber(Math.floor((this.timeDifference / 3600000) % 24));
     }
     getMinutes() {
-        this.minutes = Math.floor((this.timeDifference/ 60000) % 60);
-        this.splitMin = this.twoDigitsNumber(this.minutes);
-        return this.splitMin.split("");
+      return this.twoDigitsNumber(Math.floor((this.timeDifference / 60000) % 60));
     }
 
     getSeconds() {
-        this.seconds = Math.floor((this.timeDifference / 1000) % 60);
-        this.splitSec = this.twoDigitsNumber(this.seconds);
-        return this.splitSec.split("");
+      return this.twoDigitsNumber(Math.floor((this.timeDifference / 1000) % 60));
     }
 
     twoDigitsNumber(number) {
-        if (number < 10) {
-            return `0${number}`;
-        } else {
-            return `${number}`;
-        }
+      if (number < 10) {
+        return `0${number}`;
+      } else {
+        return `${number}`;
+      }
     }
   }
 
-function printMinutes() {
-    let y = countdown.getMinutes();
-    minDec.innerHTML = y[0];
-    minUni.innerHTML = y[1];
+  let countdown = new Countdown();
+  let hours = document.getElementById('hours');
+  let minutes = document.getElementById('minutes');
+  let seconds = document.getElementById('seconds');
 
-}
-
-function printSeconds() {
-    let x = countdown.getSeconds();
-    secDec.innerHTML = x[0];
-    secUni.innerHTML = x[1];
-
-}
-
-function printHours() {
-    let z = countdown.getHours();
-    hrDec.innerHTML = z[0];
-    hrUni.innerHTML = z[1];
-
+<<<<<<< HEAD
 }
 
 function start() {
@@ -91,6 +83,9 @@ function start() {
 let countdown = new Countdown();
 start();
 
+=======
+  countdown.start();
+>>>>>>> e54107ee351c6d20fc24990145d893633556f8b1
 </script>
 {{else}}
 <div class="wrapper">
@@ -98,40 +93,45 @@ start();
     <h3>A bucket of roten brains</h3>
     <p>10 <i class="fas fa-brain fa-2x"></i></p>
   </div>
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="giftBox" x="0" y="0" viewBox="0 0 370.1 340.1" xml:space="preserve" enable-background="new 0 0 270.1 140.1">      
-  <style>
-      .s0{
-      overflow:visible;
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="giftBox" x="0"
+    y="0" viewBox="0 0 370.1 340.1" xml:space="preserve" enable-background="new 0 0 270.1 140.1">
+    <style>
+      .s0 {
+        overflow: visible;
       }
-      .s1{
-      clip-path:url(#SVGID_1_);
-      fill:#422020;
+
+      .s1 {
+        clip-path: url(#SVGID_1_);
+        fill: #422020;
       }
-      .s2{
-      clip-path:url(#SVGID_1_);
-      fill:#4C4C4E;
+
+      .s2 {
+        clip-path: url(#SVGID_1_);
+        fill: #4C4C4E;
       }
-      .s3{
-      fill:#DBC667;
+
+      .s3 {
+        fill: #DBC667;
       }
-      .s4{
-      fill:#B61F2B;
+
+      .s4 {
+        fill: #B61F2B;
       }
-    </style>  
+    </style>
 
     <g id="Presents">
       <g id="PresentB" class="box">
-        <ellipse id="ShadowPresent" class="PresentBoxShadow" cx="175" cy="150" rx="81.8" ry="22.8" fill="#959689"/>
-        
-        <g class="PresentBox">
-          <rect x="130.8" y="72" width="106.2" height="89.5" fill="#422020"/>
+        <ellipse id="ShadowPresent" class="PresentBoxShadow" cx="175" cy="150" rx="81.8" ry="22.8" fill="#959689" />
 
-          <rect x="120.8" y="57.9" width="123.9" height="25.1" fill="#8A0303" class="boxTop"/>
-          <rect x="185" y="57.5" width="10.4" height="104" fill="#DBC667" class="ribbonSide"/>
+        <g class="PresentBox">
+          <rect x="130.8" y="72" width="106.2" height="89.5" fill="#422020" />
+
+          <rect x="120.8" y="57.9" width="123.9" height="25.1" fill="#8A0303" class="boxTop" />
+          <rect x="185" y="57.5" width="10.4" height="104" fill="#DBC667" class="ribbonSide" />
 
           <g class="PresentBoxRibbon">
-            <polygon points="190.7 57.2 175.9 40.8 164.8 52.7 184.4 63.6 " fill="#DBC667"/>
-            <polygon points="190.5 57.3 204.6 40.2 216.2 51.5 197.2 63.4 " fill="#DBC667"/>
+            <polygon points="190.7 57.2 175.9 40.8 164.8 52.7 184.4 63.6 " fill="#DBC667" />
+            <polygon points="190.5 57.3 204.6 40.2 216.2 51.5 197.2 63.4 " fill="#DBC667" />
           </g>
 
         </g>
@@ -140,8 +140,4 @@ start();
 
   </svg>
 </div>
-
-{{!-- <div class="nextPackage">
-<p>Next package arrives in: {{user.hourLeft}}: {{user.minLeft}}: {{user.secLeft}}</p>
-</div> --}}
 {{/if}}
