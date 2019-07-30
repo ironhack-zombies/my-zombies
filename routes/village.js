@@ -2,6 +2,7 @@ const express = require('express');
 var secured = require('../lib/middleware/secured');
 const router = express.Router();
 const Story = require('../models/story')
+const Comment = require('../models/comment')
 
 router.get('/village', (req, res, next) => {
     res.render("village/village")
@@ -43,33 +44,7 @@ router.get('/village/storyBoard', (req, res, next) => {
                     story.short[0] = story.text[0]
                     story.short[1] = "..."
                 }
-                if (story.writtenAt.getDate() === now.getDate() &&
-                    story.writtenAt.getMonth() === now.getMonth() &&
-                    story.writtenAt.getFullYear() === now.getFullYear()) {
-                    story.niceTime = "today " + (story.writtenAt.getHours() < 10 ? "0" + story.writtenAt.getHours().toString() : story.writtenAt.getHours().toString()) + ":" +
-                        (story.writtenAt.getMinutes() < 10 ? "0" + story.writtenAt.getMinutes().toString() : story.writtenAt.getMinutes().toString()) + ":" +
-                        (story.writtenAt.getSeconds() < 10 ? "0" + story.writtenAt.getSeconds().toString() : story.writtenAt.getSeconds().toString());
-                } else if (story.writtenAt.getMonth() === now.getMonth() &&
-                story.writtenAt.getFullYear() === now.getFullYear() &&
-                story.writtenAt.getDate() === now.getDate() - 1) {
-                    story.niceTime = "yesterday " + (story.writtenAt.getHours() < 10 ? "0" + story.writtenAt.getHours().toString() : story.writtenAt.getHours().toString()) + ":" +
-                        (story.writtenAt.getMinutes() < 10 ? "0" + story.writtenAt.getMinutes().toString() : story.writtenAt.getMinutes().toString()) + ":" +
-                        (story.writtenAt.getSeconds() < 10 ? "0" + story.writtenAt.getSeconds().toString() : story.writtenAt.getSeconds().toString());
-                } else if (story.writtenAt.getFullYear() === now.getFullYear()) {
-                    story.niceTime = (story.writtenAt.getDate() < 10 ? "0" + story.writtenAt.getDate().toString() : story.writtenAt.getDate().toString()) + "." +
-                        (story.writtenAt.getMonth() < 10 ? "0" + story.writtenAt.getMonth().toString() : story.writtenAt.getMonth().toString()) +
-                        ". " + (story.writtenAt.getHours() < 10 ? "0" + story.writtenAt.getHours().toString() : story.writtenAt.getHours().toString()) + ":" +
-                        (story.writtenAt.getMinutes() < 10 ? "0" + story.writtenAt.getMinutes().toString() : story.writtenAt.getMinutes().toString()) + ":" +
-                        (story.writtenAt.getSeconds() < 10 ? "0" + story.writtenAt.getSeconds().toString() : story.writtenAt.getSeconds().toString());
-                } else {
-                    story.niceTime = (story.writtenAt.getDate() < 10 ? "0" + story.writtenAt.getDate().toString() : story.writtenAt.getDate()) + "." +
-                        (story.writtenAt.getMonth() < 10 ? "0" + story.writtenAt.getMonth().toString() : story.writtenAt.getMonth()) + "." +
-                        story.writtenAt.getFullYear().toString() +
-                        " " + (story.writtenAt.getHours() < 10 ? "0" + story.writtenAt.getHours().toString() : story.writtenAt.getHours()) + ":" +
-                        (story.writtenAt.getMinutes() < 10 ? "0" + story.writtenAt.getMinutes().toString() : story.writtenAt.getMinutes()) + ":" +
-                        (story.writtenAt.getSeconds() < 10 ? "0" + story.writtenAt.getSeconds().toString() : story.writtenAt.getSeconds());
-                }
-
+                story.niceTime = formatWrittenAt(story.writtenAt, now);
             }
             res.render("village/storyBoard", {
                 stories: stories,
@@ -94,9 +69,25 @@ router.get('/story/:id', function (req, res, next) {
                 res.redirect("/village/storyBoard")
                 return;
             } else {
-                res.render("story", {
-                    story
-                })
+                story.niceTime = formatWrittenAt(story.writtenAt, new Date())
+                Comment.find({
+                        story: req.params.id
+                    }, null, {
+                        sort: {
+                            writtenAt: -1
+                        }
+                    })
+                    .populate("author")
+                    .then(comments => {
+                        let now = new Date();
+                        for (let comment of comments) {
+                            comment.niceTime = formatWrittenAt(comment.writtenAt, now);
+                        }
+                        res.render("story", {
+                            story: story,
+                            comments: comments
+                        })
+                    })
             }
         }).catch(error => {
             console.error(error)
@@ -108,24 +99,76 @@ router.get('/story/:id', function (req, res, next) {
 router.post('/story/:id/like', secured(), function (req, res, next) {
     Story.findById(req.params.id).then(story => {
         if (!story) {
-            res.redirect("/village")
+            res.status(500).send(`{liked: false, message: 'Story not found'}`)
             return;
         }
         let userID = req.user._id;
-        console.log(story.likes)
         if (story.likes.indexOf(userID) > -1) {
-            res.send(500, `{liked: false}`)
+            res.status(500).send(`{liked: false, message: 'User not found'}`)
             return;
         }
-        story.update({
+        story.updateOne({
                 $addToSet: {
                     likes: userID
                 }
             })
-            .then(res.send(200, `{liked: true}`))
+            .then(res.status(200).send(`{liked: true}`))
     }).catch(error => {
-        res.send(500, `{liked: false}`)
+        res.status(500).send(`{liked: false}`)
     })
 });
+
+router.post('/story/:id/comment', secured(), function (req, res, next) {
+    Story.findById(req.params.id).then(story => {
+        if (!story) {
+            req.flash("message", 'story not found')
+            res.redirect(`/story/${req.params.id}`)
+            return;
+        }
+        let newComment = {
+            author: req.user._id,
+            story: story._id,
+            text: req.body.text.split("\n")
+        }
+        let comment = new Comment(newComment)
+        comment.save().then(() => {
+            res.redirect(`/story/${req.params.id}`)
+        })
+    }).catch(error => {
+        console.log("Error while posting new comment...")
+        console.error(error)
+        req.flash("message", 'Server error')
+        res.redirect(`/story/${req.params.id}`)
+    })
+});
+
+function formatWrittenAt(writtenAt, now) {
+    if (writtenAt.getDate() === now.getDate() &&
+        writtenAt.getMonth() === now.getMonth() &&
+        writtenAt.getFullYear() === now.getFullYear()) {
+        return "today " + (writtenAt.getHours() < 10 ? "0" + writtenAt.getHours().toString() : writtenAt.getHours().toString()) + ":" +
+            (writtenAt.getMinutes() < 10 ? "0" + writtenAt.getMinutes().toString() : writtenAt.getMinutes().toString()) + ":" +
+            (writtenAt.getSeconds() < 10 ? "0" + writtenAt.getSeconds().toString() : writtenAt.getSeconds().toString());
+    } else if (writtenAt.getMonth() === now.getMonth() &&
+        writtenAt.getFullYear() === now.getFullYear() &&
+        writtenAt.getDate() === now.getDate() - 1) {
+        return "yesterday " + (writtenAt.getHours() < 10 ? "0" + writtenAt.getHours().toString() : writtenAt.getHours().toString()) + ":" +
+            (writtenAt.getMinutes() < 10 ? "0" + writtenAt.getMinutes().toString() : writtenAt.getMinutes().toString()) + ":" +
+            (writtenAt.getSeconds() < 10 ? "0" + writtenAt.getSeconds().toString() : writtenAt.getSeconds().toString());
+    } else if (writtenAt.getFullYear() === now.getFullYear()) {
+        return (writtenAt.getDate() < 10 ? "0" + writtenAt.getDate().toString() : writtenAt.getDate().toString()) + "." +
+            (writtenAt.getMonth() < 10 ? "0" + writtenAt.getMonth().toString() : writtenAt.getMonth().toString()) +
+            ". " + (writtenAt.getHours() < 10 ? "0" + writtenAt.getHours().toString() : writtenAt.getHours().toString()) + ":" +
+            (writtenAt.getMinutes() < 10 ? "0" + writtenAt.getMinutes().toString() : writtenAt.getMinutes().toString()) + ":" +
+            (writtenAt.getSeconds() < 10 ? "0" + writtenAt.getSeconds().toString() : writtenAt.getSeconds().toString());
+    } else {
+        return (writtenAt.getDate() < 10 ? "0" + writtenAt.getDate().toString() : writtenAt.getDate()) + "." +
+            (writtenAt.getMonth() < 10 ? "0" + writtenAt.getMonth().toString() : writtenAt.getMonth()) + "." +
+            writtenAt.getFullYear().toString() +
+            " " + (writtenAt.getHours() < 10 ? "0" + writtenAt.getHours().toString() : writtenAt.getHours()) + ":" +
+            (writtenAt.getMinutes() < 10 ? "0" + writtenAt.getMinutes().toString() : writtenAt.getMinutes()) + ":" +
+            (writtenAt.getSeconds() < 10 ? "0" + writtenAt.getSeconds().toString() : writtenAt.getSeconds());
+    }
+}
 
 module.exports = router;

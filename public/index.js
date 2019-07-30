@@ -75,19 +75,18 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add("active");
 }
 
-function likeStory(event, storyId, userId) {
-    console.log("User " + userId + " likes the story " + storyId)
+function likeStory(event, storyId) {
     axios.post('/story/' + storyId + '/like')
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     event.currentTarget.setAttribute("disabled", "")
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     var $Presents = $('#Presents'),
         $box = $('.box'),
@@ -96,7 +95,7 @@ $(document).ready(function() {
         $socialLinkP = $('.giftName');
 
 
-    $box.click(function() {
+    $box.click(function () {
         event.preventDefault();
         $thisBox = this,
             $PresentBoxRibbon = $(this).find('.PresentBoxRibbon'),
@@ -105,16 +104,43 @@ $(document).ready(function() {
             $PresentRibbonSide = $(this).find('.ribbonSide'),
 
             /* Open Present */
-            tlOpenPresent = new TimelineMax({ paused: true });
+            tlOpenPresent = new TimelineMax({
+                paused: true
+            });
         tlOpenPresent
-            .to($PresentBoxRibbon, 0.4, { yPercent: 252, ease: Power4.easeInOut })
-            .to($PresentBoxTop, 0.4, { yPercent: -80, ease: Power4.easeOut }, "0")
-            .to($PresentBoxTopShadow, 0.2, { autoAlpha: 0 }, "0")
-            .to($PresentRibbonSide, 0.4, { scaleY: 0.4, transformOrigin: "bottom center", onComplete: stopHover, onCompleteParams: [$thisBox] }, "0.2")
+            .to($PresentBoxRibbon, 0.4, {
+                yPercent: 252,
+                ease: Power4.easeInOut
+            })
+            .to($PresentBoxTop, 0.4, {
+                yPercent: -80,
+                ease: Power4.easeOut
+            }, "0")
+            .to($PresentBoxTopShadow, 0.2, {
+                autoAlpha: 0
+            }, "0")
+            .to($PresentRibbonSide, 0.4, {
+                scaleY: 0.4,
+                transformOrigin: "bottom center",
+                onComplete: stopHover,
+                onCompleteParams: [$thisBox]
+            }, "0.2")
 
-        .to($PresentBoxTop, 0.4, { rotation: -90, transformOrigin: "left center", ease: Power4.easeInOut }, "0")
-            .to($PresentBoxTop, 0.3, { yPercent: 400, transformOrigin: "left center", ease: Bounce.easeOut }, "0.4")
-            .to($PresentBoxTop, 0.4, { rotation: -180, transformOrigin: "left center", ease: Power4.easeIn }, "0.7")
+            .to($PresentBoxTop, 0.4, {
+                rotation: -90,
+                transformOrigin: "left center",
+                ease: Power4.easeInOut
+            }, "0")
+            .to($PresentBoxTop, 0.3, {
+                yPercent: 400,
+                transformOrigin: "left center",
+                ease: Bounce.easeOut
+            }, "0.4")
+            .to($PresentBoxTop, 0.4, {
+                rotation: -180,
+                transformOrigin: "left center",
+                ease: Power4.easeIn
+            }, "0.7")
 
         tlOpenPresent.play();
 

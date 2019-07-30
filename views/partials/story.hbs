@@ -13,7 +13,7 @@
     {{/each}}
   {{/if}}
   <div class="buttons">
-    <button class="likeButton"{{#ifIn user.id story.likes }} disabled{{/ifIn}} onclick="likeStory(event, '{{story._id}}', '{{user.id}}');"><span><i class="far fa-thumbs-up"></i></span></button>
+    <button class="likeButton"{{#ifIn user.id story.likes }} disabled{{/ifIn}} onclick="likeStory(event, '{{story._id}}');"><span><i class="far fa-thumbs-up"></i></span></button>
     {{#unless details}}<button class="moreButton"><a href="/story/{{story._id}}"></a>Show more</button>{{/unless}}
   </div>
 </div>
