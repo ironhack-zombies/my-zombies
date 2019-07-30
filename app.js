@@ -83,11 +83,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
 let giftCheck = function(req, res, next) {
-    if (req.session.user) {
+    if (req.user) {
         let timeStart = req.user.timeStart;
         let timeNow = new Date().getTime();
-        console.log(timeNow);
-
         if (timeNow >= timeStart) {
             res.locals = { notYet: false };
             next();
@@ -96,17 +94,12 @@ let giftCheck = function(req, res, next) {
             next();
         }
     } else {
-        // res.locals = { notYet: true };
+        let timeNow = new Date().getTime();
+        console.log(timeNow);
+        res.locals = { notYet: true };
         next();
     }
 }
-
-// let passUser = function(req, res, next) {
-//     res.locals.user = req.session.user;
-//     next();
-// }
-
-// app.use(passUser);
 
 app.use(giftCheck);
 
