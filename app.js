@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var passport = require('passport');
 const bodyParser = require('body-parser')
 
-hbs.registerHelper('ifIn', function (elem, list, options) {
+hbs.registerHelper('ifIn', function(elem, list, options) {
     if (list.indexOf(elem) > -1) {
         return options.fn(this);
     }
@@ -49,11 +49,11 @@ app.use(session({
 
 if (app.get('env') === 'production') {
     // enforce https and deny put requests over http
-    app.use(function (req, res, next) {
-        let isHttps = req.secure || (req.headers["x-forwarded-proto"] || '').substring(0,5) === 'https';
-        if(isHttps) next();
+    app.use(function(req, res, next) {
+        let isHttps = req.secure || (req.headers["x-forwarded-proto"] || '').substring(0, 5) === 'https';
+        if (isHttps) next();
         else {
-            if(req.method === "GET" || req.method === "HEAD") {
+            if (req.method === "GET" || req.method === "HEAD") {
                 // enforce heroku subdomain for now
                 let host = "myzombies.herokuapp.com";
                 res.redirect(301, "https://" + host + req.originalUrl);
@@ -81,6 +81,29 @@ hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 hbs.registerPartials(path.join(__dirname, 'views', 'profile'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
+
+let giftCheck = function(req, res, next) {
+    let timeStart = req.user.timeStart;
+    let timeNow = new Date().getTime();
+    console.log(timeNow);
+
+    if (timeNow >= timeStart) {
+        res.locals = { notYet: false };
+        next();
+    } else {
+        res.locals = { notYet: true };
+        next();
+    }
+}
+
+// let passUser = function(req, res, next) {
+//     res.locals.user = req.session.user;
+//     next();
+// }
+
+// app.use(passUser);
+
+app.use(giftCheck);
 
 app.use(require("./routes/routes"))
 

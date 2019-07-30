@@ -78,12 +78,12 @@ function openTab(evt, tabName) {
 function likeStory(event, storyId, userId) {
     console.log("User " + userId + " likes the story " + storyId)
     axios.post('/story/' + storyId + '/like')
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then(function(response) {
+            console.log(response);
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
     event.currentTarget.setAttribute("disabled", "")
 }
 
@@ -127,7 +127,7 @@ $(document).ready(function() {
             $(".wrapper").addClass("active");
         }, 2000)
         setTimeout(() => {
-            $(".nextPackage").addClass("active");
+            $(".acceptBrains").addClass("active");
         }, 2000)
     });
 })

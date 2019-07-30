@@ -48,3 +48,30 @@ ul.collapse.navbar-collapse {
 #btnGift {
     width: 20px;
 }
+
+
+/* gift icon when gift package arrives */
+
+.giftNoti {
+    color: red;
+    animation: color-change 3s infinite;
+    -webkit-animation: color-change 3s infinite;
+}
+
+@keyframes color-change {
+    0% {
+        color: red;
+    }
+    25% {
+        color: yellow;
+    }
+    50% {
+        color: green;
+    }
+    75% {
+        color: blue;
+    }
+    100% {
+        color: red;
+    }
+}

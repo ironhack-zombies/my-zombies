@@ -14,10 +14,8 @@ router.get('/dailyGift', (req, res, next) => {
                 }
                 User.findByIdAndUpdate(req.user.id, user, { new: true })
                     .then(user => {
-                        res.render("dailyGift", { user, notYet: false })
+                        res.render("dailyGift", { user })
                     })
-
-                res.render("dailyGift");
             } else {
                 User.findOne({ _id: req.user.id })
                     .then(user => {

@@ -1,6 +1,6 @@
 {{#if notYet}}
 <div class="countDown">
-  <p>Next package arrives in:
+  <p>Your next package arrives in:
     <span id="hours" class="number">00</span>
     <span>:</span>
     <span id="minutes" class="number">00</span>
@@ -29,7 +29,6 @@
     }
 
     increase() {
-      console.log("Hi")
       this.currentTime = new Date().getTime();
       this.timeDifference = this.userTime - this.currentTime;
       this.setTime();
@@ -71,6 +70,9 @@
   <div class="giftName">
     <h3>A bucket of roten brains</h3>
     <p>10 <i class="fas fa-brain fa-2x"></i></p>
+  </div>
+  <div class="acceptBrains">
+    <a href="/dailyGift"><button type="submit">Accept Brains</button></a>
   </div>
   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="giftBox" x="0"
     y="0" viewBox="0 0 370.1 340.1" xml:space="preserve" enable-background="new 0 0 270.1 140.1">
@@ -116,7 +118,7 @@
         </g>
       </g>
     </g>
-
   </svg>
+  
 </div>
 {{/if}}
