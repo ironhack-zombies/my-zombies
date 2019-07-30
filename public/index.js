@@ -88,8 +88,10 @@ function likeStory(event, storyId) {
 
 function openBox(event, userId) {
     debugger
+    openGift();
     axios.post('/dailyGift/' + userId)
         .then(response => {
+
             console.log(response.data);
             const brainsInBox = response.data.boxContent.brains;
             const boxContentHtml =
@@ -100,6 +102,7 @@ function openBox(event, userId) {
                 </div>
                 `;
             document.getElementById("giftBox").innerHTML += boxContentHtml;
+            $(".giftName").addClass("active");
             console.log('post successfull and the response is: ', response);
         })
         .catch(function(error) {
@@ -108,7 +111,7 @@ function openBox(event, userId) {
 
 }
 
-$(document).ready(function() {
+function openGift() {
 
     var $Presents = $('#Presents'),
         $box = $('.box'),
@@ -116,66 +119,62 @@ $(document).ready(function() {
         $sIcons = $('.sIcon'),
         $socialLinkP = $('.giftName');
 
+    event.preventDefault();
+    $thisBox = $box,
+        $PresentBoxRibbon = $($thisBox).find('.PresentBoxRibbon'),
+        $PresentBoxTop = $($thisBox).find('.boxTop'),
+        $PresentBoxTopShadow = $($thisBox).find('.boxTopShadow'),
+        $PresentRibbonSide = $($thisBox).find('.ribbonSide'),
 
-    $box.click(function() {
-        event.preventDefault();
-        $thisBox = this,
-            $PresentBoxRibbon = $(this).find('.PresentBoxRibbon'),
-            $PresentBoxTop = $(this).find('.boxTop'),
-            $PresentBoxTopShadow = $(this).find('.boxTopShadow'),
-            $PresentRibbonSide = $(this).find('.ribbonSide'),
-
-            /* Open Present */
-            tlOpenPresent = new TimelineMax({
-                paused: true
-            });
-        tlOpenPresent
-            .to($PresentBoxRibbon, 0.4, {
-                yPercent: 252,
-                ease: Power4.easeInOut
-            })
-            .to($PresentBoxTop, 0.4, {
-                yPercent: -80,
-                ease: Power4.easeOut
-            }, "0")
-            .to($PresentBoxTopShadow, 0.2, {
-                autoAlpha: 0
-            }, "0")
-            .to($PresentRibbonSide, 0.4, {
-                scaleY: 0.4,
-                transformOrigin: "bottom center",
-                onComplete: stopHover,
-                onCompleteParams: [$thisBox]
-            }, "0.2")
-
+        /* Open Present */
+        tlOpenPresent = new TimelineMax({
+            paused: true
+        });
+    tlOpenPresent
+        .to($PresentBoxRibbon, 0.4, {
+            yPercent: 252,
+            ease: Power4.easeInOut
+        })
         .to($PresentBoxTop, 0.4, {
-                rotation: -90,
-                transformOrigin: "left center",
-                ease: Power4.easeInOut
-            }, "0")
-            .to($PresentBoxTop, 0.3, {
-                yPercent: 400,
-                transformOrigin: "left center",
-                ease: Bounce.easeOut
-            }, "0.4")
-            .to($PresentBoxTop, 0.4, {
-                rotation: -180,
-                transformOrigin: "left center",
-                ease: Power4.easeIn
-            }, "0.7")
+            yPercent: -80,
+            ease: Power4.easeOut
+        }, "0")
+        .to($PresentBoxTopShadow, 0.2, {
+            autoAlpha: 0
+        }, "0")
+        .to($PresentRibbonSide, 0.4, {
+            scaleY: 0.4,
+            transformOrigin: "bottom center",
+            onComplete: stopHover,
+            onCompleteParams: [$thisBox]
+        }, "0.2")
 
-        tlOpenPresent.play();
+    .to($PresentBoxTop, 0.4, {
+            rotation: -90,
+            transformOrigin: "left center",
+            ease: Power4.easeInOut
+        }, "0")
+        .to($PresentBoxTop, 0.3, {
+            yPercent: 400,
+            transformOrigin: "left center",
+            ease: Bounce.easeOut
+        }, "0.4")
+        .to($PresentBoxTop, 0.4, {
+            rotation: -180,
+            transformOrigin: "left center",
+            ease: Power4.easeIn
+        }, "0.7")
 
-        function stopHover(element) {
-            $(element).unbind('mouseenter click');
-            $(element).css('cursor: default');
-        }
-        $(".giftName").addClass("active");
-        setTimeout(() => {
-            $(".wrapper").addClass("active");
-        }, 2000)
-        setTimeout(() => {
-            $(".acceptBrains").addClass("active");
-        }, 2000)
-    });
-})
+    tlOpenPresent.play();
+
+    function stopHover(element) {
+        $(element).unbind('mouseenter click');
+        $(element).css('cursor: default');
+    }
+    setTimeout(() => {
+        $(".wrapper").addClass("active");
+    }, 2000)
+    setTimeout(() => {
+        $(".acceptBrains").addClass("active");
+    }, 2000)
+};

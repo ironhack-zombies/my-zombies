@@ -66,11 +66,12 @@
   countdown.start();
 </script>
 {{else}}
-<div id="giftBox" class="wrapper">
-
+<div class="wrapper">
+  <div  id="giftBox">
+  </div>
   <form action="/dailyGift" method="POST">
     <div class="acceptBrains">
-      <a href="/dailyGift"><button type="submit">Accept Brains</button></a>
+      <a><button type="submit">Accept Brains</button></a>
     </div>
   </form>
 
@@ -101,7 +102,7 @@
     </style>
 
     <g id="Presents">
-      <g id="PresentB" class="box" onclick="openBox(event,'{{user.id}}'); ">
+      <g id="PresentB" class="box" onclick="openBox(event,'{{user.id}}');">
         <ellipse id="ShadowPresent" class="PresentBoxShadow" cx="175" cy="150" rx="81.8" ry="22.8" fill="#959689" />
 
         <g class="PresentBox">

@@ -37,10 +37,8 @@ router.post('/dailyGift/:id', secured(), (req, res, next) => {
             console.log(newStart);
             let brainsInBox = Math.floor(Math.random() * 20)
             user.updateOne({
-                    $addToSet: {
-                        brains: (brainOwned + brainsInBox),
-                        timeStart: newStart,
-                    }
+                    brains: (brainOwned + brainsInBox),
+                    timeStart: newStart,
                 })
                 .then(
                     res.status(200).send({ boxContent: { brains: brainsInBox } }))
