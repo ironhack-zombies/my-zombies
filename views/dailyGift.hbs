@@ -36,11 +36,7 @@
     }
 
     startClick() {
-<<<<<<< HEAD
-        this.intervalId = setInterval(this.increase(), 1000);
-=======
       this.intervalId = setInterval(this.increase.bind(this), 1000);
->>>>>>> e54107ee351c6d20fc24990145d893633556f8b1
     }
 
     getHours() {
@@ -68,24 +64,7 @@
   let minutes = document.getElementById('minutes');
   let seconds = document.getElementById('seconds');
 
-<<<<<<< HEAD
-}
-
-function start() {
-    let hrDec = document.getElementById('hrDec');
-    let hrUni = document.getElementById('hrUni');
-    let minDec = document.getElementById('minDec');
-    let minUni = document.getElementById('minUni');
-    let secDec = document.getElementById('secDec');
-    let secUni = document.getElementById('secUni');
-    countdown.startClick();
-}
-let countdown = new Countdown();
-start();
-
-=======
   countdown.start();
->>>>>>> e54107ee351c6d20fc24990145d893633556f8b1
 </script>
 {{else}}
 <div class="wrapper">
