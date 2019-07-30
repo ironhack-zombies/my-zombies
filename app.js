@@ -83,15 +83,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
 let giftCheck = function(req, res, next) {
-    let timeStart = req.user.timeStart;
-    let timeNow = new Date().getTime();
-    console.log(timeNow);
+    if (req.session.user) {
+        let timeStart = req.user.timeStart;
+        let timeNow = new Date().getTime();
+        console.log(timeNow);
 
-    if (timeNow >= timeStart) {
-        res.locals = { notYet: false };
-        next();
+        if (timeNow >= timeStart) {
+            res.locals = { notYet: false };
+            next();
+        } else {
+            res.locals = { notYet: true };
+            next();
+        }
     } else {
-        res.locals = { notYet: true };
+        // res.locals = { notYet: true };
         next();
     }
 }

@@ -8,14 +8,7 @@ router.get('/dailyGift', (req, res, next) => {
         .then((user) => {
             let timeStart = user.timeStart;
             if (endDate >= timeStart) {
-                let newStart = new Date(new Date().setDate(new Date().getDate() + 1)).getTime()
-                let user = {
-                    timeStart: newStart,
-                }
-                User.findByIdAndUpdate(req.user.id, user, { new: true })
-                    .then(user => {
-                        res.render("dailyGift", { user })
-                    })
+                res.render("dailyGift", { user })
             } else {
                 User.findOne({ _id: req.user.id })
                     .then(user => {
@@ -24,5 +17,15 @@ router.get('/dailyGift', (req, res, next) => {
             }
         })
 });
+
+// router.post('/dailyGift', (req, res, next) => {
+//     let brainOwned = req.user.brains
+//     let newStart = new Date(new Date().setDate(new Date().getDate() + 1)).getTime()
+//     let user = {
+//         timeStart: newStart,
+//     }
+//     User.findByIdAndUpdate(req.user.id, user, { new: true })
+//         .then(user => {})
+// })
 
 module.exports = router;

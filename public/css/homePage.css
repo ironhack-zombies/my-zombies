@@ -11,8 +11,12 @@
     align-items: center;
 }
 
-.btn {
-    width: 120px;
+.butn {
+    color: #b8b9a9 !important;
+    width: 120px !important;
+    padding: 5px;
+    background-color: #422020 !important;
+    border-radius: 5px;
 }
 
 .homePage h1,
