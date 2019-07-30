@@ -56,8 +56,8 @@ router.get('/village/storyBoard', (req, res, next) => {
         })
 });
 
-router.get('/village/challanges', (req, res, next) => {
-    res.render("village/challanges")
+router.get('/village/arena', (req, res, next) => {
+    res.render("village/arena")
 });
 
 router.get('/story/:id', function (req, res, next) {

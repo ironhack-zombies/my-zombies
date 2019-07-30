@@ -11,9 +11,8 @@ router.get('/user', secured(), (req, res, next) => {
             populate: { path: 'origin' }
         })
         .populate('gadgetsOwned')
-        .then((userId) => {
-            console.log(userId);
-            res.render('user', { userId });
+        .then((user) => {
+            res.render('user', { user });
         })
 
 });

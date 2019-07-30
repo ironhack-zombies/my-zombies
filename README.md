@@ -8,4 +8,5 @@
 For a local database run the following commands. For external dbs use `mongoimport` with username and password.
 ```bash
 mongoimport --db myZombies --collection zombies --file data/zombieTypes.json --jsonArray
+mongoimport --db myZombies --collection gadgets --file data/gadgets.json --jsonArray
 ```
