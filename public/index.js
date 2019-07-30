@@ -90,7 +90,6 @@ function openBox(event, userId) {
     openGift();
     axios.post('/dailyGift/' + userId)
         .then(response => {
-            console.log(response.data);
             const brainsInBox = response.data.boxContent.brains;
             const boxContentHtml =
                 `
@@ -108,17 +107,27 @@ function openBox(event, userId) {
         });
 }
 
+
 // function updateBrain(event, zombieId) {
-//     axios.post('/shop/buyZombie' + zombieId)
+//     axios.post('/shop/zombieDetail/' + zombieId)
 //         .then(response => {
 //             console.log(response.data);
+//             // const brainsInBox = response.data.boxContent.brains;
+//             // const boxContentHtml =
+//             //     `
+//             //     <div class="giftName">
+//             //         <h3>A bucket of roten brains</h3>
+//             //         <p>${brainsInBox} <i class="fas fa-brain fa-2x"></i></p>
+//             //     </div>
+//             //     `;
+//             // document.getElementById("giftBox").innerHTML += boxContentHtml;
+//             // $(".giftName").addClass("active");
+//             // console.log('post successfull and the response is: ', response);
 //         })
 //         .catch(function(error) {
 //             console.log(error);
-//         })
+//         });
 // }
-
-
 
 // animation for opening gift box
 function openGift() {

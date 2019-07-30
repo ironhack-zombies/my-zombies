@@ -1,0 +1,34 @@
+<div>
+    <div class="ownedZombie">
+            <div class="ownedZombieDetail">
+                <img class="zombieImg" src="{{zombie.origin.image}}">
+                <div class="gadgetsEquipped">
+                    <div>
+                        <img src="/images/gadgets/axe.png">
+                    </div>
+                    <div>
+                        <img src="/images/gadgets/axe.png">
+                    </div>
+                    <div>
+                        <img src="/images/gadgets/axe.png">
+                    </div>
+                </div>
+            </div>
+
+        <p>Type: {{zombie.origin.type}}</p>
+
+        <ul>
+        {{#each zombie.origin.description}}
+            <li>{{this}}</li>
+        {{/each}}
+        </ul>
+        
+        <ul>
+        {{#each zombie.origin.ability}}
+            <li>{{this}}</li>
+        {{/each}}
+        </ul>
+
+        <button class="butn" type="submit">Equip</button>
+    </div>
+</div>

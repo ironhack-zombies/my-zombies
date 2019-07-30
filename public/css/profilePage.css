@@ -52,3 +52,30 @@
     padding-left: 40px;
     padding-top: 20px;
 }
+
+.ownedZombieDetail {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.ownedZombie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ownedZombieDetail.zombieImg {
+    width: 60%;
+}
+
+ownedZombieDetail.gadgetsEquipped {
+    width: 38%;
+}
+
+.ownedZombieDetail img {
+    width: 40%;
+}
