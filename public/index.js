@@ -87,10 +87,10 @@ function likeStory(event, storyId) {
 }
 
 function openBox(event, userId) {
+    debugger
     openGift();
     axios.post('/dailyGift/' + userId)
         .then(response => {
-
             console.log(response.data);
             const brainsInBox = response.data.boxContent.brains;
             const boxContentHtml =
@@ -107,9 +107,21 @@ function openBox(event, userId) {
         .catch(function(error) {
             console.log(error);
         });
-
 }
 
+// function updateBrain(event, zombieId) {
+//     axios.post('/shop/buyZombie' + zombieId)
+//         .then(response => {
+//             console.log(response.data);
+//         })
+//         .catch(function(error) {
+//             console.log(error);
+//         })
+// }
+
+
+
+// animation for opening gift box
 function openGift() {
 
     var $Presents = $('#Presents'),

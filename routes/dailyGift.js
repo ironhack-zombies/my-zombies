@@ -31,8 +31,7 @@ router.post('/dailyGift/:id', secured(), (req, res, next) => {
                 return;
             }
             debugger
-            let userId = req.params.id;
-            let brainOwned = req.user.brains;
+            let brainOwned = req.user.brains
             let timeWait = Math.random() * 1.5 * 3600000;
             let newStart = new Date(new Date().setTime(new Date().getTime() + 5400000 + timeWait)).getTime();
             console.log(newStart);
@@ -49,6 +48,5 @@ router.post('/dailyGift/:id', secured(), (req, res, next) => {
                     res.status(500).send({ boxContent: { brains: 0 } })
                 })
         })
-
 });
 module.exports = router;

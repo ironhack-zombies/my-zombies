@@ -1,13 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="/">myZombies</a>
 {{#if user}}
-                {{#unless notYet}}
-                    <a  class="dailyGiftImg" href="/dailyGift"><button id="btnGift" class="start" ><i class="fas giftNoti fa-gift"></i></button> </a>
-
-                {{else}}
-                    <a  class="dailyGiftImg" href="/dailyGift"><button id="btnGift" class="start"><i class="fas fa-gift"></i></button> </a>
-
-                {{/unless}}
+        <span class="numberOfBrains">{{user.brains}}<i class="fas fa-brain"></i></span>
+    {{#unless notYet}}
+        <a  class="dailyGiftImg" href="/dailyGift"><i class="fas giftNoti fa-gift"></i></a>
+    {{else}}
+        <a  class="dailyGiftImg" href="/dailyGift"><button id="btnGift" class="start"><i class="fas fa-gift"></i></button> </a>
+    {{/unless}}
 {{/if}}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
         <span class="navbar-toggler-icon"></span>

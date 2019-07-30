@@ -21,7 +21,7 @@
             <h3>{{zombie.type}}</h3>
             <p><span>{{zombie.price}}</span> <i class="fas fa-brain fa-3x"></i></p>
             <form action="/shop/zombieDetail?zombie_id={{zombie._id}}" method="POST">
-                <button class="butn" type="submit">BUY</button>
+                <button class="butn" type="submit" onclick="updateBrain(event,'{{zombie._id}}');">BUY</button>
             </form>
         </div>
 

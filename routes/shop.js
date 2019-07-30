@@ -123,6 +123,22 @@ router.post('/zombieDetail', (req, res, next) => {
 
 })
 
+// router.post('/shop/buyZombie/:id', (req, res, next) => {
+//     let zombieId = req.params.id;
+//     Zombie.findById(zombieId)
+//         .then(zombieBought => {
+//             if (!zombieBought) {
+//                 res.status(500).send(`{message: 'Zombie not found'}`)
+//                 return;
+//             } else {
+//                 let price = zombieBought.price;
+//                 let brainsOwned = req.user.brains;
+//                 let brainsLeft = brainsOwned - price;
+//                 res.status(200).send({ brains: brainsLeft })
+//             }
+//         })
+// })
+
 router.post('/gadgets', (req, res, next) => {
     let gadgetId = req.query.gadget_id;
     Gadget.findOne({ _id: gadgetId })
