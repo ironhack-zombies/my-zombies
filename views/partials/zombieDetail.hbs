@@ -1,14 +1,18 @@
-<a href="/shop/zombies"><i class="fas fa-arrow-left fa-3x"></i></a>
-{{#if buy}}
-<div>
-    <p class="bought">Zombie has been added to your collection <a href="/user">VIEW</a></p>
+<div class="topDiv">
+    <a href="/shop/zombies"><i class="fas fa-arrow-left fa-3x"></i></a>
+
+    {{#if buy}}
+    <div>
+        <p class="bought">Zombie has been added to your collection <a href="/user">VIEW</a></p>
+    </div>
+    {{/if}}
+
+    {{#if notEnoughBrain}}
+    <div>
+        <p class="notEnoughBrain">You have not enough BRAINS!</p>
+    </div>
+    {{/if}}
 </div>
-{{/if}}
-{{#if notEnoughBrain}}
-<div>
-    <p class="notEnoughBrain">You have not enough BRAINS!</p>
-</div>
-{{/if}}
 <div class="zombieDetail">
     <div class="zombImage">
         <div>
