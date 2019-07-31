@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const OwnedZombie = require('../models/ownedZombie');
-<<<<<<< HEAD
 const User = require('../models/user')
+var secured = require('../lib/middleware/secured');
 
-router.get('/ownedZombieDetail', (req, res, next) => {
+router.get('/ownedZombieDetail', secured(), (req, res, next) => {
     User.findOne({ _id: req.user.id })
         .populate({
             path: 'zombiesOwned',
@@ -12,25 +12,13 @@ router.get('/ownedZombieDetail', (req, res, next) => {
         })
         .populate('gadgetsOwned')
         .then(user => {
-            console.log(user);
             let zombieId = req.query.zombie_id;
             OwnedZombie.findOne({ _id: zombieId })
                 .populate('origin')
                 .then((zombie) => {
                     // console.log(zombie)
-                    res.render('../views/profile/ownedZombieDetail.hbs', { zombie })
+                    res.render('../views/profile/ownedZombieDetail.hbs', { zombie, user })
                 })
-=======
-var secured = require('../lib/middleware/secured');
-
-router.get('/ownedZombieDetail', secured(), (req, res, next) => {
-    let zombieId = req.query.zombie_id;
-    OwnedZombie.findOne({ _id: zombieId })
-        .populate('origin')
-        .then((zombie) => {
-            console.log(zombie)
-            res.render('../views/profile/ownedZombieDetail.hbs', { zombie })
->>>>>>> 06399544fc52dab53285949e0be4dd04356e0919
         })
 })
 

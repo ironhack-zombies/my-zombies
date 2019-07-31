@@ -46,17 +46,13 @@
             `<div class="selectGadget">
                 <form action="/ownedZombieDetail?zombie_id={{~zombie._id~}}" method="POST">
                     <select name="gadgetChosen" multiple>
-                        {{#each ~user.gadgetsOwned~}}
-                        <option value="{{~name~}}"></option>
-                        {{/each}}
+                        {{~#each user.gadgetsOwned~}}
+                        <option value="{{~name~}}">{{~name~}}</option>
+                        {{~/each~}}
                     </select>
                 </form>
             </div >`;
             document.getElementById("equip").appendChild(selectGadget);
-            {{!-- document.getElementById("cancelBtn").addEventListener("click", function(event) {
-                let popup = document.getElementsByClassName("buyVerification")[0];
-                popup.parentNode.removeChild(popup)
-            }) --}}
             console.log("popup!")
         })
     }
