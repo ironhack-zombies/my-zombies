@@ -1,52 +1,54 @@
 <div class="ownedZombie">
         <div class="ownedZombieDetail">
             <div class="zombieImg">
-                <img src="{{zombie.origin.image}}">
+                <img src="{{zombieNow.origin.image}}">
             </div>
             <div class="gadgetsEquipped">
                 <div id="headwear" class="inventory">
                     <p>Headwear</p>
-                    {{#if zombie.gadgets}}
-                    {{#each zombie.gadgets}}
-                    {{#ifvalue category value="Headwear"}}
-                    <img src={{icon}}>
+                    {{#if zombieNow.gadgets}}
+                    {{#each zombieNow.gadgets}}
+                    {{#ifvalue origin.category value="Headwear"}}
+                    <img src={{origin.icon}}>
                     {{/ifvalue}}
                     {{/each}}
                     {{/if}}
                 </div>
                 <div id="weapon" class="inventory">
                     <p>Weapon</p>
-                    {{#if zombie.gadgets}}
-                    {{#each zombie.gadgets}}
-                    {{#ifvalue category value="Weapon"}}
-                    <img src={{icon}}>
+                    {{#if zombieNow.gadgets}}
+                    {{#each zombieNow.gadgets}}
+                    {{#ifvalue origin.category value="Weapon"}}
+                    <img src={{origin.icon}}>
                     {{/ifvalue}}
                     {{/each}}         
                     {{/if}}       
                 </div>
                 <div id="clothing" class="inventory">
                     <p>Clothing</p>   
-                    {{#if zombie.gadgets}}                 
-                    {{#each zombie.gadgets}}
-                    {{#ifvalue category value="Clothing"}}
-                    <img src={{icon}}>
+                    {{#if zombieNow.gadgets}}                 
+                    {{#each zombieNow.gadgets}}
+                    {{#ifvalue origin.category value="Clothing"}}
+                    <img src={{origin.icon}}>
                     {{/ifvalue}}
                     {{/each}}    
                     {{/if}}            
                 </div>
             </div>
         </div>
+    <h4>{{zombieNow.nickname}}</h4>
+    <p>Type: {{zombieNow.origin.type}}</p>
 
-    <p>Type: {{zombie.origin.type}}</p>
-
+    <p>Description:</p>
     <ul>
-    {{#each zombie.origin.description}}
+    {{#each zombieNow.origin.description}}
         <li>{{this}}</li>
     {{/each}}
     </ul>
-    
+
+    <p>Ability:</p>   
     <ul>
-    {{#each zombie.origin.ability}}
+    {{#each zombieNow.origin.abilities}}
         <li>{{this}}</li>
     {{/each}}
     </ul>
@@ -68,11 +70,11 @@
             selectHead.classList.add("headwear");
             selectHead.innerHTML = 
             `<div class="selectGadget">
-                {{~#each headwear~}}
+                {{~#each gadgets~}}
                     <div class="eachGadget">
-                        <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
-                        <p>{{~name~}}</p>
-                        <img src="{{~icon~}}">
+                        <a href="/equip?gadget_id={{~origin._id~}}&zombie_id=${c}"></a>
+                        <p>{{~origin.name~}}</p>
+                        <img src="{{~origin.icon~}}">
                     </div>
                 {{~/each~}}
                 <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
