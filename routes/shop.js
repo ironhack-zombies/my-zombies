@@ -87,6 +87,7 @@ router.post('/zombieDetail', (req, res, next) => {
                     let id = zombie._id
                     var newOwnedZombie = new OwnedZombie({
                         origin: mongoose.Types.ObjectId(id),
+                        nickname: req.body.nickname.trim()
                     });
                     newOwnedZombie.save(
                             OwnedZombie.populate(newOwnedZombie, 'origin'))
