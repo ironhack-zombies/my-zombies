@@ -3,8 +3,9 @@ var secured = require('../lib/middleware/secured');
 const router = express.Router();
 const Story = require('../models/story')
 const Comment = require('../models/comment')
+const OwnedZombie = require('../models/ownedZombie')
 
-router.get('/village', (req, res, next) => {
+router.get('/village', secured(), (req, res, next) => {
     res.render("village/village")
 });
 
@@ -26,7 +27,7 @@ router.post('/village', secured(), function (req, res, next) {
         })
 });
 
-router.get('/village/storyBoard', (req, res, next) => {
+router.get('/village/storyBoard', secured(), (req, res, next) => {
     Story.find({}, null, {
             sort: {
                 writtenAt: -1
@@ -56,11 +57,38 @@ router.get('/village/storyBoard', (req, res, next) => {
         })
 });
 
-router.get('/village/arena', (req, res, next) => {
-    res.render("village/arena")
+router.get('/village/arena', secured(), (req, res, next) => {
+    OwnedZombie.find({
+        _id: {
+            '$in': req.user.zombiesOwned
+        }
+    }).then(zombies => {
+        res.render("village/arena", {zombies})
+    }).catch(error => {
+        console.error(error);
+        next(new Error(error.message))
+    })
 });
 
-router.get('/story/:id', function (req, res, next) {
+router.post('/village/arena/fight', secured(), (req, res, next) => {
+    // cheating possible... make sure the ownedzombie is actually owned by the logged in user ^^
+    OwnedZombie.find({
+        _id: req.body.zombie
+    }).then(zombie => {
+        let fight = {
+            won: Math.random() > 0.5,
+            rewards: {
+                brains: Math.floor(2 + Math.random() * 3)
+            }
+        }
+        res.render("village/arenaFight", {zombie: zombie, fight: fight})
+    }).catch(error => {
+        console.error(error);
+        next(new Error(error.message))
+    })
+});
+
+router.get('/story/:id', secured(), function (req, res, next) {
     Story.findById(req.params.id)
         .populate("author")
         .then(story => {

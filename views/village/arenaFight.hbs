@@ -1,0 +1,12 @@
+<div class="fightResults">
+  {{#ifvalue fight.won value="true"}}
+  <p>You won!</p>
+  <ul>
+    <li>Brains: {{fight.rewards.brains}}</li>
+  </ul>
+  {{else}}
+  <p>You lost the fight :(</p>
+  {{/ifvalue}}
+  <img src="https://media.giphy.com/media/Knr5nIPwrYTHG/giphy.gif" alt="">
+  <a href="/village/arena">Back to the arena</a>
+</div>

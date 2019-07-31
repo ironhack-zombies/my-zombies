@@ -95,3 +95,20 @@
     top: 0;
     left: 0;
 }
+
+.fightResults, .arena {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.fightResults a {
+    text-decoration: none;
+}
+
+p.warning {
+    color: orange;
+    font-weight: bold;
+}

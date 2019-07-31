@@ -19,6 +19,14 @@ hbs.registerHelper('ifIn', function(elem, list, options) {
     return options.inverse(this);
 });
 
+hbs.registerHelper('ifvalue', function (conditional, options) {
+    if (options.hash.value && conditional && options.hash.value.toString() === conditional.toString()) {
+      return options.fn(this)
+    } else {
+      return options.inverse(this);
+    }
+  });
+
 // Connection to the database "recipeApp"
 mongoose.connect(process.env.MONGODB_URI, {
         useCreateIndex: true,
