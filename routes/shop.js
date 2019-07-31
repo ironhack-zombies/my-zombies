@@ -44,9 +44,7 @@ router.get('/gadgets', secured(), (req, res, next) => {
         })
         .then((gadgets) => {
             console.log(gadgets)
-            res.render('shop/gadgets', {
-                gadgets
-            });
+            res.render('shop/gadgets', { gadgets });
         })
         .catch((err) => {
             next(err);
@@ -157,7 +155,9 @@ router.post('/gadgets', secured(), (req, res, next) => {
                     .then((user) => {
                         debugger
                         User.populate(gadget, 'gadgetsOwned')
-                        Gadget.find()
+                        Gadget.find({
+                                tier: { $in: ['Basic', 'Good'] }
+                            })
                             .then(gadgets => {
                                 res.render('../views/shop/gadgets', {
                                     gadgets,

@@ -4,7 +4,7 @@
                 <img src="{{zombie.origin.image}}">
             </div>
             <div class="gadgetsEquipped">
-                <div id="headWear" class="inventory">
+                <div id="headwear" class="inventory">
                     <p>Headwear</p>
                     {{!-- <img src="/images/gadgets/axe.png"> --}}
                 </div>
@@ -33,30 +33,26 @@
     {{/each}}
     </ul>
     {{!-- <form action="/ownedZombieDetail" method="POSR"> --}}
-    <div id="equip">
-    </div>
 
-    <button id="equipBtn" class="butn" type="submit">Equip</button>
+    {{!-- <button id="equipBtn" class="butn" type="submit">Equip</button> --}}
     {{!-- </form> --}}
 </div>
 
-<script>
+{{!-- <script>
     window.onload = function () {
         console.log("loaded")
-        document.getElementById("equipBtn").addEventListener("click", function (event) {
+        document.getElementById("headwear").addEventListener("click", function (event) {
             let selectGadget = document.createElement("div")
             selectGadget.innerHTML = 
             `<div class="selectGadget">
-                <form action="/ownedZombieDetail?zombie_id={{~zombie._id~}}" method="POST">
-                    <select name="gadgetChosen" multiple>
+
                         {{~#each user.gadgetsOwned~}}
                         <option value="{{~name~}}">{{~name~}}</option>
                         {{~/each~}}
-                    </select>
-                </form>
+
             </div >`;
             document.getElementById("equip").appendChild(selectGadget);
             console.log("popup!")
         })
     }
-</script>
+</script> --}}

@@ -14,8 +14,7 @@ const gadgetSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ["Headwear", "Weapon", "Clothing"],
-        default: "Weapon"
+        enum: ["Headwear", "Weapon", "Clothing"]
     },
     icon: {
         type: String
