@@ -51,11 +51,6 @@ router.get('/gadgets', secured(), (req, res, next) => {
         })
 })
 
-
-router.get('/food', secured(), (req, res, next) => {
-    res.render('shop/food');
-})
-
 router.get('/zombieDetail', secured(), (req, res, next) => {
     debugger
     let zombieId = req.query.zombie_id;
