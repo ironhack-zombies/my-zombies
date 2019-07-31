@@ -40,15 +40,41 @@ router.get('/zombies', secured(), (req, res, next) => {
 })
 
 router.get('/gadgets', secured(), (req, res, next) => {
-    Gadget.find({
-            tier: { $in: ['Basic', 'Good'] }
-        })
-        .then((gadgets) => {
-            res.render('shop/gadgets', { gadgets });
-        })
-        .catch((err) => {
-            next(err);
-        })
+    if (req.query.search && req.query.search !== "") {
+        Gadget.find({
+                name: {
+                    $regex: ".*" + req.query.search + ".*",
+                    // case insensitive
+                    $options: 'i'
+                },
+                tier: {
+                    $in: ['Basic', 'Good']
+                }
+            })
+            .then((gadgets) => {
+                res.render('shop/gadgets', {
+                    gadgets: gadgets,
+                    search: req.query.search
+                });
+            })
+            .catch((err) => {
+                next(err);
+            })
+    } else {
+        Gadget.find({
+                tier: {
+                    $in: ['Basic', 'Good']
+                }
+            })
+            .then((gadgets) => {
+                res.render('shop/gadgets', {
+                    gadgets
+                });
+            })
+            .catch((err) => {
+                next(err);
+            })
+    }
 })
 
 router.get('/zombieDetail', secured(), (req, res, next) => {
@@ -124,11 +150,15 @@ router.post('/zombieDetail', secured(), (req, res, next) => {
 
 router.post('/gadgets', secured(), (req, res, next) => {
     let gadgetId = req.query.gadget_id;
-    Gadget.findOne({ _id: gadgetId })
+    Gadget.findOne({
+            _id: gadgetId
+        })
         .then((gadget) => {
             if (gadget.price > req.user.brains) {
                 Gadget.find({
-                        tier: { $in: ['Basic', 'Good'] }
+                        tier: {
+                            $in: ['Basic', 'Good']
+                        }
                     })
                     .then(gadgets => {
                         res.render('../views/shop/gadgets', {
@@ -161,7 +191,9 @@ router.post('/gadgets', secured(), (req, res, next) => {
                             .then((user) => {
                                 User.populate(gadget, 'gadgetsOwned')
                                 Gadget.find({
-                                        tier: { $in: ['Basic', 'Good'] }
+                                        tier: {
+                                            $in: ['Basic', 'Good']
+                                        }
                                     })
                                     .then(gadgets => {
                                         res.render('../views/shop/gadgets', {

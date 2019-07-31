@@ -1,3 +1,7 @@
+<form class="search-form" action="/shop/gadgets" method="GET">
+    <input name="search" type="text" placeholder="Search for gadgets..." {{#if search}} value="{{search}}" {{/if}}>
+    <input type="submit" value="Search">
+</form>
 {{#if buy}}
 <div>
     <p class="bought">Gadget has been added to your collection <a href="/user">VIEW</a></p>
