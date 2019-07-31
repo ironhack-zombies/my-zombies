@@ -42,7 +42,11 @@ ul.collapse.navbar-collapse {
 }
 
 .dailyGiftImg {
-    margin-left: 80px;
+    padding-right: 2%;
+}
+
+.numberOfBrains {
+    padding-left: 13%;
 }
 
 #btnGift {
@@ -82,3 +86,8 @@ ul.collapse.navbar-collapse {
         color: red;
     }
 }
+
+
+/* .numberOfBrains {
+    float: right;
+} */

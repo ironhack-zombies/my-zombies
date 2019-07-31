@@ -4,9 +4,10 @@ const Zombie = require('../models/zombie');
 const Gadget = require('../models/gadget');
 const OwnedZombie = require('../models/ownedZombie');
 const mongoose = require('mongoose');
-const User = require('../models/user')
+const User = require('../models/user');
+const secured = require('../lib/middleware/secured')
 
-router.get('/zombies', (req, res, next) => {
+router.get('/zombies', secured(), (req, res, next) => {
     if (req.query.search && req.query.search !== "") {
         Zombie.find({
                 type: {
@@ -37,7 +38,7 @@ router.get('/zombies', (req, res, next) => {
     }
 })
 
-router.get('/gadgets', (req, res, next) => {
+router.get('/gadgets', secured(), (req, res, next) => {
     Gadget.find({})
         .then((gadgets) => {
             res.render('shop/gadgets', {
@@ -50,11 +51,11 @@ router.get('/gadgets', (req, res, next) => {
 })
 
 
-router.get('/food', (req, res, next) => {
+router.get('/food', secured(), (req, res, next) => {
     res.render('shop/food');
 })
 
-router.get('/zombieDetail', (req, res, next) => {
+router.get('/zombieDetail', secured(), (req, res, next) => {
     debugger
     let zombieId = req.query.zombie_id;
     Zombie.findOne({
@@ -70,7 +71,7 @@ router.get('/zombieDetail', (req, res, next) => {
         })
 })
 
-router.post('/zombieDetail', (req, res, next) => {
+router.post('/zombieDetail', secured(), (req, res, next) => {
     if (req.user) {
         let zombieId = req.query.zombie_id;
         console.log(zombieId);
@@ -124,7 +125,25 @@ router.post('/zombieDetail', (req, res, next) => {
 
 })
 
-router.post('/gadgets', (req, res, next) => {
+// router.post('/zombieDetail/:id', secured(), (req, res, next) => {
+//     debugger
+//     let zombieId = req.params.id;
+//     Zombie.findById(zombieId)
+//         .then(zombieBought => {
+//             if (!zombieBought) {
+//                 res.status(500).send(`{message: 'Zombie not found'}`)
+//                 return;
+//             } else {
+//                 debugger
+//                 let price = zombieBought.price;
+//                 let brainsOwned = req.user.brains;
+//                 let brainsLeft = brainsOwned - price;
+//                 res.status(200).send({ brains: brainsLeft })
+//             }
+//         })
+// })
+
+router.post('/gadgets', secured(), (req, res, next) => {
     let gadgetId = req.query.gadget_id;
     Gadget.findOne({ _id: gadgetId })
         .then((gadget) => {

@@ -21,6 +21,7 @@ router.use(require("./village"));
 router.use("/shop", require("./shop"))
 router.use(require("./users"));
 router.use(require("./dailyGift"));
+router.use(require("./ownedZombieDetail"));
 
 
 // catch 404 and render a not-found.hbs template
