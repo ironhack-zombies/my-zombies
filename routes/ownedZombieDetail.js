@@ -16,7 +16,6 @@ router.get('/ownedZombieDetail', secured(), (req, res, next) => {
             OwnedZombie.findOne({ _id: zombieId })
                 .populate('origin')
                 .then((zombie) => {
-                    // console.log(zombie)
                     res.render('../views/profile/ownedZombieDetail.hbs', { zombie, user })
                 })
         })

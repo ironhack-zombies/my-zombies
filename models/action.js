@@ -3,8 +3,13 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const actionSchema = new Schema({
-  name: {
+  description: {
     type: String,
+    required: true
+  },
+  type: {
+    type: String,
+    enum: ["Recovery"],
     required: true
   },
   start: {
@@ -13,11 +18,15 @@ const actionSchema = new Schema({
   },
   end: {
     type: Date,
-    required: true
+    required: true,
+    index: { expireAfterSeconds: 0 }
   }
 }, {
   collection: 'actions'
 })
 
 const Action = mongoose.model('actions', actionSchema);
+Action.on('index', function(error) {
+  console.log(error)
+});
 module.exports = Action;
