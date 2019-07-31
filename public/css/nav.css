@@ -13,6 +13,10 @@
     color: #7d7e73;
 }
 
+nav .numberOfBrains {
+    color: #b5b69c
+}
+
 .dropdown-menu {
     background-color: #422020 !important;
     border: none !important;

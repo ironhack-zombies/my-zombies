@@ -27,6 +27,10 @@ const userSchema = new Schema({
     timeStart: {
         type: Number,
         default: 0
+    },
+    fightsWon: {
+        type: Number,
+        default: 0
     }
 }, {
     collection: 'users'

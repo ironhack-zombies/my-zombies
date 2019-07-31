@@ -1,12 +1,28 @@
 <div class="fightResults">
-  {{#ifvalue fight.won value="true"}}
-  <p>You won!</p>
-  <ul>
-    <li>Brains: {{fight.rewards.brains}}</li>
-  </ul>
-  {{else}}
-  <p>You lost the fight :(</p>
-  {{/ifvalue}}
+  <div class="info">
+    {{#ifvalue fight.won value="true"}}
+    <p>You won!</p>
+    <ul>
+      <li>Brains: {{fight.rewards.brains}}</li>
+    </ul>
+    {{else}}
+    <p>You lost the fight :(</p>
+    {{/ifvalue}}
+    <a href="/village/arena">Back to the arena</a>
+  </div>
+  <div class="waiting">
+    <p>Furiously fighting... please wait</p>
+  </div>
   <img src="https://media.giphy.com/media/Knr5nIPwrYTHG/giphy.gif" alt="">
-  <a href="/village/arena">Back to the arena</a>
 </div>
+
+<script>
+  window.onload = function () {
+    setTimeout(function () {
+      let info = document.querySelector(".fightResults .info");
+      let waiting = document.querySelector(".fightResults .waiting");
+      if (info) info.style.display = "block";
+      if (waiting) waiting.style.display = "none";
+    }, 5000)
+  }
+</script>

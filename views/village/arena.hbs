@@ -8,10 +8,13 @@
       <option value="{{_id}}">{{nickname}}</option>
       {{/each}}
     </select>
-    <button type="submit">Fight!</button>
+    <button type="submit">Fight! (2 <i class="fas fa-brain"></i>)</button>
   </form>
   {{else}}
   <p class="warning">You currently own no zombies</p>
   <a href="/shop/zombies">You can buy one in the shop</a>
+  {{/if}}
+  {{#if message}}
+  <p>{{message}}</p>
   {{/if}}
 </div>

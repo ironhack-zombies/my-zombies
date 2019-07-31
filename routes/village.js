@@ -4,6 +4,8 @@ const router = express.Router();
 const Story = require('../models/story')
 const Comment = require('../models/comment')
 const OwnedZombie = require('../models/ownedZombie')
+const User = require('../models/user')
+const brainsPerFight = 2;
 
 router.get('/village', secured(), (req, res, next) => {
     res.render("village/village")
@@ -63,7 +65,7 @@ router.get('/village/arena', secured(), (req, res, next) => {
             '$in': req.user.zombiesOwned
         }
     }).then(zombies => {
-        res.render("village/arena", {zombies})
+        res.render("village/arena", {zombies: zombies, message: req.flash("message")})
     }).catch(error => {
         console.error(error);
         next(new Error(error.message))
@@ -71,17 +73,33 @@ router.get('/village/arena', secured(), (req, res, next) => {
 });
 
 router.post('/village/arena/fight', secured(), (req, res, next) => {
-    // cheating possible... make sure the ownedzombie is actually owned by the logged in user ^^
-    OwnedZombie.find({
+    OwnedZombie.findById({
         _id: req.body.zombie
     }).then(zombie => {
+        if(req.user.brains < brainsPerFight) {
+            req.flash("message", `Not enough brains! (${brainsPerFight})`);
+            res.redirect("/village/arena");
+            return;
+        }
+        if(zombie.owner.toString() !== req.user._id.toString()) {
+            req.flash("message", "Not your zombie!");
+            res.redirect("/village/arena");
+            return;
+        }
         let fight = {
             won: Math.random() > 0.5,
             rewards: {
-                brains: Math.floor(2 + Math.random() * 3)
+                brains: Math.floor(2 + Math.random() * 9)
             }
         }
+        res.locals.user.brains = req.user.brains - brainsPerFight
         res.render("village/arenaFight", {zombie: zombie, fight: fight})
+        if(fight.won) {
+            let brains = fight.rewards.brains - brainsPerFight
+            return User.findByIdAndUpdate({_id: zombie.owner}, {$inc: { fightsWon: 1}, $inc: {brains: brains} })
+        } else {
+            return User.findByIdAndUpdate({_id: zombie.owner}, {$inc: {brains: -brainsPerFight} })
+        }
     }).catch(error => {
         console.error(error);
         next(new Error(error.message))
