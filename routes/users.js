@@ -5,12 +5,16 @@ const secured = require('../lib/middleware/secured')
 
 router.get('/user', secured(), (req, res, next) => {
     let userId = req.user._id;
+    debugger
     User.findOne({ _id: userId })
         .populate({
             path: 'zombiesOwned',
             populate: { path: 'origin' }
         })
-        .populate('gadgetsOwned')
+        .populate({
+            path: 'gadgetsOwned',
+            populate: { path: 'origin' }
+        })
         .then((user) => {
             res.render('user', { user });
         })

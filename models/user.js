@@ -16,7 +16,7 @@ const userSchema = new Schema({
         required: true
     },
     zombiesOwned: [{ type: ObjectId, ref: 'ownedZombies' }],
-    gadgetsOwned: [{ type: ObjectId, ref: 'gadgets' }],
+    gadgetsOwned: [{ type: ObjectId, ref: 'ownedGadgets' }],
     profileImage: {
         type: String
     },

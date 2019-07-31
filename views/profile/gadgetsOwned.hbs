@@ -1,9 +1,9 @@
 <div class="catalog gadgetsCatalog">
 {{#each user.gadgetsOwned}}
       <div class="shopGadget ownedZombie">
-        <img src="{{icon}}">
-        <h4>{{name}}</h4>
-        <p>Level: {{tier}}</p>
+        <img src="{{origin.icon}}">
+        <h4>{{origin.name}}</h4>
+        <p>Level: {{origin.tier}}</p>
       </div>
 {{/each}}
 </div>
