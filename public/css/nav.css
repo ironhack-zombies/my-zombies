@@ -87,7 +87,6 @@ ul.collapse.navbar-collapse {
     }
 }
 
-
-/* .numberOfBrains {
-    float: right;
-} */
+.zombIcon {
+    width: 30px;
+}

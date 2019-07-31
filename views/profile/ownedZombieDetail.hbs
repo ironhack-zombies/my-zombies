@@ -1,35 +1,63 @@
-    <div class="ownedZombie">
-            <div class="ownedZombieDetail">
-                <div class="zombieImg">
-                    <img src="{{zombie.origin.image}}">
+<div class="ownedZombie">
+        <div class="ownedZombieDetail">
+            <div class="zombieImg">
+                <img src="{{zombie.origin.image}}">
+            </div>
+            <div class="gadgetsEquipped">
+                <div>
+                    <img src="/images/gadgets/axe.png">
                 </div>
-                <div class="gadgetsEquipped">
-                    <div>
-                        <img src="/images/gadgets/axe.png">
-                    </div>
-                    <div>
-                        <img src="/images/gadgets/axe.png">
-                    </div>
-                    <div>
-                        <img src="/images/gadgets/axe.png">
-                    </div>
+                <div>
+                    <img src="/images/gadgets/axe.png">
+                </div>
+                <div>
+                    <img src="/images/gadgets/axe.png">
                 </div>
             </div>
+        </div>
 
-        <p>Type: {{zombie.origin.type}}</p>
+    <p>Type: {{zombie.origin.type}}</p>
 
-        <ul>
-        {{#each zombie.origin.description}}
-            <li>{{this}}</li>
-        {{/each}}
-        </ul>
-        
-        <ul>
-        {{#each zombie.origin.ability}}
-            <li>{{this}}</li>
-        {{/each}}
-        </ul>
-        {{!-- <form action="/ownedZombieDetail" method="POSR"> --}}
-        <button class="butn" type="submit" onclick="equipGadgets();">Equip</button>
-        {{!-- </form> --}}
+    <ul>
+    {{#each zombie.origin.description}}
+        <li>{{this}}</li>
+    {{/each}}
+    </ul>
+    
+    <ul>
+    {{#each zombie.origin.ability}}
+        <li>{{this}}</li>
+    {{/each}}
+    </ul>
+    {{!-- <form action="/ownedZombieDetail" method="POSR"> --}}
+    <div id="equip">
     </div>
+
+    <button id="equipBtn" class="butn" type="submit">Equip</button>
+    {{!-- </form> --}}
+</div>
+
+<script>
+    window.onload = function () {
+        console.log("loaded")
+        document.getElementById("equipBtn").addEventListener("click", function (event) {
+            let selectGadget = document.createElement("div")
+            selectGadget.innerHTML = 
+            `<div class="selectGadget">
+                <form action="/ownedZombieDetail?zombie_id={{~zombie._id~}}" method="POST">
+                    <select name="gadgetChosen" multiple>
+                        {{#each ~user.gadgetsOwned~}}
+                        <option value="{{~name~}}"></option>
+                        {{/each}}
+                    </select>
+                </form>
+            </div >`;
+            document.getElementById("equip").appendChild(selectGadget);
+            {{!-- document.getElementById("cancelBtn").addEventListener("click", function(event) {
+                let popup = document.getElementsByClassName("buyVerification")[0];
+                popup.parentNode.removeChild(popup)
+            }) --}}
+            console.log("popup!")
+        })
+    }
+</script>

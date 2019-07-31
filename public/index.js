@@ -175,14 +175,3 @@ function openGift() {
         $(".acceptBrains").addClass("active");
     }, 2000)
 };
-
-function equipGadgets() {
-    const gadgetSelect =
-        `
-                <select>
-                    <h3>A bucket of roten brains</h3>
-                    <p>${brainsInBox} <i class="fas fa-brain fa-2x"></i></p>
-                </select>
-                `;
-    document.getElementById("giftBox").innerHTML += boxContentHtml;
-}
