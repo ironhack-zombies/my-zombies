@@ -6,6 +6,7 @@ const ownedZombieSchema = new Schema({
     nickname: { type: String, required: true },
     gadgets: [{ type: ObjectId, ref: 'gadgets' }],
     currentState: { type: ObjectId, ref: 'actions' },
+    owner: { type: ObjectId, ref: 'users' },
     origin: { type: ObjectId, ref: 'zombies' }
 }, { collection: 'ownedZombies' })
 
