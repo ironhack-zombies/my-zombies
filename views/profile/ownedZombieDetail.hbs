@@ -6,7 +6,7 @@
             <div class="gadgetsEquipped">
                 <div id="headwear" class="inventory">
                     <p>Headwear</p>
-                    {{#if zombieNow.gadgets}}
+                    {{#if zombieNow.gadgets}}                 
                     {{#each zombieNow.gadgets}}
                     {{#ifvalue origin.category value="Headwear"}}
                     <img src={{origin.icon}}>
@@ -63,6 +63,7 @@
         var url_string = window.location.href
         var url = new URL(url_string);
         var c = url.searchParams.get("zombie_id");
+        var gadgetChosenId=
         console.log(c);
         console.log("loaded")
         document.getElementById("headwear").addEventListener("click", function (event) {
@@ -70,11 +71,11 @@
             selectHead.classList.add("headwear");
             selectHead.innerHTML = 
             `<div class="selectGadget">
-                {{~#each gadgets~}}
+                {{~#each headwear~}}
                     <div class="eachGadget">
-                        <a href="/equip?gadget_id={{~origin._id~}}&zombie_id=${c}"></a>
-                        <p>{{~origin.name~}}</p>
-                        <img src="{{~origin.icon~}}">
+                        <a href="/equip?gadget_id={{~ownedGadId~}}&zombie_id=${c}"></a>
+                        <p>{{~name~}}</p>
+                        <img src="{{~icon~}}">
                     </div>
                 {{~/each~}}
                 <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
@@ -89,7 +90,7 @@
             `<div class="selectGadget">
                 {{~#each weapon~}}
                     <div class="eachGadget">
-                        <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
+                        <a href="/equip?gadget_id={{~ownedGadId~}}&zombie_id=${c}"></a>
                         <p>{{~name~}}</p>
                         <img src="{{~icon~}}">
                     </div>
@@ -106,7 +107,7 @@
             `<div class="selectGadget">
                 {{~#each clothing~}}
                     <div class="eachGadget">
-                        <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
+                        <a href="/equip?gadget_id={{~ownedGadId~}}&zombie_id=${c}"></a>
                         <p>{{~name~}}</p>
                         <img src="{{~icon~}}">
                     </div>
