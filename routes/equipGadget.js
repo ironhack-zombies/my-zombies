@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Gadget = require('../models/gadget');
+const OwnedGadget = require('../models/ownedGadget');
 const User = require('../models/user');
 const OwnedZombie = require('../models/ownedZombie');
 const mongoose = require('mongoose');
@@ -8,7 +8,8 @@ const mongoose = require('mongoose');
 router.get('/equip', (req, res, next) => {
     let gadgetId = req.query.gadget_id;
     let zombieId = req.query.zombie_id;
-    Gadget.findOne({ _id: gadgetId })
+    debugger
+    OwnedGadget.findOne({ _id: gadgetId })
         .then((gadgetToAdd) => {
             OwnedZombie.findOne({ _id: zombieId })
                 .populate('gadgets')
