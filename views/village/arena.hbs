@@ -1,5 +1,17 @@
 <div class="arena">
-  <div class="zombies">
-    
-  </div>
+  <h1>Welcome to the zombie arena</h1>
+  {{#if zombies}}
+  <p>Select one of your zombies to fight</p>
+  <form action="/village/arena/fight" method="POST">
+    <select name="zombie" id="zombie">
+      {{#each zombies}}
+      <option value="{{_id}}">{{nickname}}</option>
+      {{/each}}
+    </select>
+    <button type="submit">Fight!</button>
+  </form>
+  {{else}}
+  <p class="warning">You currently own no zombies</p>
+  <a href="/shop/zombies">You can buy one in the shop</a>
+  {{/if}}
 </div>
