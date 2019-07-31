@@ -34,7 +34,6 @@ router.post('/dailyGift/:id', secured(), (req, res, next) => {
             let brainOwned = req.user.brains
             let timeWait = Math.random() * 1.5 * 3600000;
             let newStart = new Date(new Date().setTime(new Date().getTime() + 5400000 + timeWait)).getTime();
-            console.log(newStart);
             let brainsInBox = Math.floor(Math.random() * 20)
             let totalBrains = brainOwned + brainsInBox;
 

@@ -56,26 +56,53 @@
 .ownedZombieDetail {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
     align-items: center;
+    height: 250px;
+    /* margin: 0 50px; */
+    padding: 0;
 }
+
+
+/* 
+.ownedZombieDetail div {
+    width: 40%;
+} */
 
 .ownedZombie {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 !important;
 }
 
-.ownedZombieDetail.zombieImg {
-    width: 60%;
+.zombieImg {
+    width: 50%;
 }
 
-ownedZombieDetail.gadgetsEquipped {
-    width: 38%;
+
+/* 
+.ownedZombieDetail.gadgetsEquipped {
+    width: 45%;
+} */
+
+.gadgetsEquipped img {
+    width: 35%;
+    margin: 5px;
+    padding: 0;
+    background-color: white;
+    border-radius: 3px;
 }
 
-.ownedZombieDetail img {
+.zombieImg img {
+    width: 70%;
+    margin: 0 0 0 50px;
+}
+
+.gadgetsEquipped {
+    margin: 0;
+    padding: 0;
     width: 40%;
 }
