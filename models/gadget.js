@@ -25,9 +25,7 @@ const gadgetSchema = new Schema({
     price: {
         type: Number
     }
-}, {
-    collection: 'gadgets'
-})
+}, { collection: 'gadgets' })
 
 const Gadget = mongoose.model('gadgets', gadgetSchema);
 module.exports = Gadget;

@@ -12,7 +12,6 @@ router.get('/user', secured(), (req, res, next) => {
         })
         .populate('gadgetsOwned')
         .then((user) => {
-            console.log(user);
             res.render('user', { user });
         })
 

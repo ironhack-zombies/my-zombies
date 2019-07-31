@@ -88,6 +88,7 @@
     width: 150px;
     height: 250px;
     position: relative;
+    padding: 5px;
 }
 
 .shopGadget img {

@@ -94,14 +94,6 @@
     width: 45%;
 } */
 
-.gadgetsEquipped img {
-    width: 35%;
-    padding: 0;
-    margin: 0;
-    background-color: white;
-    border-radius: 3px;
-}
-
 .zombieImg img {
     width: 70%;
     margin: 0 0 0 50px;
@@ -116,14 +108,62 @@
 .inventory {
     width: 60%;
     height: 90px;
-    background-color: white;
-    border-radius: 3px;
+    background-color: #422020;
+    border-radius: 10px;
     margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .inventory p {
     font-size: 10px;
     text-align: center;
     color: #b5b69c !important;
-    background-color: #422020;
+}
+
+.inventory img {
+    width: 60px;
+    margin: 0 auto;
+}
+
+.headwear {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5)
+}
+
+.selectGadget img {
+    width: 80px;
+    padding: 0;
+    margin: 0;
+}
+
+.selectGadget p {
+    text-align: center;
+}
+
+.eachGadget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.eachGadget a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }

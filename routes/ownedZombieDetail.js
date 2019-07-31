@@ -5,28 +5,38 @@ const Gadget = require('../models/gadget')
 var secured = require('../lib/middleware/secured');
 
 router.get('/ownedZombieDetail', secured(), (req, res, next) => {
-    console.log(req.user.gadgetsOwned)
     Gadget.find({
             _id: {
                 '$in': req.user.gadgetsOwned
             },
-            category: "Headwear"
+            category: "Headwear",
+            attachedTo: null
         })
         .then(headwear => {
             Gadget.find({
                     _id: {
                         '$in': req.user.gadgetsOwned
                     },
-                    category: "Weapon"
+                    category: "Weapon",
+                    attachedTo: null
                 })
                 .then(weapon => {
-                    console.log(weapon)
-                    let zombieId = req.query.zombie_id;
-                    OwnedZombie.findOne({ _id: zombieId })
-                        .populate('origin')
-                        .then((zombie) => {
-                            // console.log(zombie)
-                            res.render('../views/profile/ownedZombieDetail.hbs', { zombie, headwear, weapon })
+                    Gadget.find({
+                            _id: {
+                                '$in': req.user.gadgetsOwned
+                            },
+                            category: "Clothing",
+                            attachedTo: null
+                        })
+                        .then(clothing => {
+                            let zombieId = req.query.zombie_id;
+                            OwnedZombie.findOne({ _id: zombieId })
+                                .populate('origin')
+                                .populate('gadgets')
+                                .then((zombie) => {
+                                    console.log(clothing)
+                                    res.render('../views/profile/ownedZombieDetail.hbs', { zombie, headwear, weapon, clothing })
+                                })
                         })
                 })
 
