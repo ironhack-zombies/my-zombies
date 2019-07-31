@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const ownedZombieSchema = new Schema({
-    nickname: { type: String },
+    nickname: { type: String, required: true },
     gadgets: [{ type: ObjectId, ref: 'gadgets' }],
     currentState: { type: ObjectId, ref: 'actions' },
     origin: { type: ObjectId, ref: 'zombies' }

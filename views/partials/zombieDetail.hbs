@@ -24,11 +24,8 @@
         <div class="buy">
             <h3>{{zombie.type}}</h3>
             <p><span>{{zombie.price}}</span> <i class="fas fa-brain fa-3x"></i></p>
-            <form action="/shop/zombieDetail?zombie_id={{zombie._id}}" method="POST">
-                <button class="butn" type="submit" onclick="updateBrain(event,'{{zombie._id}}');">BUY</button>
-            </form>
         </div>
-
+        <button id="buyButton">Buy</button>
         <div>
             <div>
                 <h5>Description: </h5>
@@ -49,3 +46,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.onload = function () {
+        console.log("loaded")
+        document.getElementById("buyButton").addEventListener("click", function (event) {
+            let popup = document.createElement("div")
+            popup.classList.add("buyVerification")
+            popup.innerHTML = `<div class="dialogue">
+                <form action="/shop/zombieDetail?zombie_id={{~zombie._id~}}" method="POST" class="popupForm" >
+                    <label for="nickname">Nickname: </label>
+                    <input id="nickname" type="text" name="nickname" placeholder="Nickname" required autofocus>
+                    <button class="butn" type="submit">BUY</button>
+                    <button class="butn" id="cancelBtn">Cancel</button>
+                </form>
+            </div >`;
+            document.getElementsByTagName("body")[0].appendChild(popup);
+            document.getElementById("cancelBtn").addEventListener("click", function(event) {
+                let popup = document.getElementsByClassName("buyVerification")[0];
+                popup.parentNode.removeChild(popup)
+            })
+            console.log("popup!")
+        })
+    }
+</script>
