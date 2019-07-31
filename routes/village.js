@@ -5,6 +5,7 @@ const Story = require('../models/story')
 const Comment = require('../models/comment')
 const OwnedZombie = require('../models/ownedZombie')
 const User = require('../models/user')
+const Action = require('../models/action')
 const brainsPerFight = 2;
 
 router.get('/village', secured(), (req, res, next) => {
@@ -64,7 +65,9 @@ router.get('/village/arena', secured(), (req, res, next) => {
         _id: {
             '$in': req.user.zombiesOwned
         }
-    }).then(zombies => {
+    }).populate("currentState")
+    .then(zombies => {
+        zombies = zombies.filter(zombie => !(zombie.currentState && zombie.currentState.end.getTime() > new Date().getTime()))
         res.render("village/arena", {zombies: zombies, message: req.flash("message")})
     }).catch(error => {
         console.error(error);
@@ -75,7 +78,7 @@ router.get('/village/arena', secured(), (req, res, next) => {
 router.post('/village/arena/fight', secured(), (req, res, next) => {
     OwnedZombie.findById({
         _id: req.body.zombie
-    }).then(zombie => {
+    }).populate("currentState").then(zombie => {
         if(req.user.brains < brainsPerFight) {
             req.flash("message", `Not enough brains! (${brainsPerFight})`);
             res.redirect("/village/arena");
@@ -83,6 +86,11 @@ router.post('/village/arena/fight', secured(), (req, res, next) => {
         }
         if(zombie.owner.toString() !== req.user._id.toString()) {
             req.flash("message", "Not your zombie!");
+            res.redirect("/village/arena");
+            return;
+        }
+        if(zombie.currentState && zombie.currentState.end.getTime() > new Date().getTime()) {
+            req.flash("message", "This zombie is currently " + zombie.currentState.description);
             res.redirect("/village/arena");
             return;
         }
@@ -96,9 +104,19 @@ router.post('/village/arena/fight', secured(), (req, res, next) => {
         res.render("village/arenaFight", {zombie: zombie, fight: fight})
         if(fight.won) {
             let brains = fight.rewards.brains - brainsPerFight
-            return User.findByIdAndUpdate({_id: zombie.owner}, {$inc: { fightsWon: 1}, $inc: {brains: brains} })
+            return Promise.all([
+                User.findByIdAndUpdate({_id: zombie.owner}, {$inc: { fightsWon: 1, brains: brains }}),
+                zombie.updateOne({$inc: { fightsWon: 1, experiance: 10 }})
+            ])
         } else {
-            return User.findByIdAndUpdate({_id: zombie.owner}, {$inc: {brains: -brainsPerFight} })
+            return Promise.all([
+                User.findByIdAndUpdate({_id: zombie.owner}, {$inc: {brains: -brainsPerFight} }),
+                new Action({
+                    description: "reattaching " + (Math.random() < 0.3 ? "an arm" : (Math.random() < 0.5 ? "a foot" : "6 toes")),
+                    type: "Recovery",
+                    end: new Date().setTime(new Date().getTime() + Math.floor((0.5 + Math.random() * 1.5) * 60 * 60 * 1000))
+                }).save().then(action => zombie.updateOne({$set: {currentState: action._id}}))
+            ])
         }
     }).catch(error => {
         console.error(error);

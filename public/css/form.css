@@ -9,7 +9,7 @@
 
 .login > div, .register > div {
     width: 400px;
-    max-width: 100%;
+    max-width: 90%;
     margin-bottom: 20px;
     text-align: center;
 }

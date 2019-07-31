@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var passport = require('passport');
 const bodyParser = require('body-parser')
 
-hbs.registerHelper('ifIn', function(elem, list, options) {
+hbs.registerHelper('ifIn', function (elem, list, options) {
     if (list.indexOf(elem) > -1) {
         return options.fn(this);
     }
@@ -21,11 +21,11 @@ hbs.registerHelper('ifIn', function(elem, list, options) {
 
 hbs.registerHelper('ifvalue', function (conditional, options) {
     if (options.hash.value && conditional && options.hash.value.toString() === conditional.toString()) {
-      return options.fn(this)
+        return options.fn(this)
     } else {
-      return options.inverse(this);
+        return options.inverse(this);
     }
-  });
+});
 
 // Connection to the database "recipeApp"
 mongoose.connect(process.env.MONGODB_URI, {
@@ -57,7 +57,7 @@ app.use(session({
 
 if (app.get('env') === 'production') {
     // enforce https and deny put requests over http
-    app.use(function(req, res, next) {
+    app.use(function (req, res, next) {
         let isHttps = req.secure || (req.headers["x-forwarded-proto"] || '').substring(0, 5) === 'https';
         if (isHttps) next();
         else {
@@ -90,24 +90,17 @@ hbs.registerPartials(path.join(__dirname, 'views', 'profile'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
-let giftCheck = function(req, res, next) {
+let giftCheck = function (req, res, next) {
     if (req.user) {
         let timeStart = req.user.timeStart;
         let timeNow = new Date().getTime();
-        console.log(timeNow);
         if (timeNow >= timeStart) {
-            res.locals = { notYet: false };
-            next();
+            res.locals.notYet = false
         } else {
-            res.locals = { notYet: true };
-            next();
+            res.locals.notYet = true
         }
-    } else {
-        let timeNow = new Date().getTime();
-        console.log(timeNow);
-        res.locals = { notYet: true };
-        next();
     }
+    next();
 }
 
 app.use(giftCheck);
