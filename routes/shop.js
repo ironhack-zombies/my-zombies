@@ -39,8 +39,11 @@ router.get('/zombies', secured(), (req, res, next) => {
 })
 
 router.get('/gadgets', secured(), (req, res, next) => {
-    Gadget.find({})
+    Gadget.find({
+            tier: { $in: ['Basic', 'Good'] }
+        })
         .then((gadgets) => {
+            console.log(gadgets)
             res.render('shop/gadgets', {
                 gadgets
             });

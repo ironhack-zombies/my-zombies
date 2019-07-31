@@ -20,9 +20,9 @@
     "price": 150
 }, {
     "name": "Elf's Sword",
-    "tier": "Good",
+    "tier": "Rare",
     "icon": "/images/gadgets/superSword.png",
-    "price": 200
+    "price": 500
 }, {
     "name": "Cave Man's Log",
     "tier": "Good",
@@ -40,42 +40,93 @@
     "price": 120
 }, {
     "name": "Gandalf Staff",
-    "tier": "Good",
+    "tier": "Rare",
     "icon": "/images/gadgets/gandalfStick.png",
     "price": 280
 }, {
     "name": "Orange is the New Cone",
     "tier": "Basic",
     "icon": "/images/gadgets/cone.png",
-    "price": 175
+    "price": 175,
+    "category": "Headwear"
 }, {
     "name": "X-ray Glasses",
     "tier": "Basic",
     "icon": "/images/gadgets/glasses.png",
-    "price": 230
+    "price": 230,
+    "category": "Clothing"
 }, {
     "name": "Deep Sea Goggles",
     "tier": "Good",
     "icon": "/images/gadgets/goggles.png",
-    "price": 45
+    "price": 45,
+    "category": "Clothing"
 }, {
     "name": "Little Black Curly Hair",
-    "tier": "Good",
+    "tier": "Rare",
     "icon": "/images/gadgets/hair.png",
-    "price": 220
+    "price": 220,
+    "category": "Headwear"
+
 }, {
     "name": "Lost Sea Bucket",
-    "tier": "Good",
+    "tier": "Rare",
     "icon": "/images/gadgets/piratebucket.png",
-    "price": 300
+    "price": 300,
+    "category": "Headwear"
 }, {
     "name": "Good for Your Head",
     "tier": "Good",
     "icon": "/images/gadgets/rugby.png",
-    "price": 210
+    "price": 210,
+    "category": "Headwear"
+
 }, {
     "name": "A Bucket Head",
     "tier": "Good",
     "icon": "/images/gadgets/bucket.png",
-    "price": 280
+    "price": 280,
+    "category": "Headwear"
+}, {
+    "name": "Giant's Boots",
+    "tier": "Rare",
+    "icon": "/images/gadgets/giantsboots.png",
+    "price": 500,
+    "category": "Clothing"
+}, {
+    "name": "Harry Potter's Cloak",
+    "tier": "Rare",
+    "icon": "/images/gadgets/harrypotter.png",
+    "price": 400,
+    "category": "Clothing"
+}, {
+    "name": "Kight's Armor",
+    "tier": "Basic",
+    "icon": "/images/gadgets/knight.png",
+    "price": 100,
+    "category": "Clothing"
+}, {
+    "name": "Lord of the Ring",
+    "tier": "Good",
+    "icon": "/images/gadgets/lotr.png",
+    "price": 95,
+    "category": "Clothing"
+}, {
+    "name": "Cinderella's Dress",
+    "tier": "Basic",
+    "icon": "/images/gadgets/pricess.png",
+    "price": 60,
+    "category": "Clothing"
+}, {
+    "name": "Santa's Belt",
+    "tier": "Rare",
+    "icon": "/images/gadgets/santa.png",
+    "price": 450,
+    "category": "Clothing"
+}, {
+    "name": "Schoolgirl's Bag",
+    "tier": "Good",
+    "icon": "/images/gadgets/schoolbag.png",
+    "price": 130,
+    "category": "Clothing"
 }]

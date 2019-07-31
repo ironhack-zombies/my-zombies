@@ -7,8 +7,6 @@
     margin: 50px !important;
 }
 
-.owned {}
-
 
 /* Style the horizontal tab */
 
@@ -69,8 +67,8 @@
     justify-content: space-around;
     align-items: center;
     height: 250px;
-    /* margin: 0 50px; */
-    padding: 0;
+    margin: 50px 0;
+    /* padding: 0; */
 }
 
 
@@ -84,7 +82,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 !important;
 }
 
 .zombieImg {
@@ -99,8 +96,8 @@
 
 .gadgetsEquipped img {
     width: 35%;
-    margin: 5px;
     padding: 0;
+    margin: 0;
     background-color: white;
     border-radius: 3px;
 }
@@ -114,4 +111,19 @@
     margin: 0;
     padding: 0;
     width: 40%;
+}
+
+.inventory {
+    width: 60%;
+    height: 90px;
+    background-color: white;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.inventory p {
+    font-size: 10px;
+    text-align: center;
+    color: #b5b69c !important;
+    background-color: #422020;
 }
