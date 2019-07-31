@@ -1,7 +1,8 @@
-<div>
     <div class="ownedZombie">
             <div class="ownedZombieDetail">
-                <img class="zombieImg" src="{{zombie.origin.image}}">
+                <div class="zombieImg">
+                    <img src="{{zombie.origin.image}}">
+                </div>
                 <div class="gadgetsEquipped">
                     <div>
                         <img src="/images/gadgets/axe.png">
@@ -28,7 +29,7 @@
             <li>{{this}}</li>
         {{/each}}
         </ul>
-
-        <button class="butn" type="submit">Equip</button>
+        {{!-- <form action="/ownedZombieDetail" method="POSR"> --}}
+        <button class="butn" type="submit" onclick="equipGadgets();">Equip</button>
+        {{!-- </form> --}}
     </div>
-</div>

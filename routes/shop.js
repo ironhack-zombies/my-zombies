@@ -108,6 +108,7 @@ router.post('/zombieDetail', secured(), (req, res, next) => {
                                     User.populate(ownedzombie, 'zombiesOwned')
                                     res.render('../views/partials/zombieDetail', {
                                         zombie,
+                                        user,
                                         buy: true
                                     });
                                 })
@@ -123,24 +124,6 @@ router.post('/zombieDetail', secured(), (req, res, next) => {
 
 
 })
-
-// router.post('/zombieDetail/:id', secured(), (req, res, next) => {
-//     debugger
-//     let zombieId = req.params.id;
-//     Zombie.findById(zombieId)
-//         .then(zombieBought => {
-//             if (!zombieBought) {
-//                 res.status(500).send(`{message: 'Zombie not found'}`)
-//                 return;
-//             } else {
-//                 debugger
-//                 let price = zombieBought.price;
-//                 let brainsOwned = req.user.brains;
-//                 let brainsLeft = brainsOwned - price;
-//                 res.status(200).send({ brains: brainsLeft })
-//             }
-//         })
-// })
 
 router.post('/gadgets', secured(), (req, res, next) => {
     let gadgetId = req.query.gadget_id;
