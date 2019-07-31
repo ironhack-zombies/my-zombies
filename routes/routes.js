@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 
 router.use(require('../lib/middleware/userInViews')());
 
@@ -22,6 +23,7 @@ router.use("/shop", require("./shop"))
 router.use(require("./users"));
 router.use(require("./dailyGift"));
 router.use(require("./ownedZombieDetail"));
+router.use(require("./equipGadget"));
 
 
 // catch 404 and render a not-found.hbs template

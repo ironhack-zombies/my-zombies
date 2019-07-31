@@ -3,6 +3,7 @@ const router = express.Router();
 const Zombie = require('../models/zombie');
 const Gadget = require('../models/gadget');
 const OwnedZombie = require('../models/ownedZombie');
+const OwnedGadget = require('../models/ownedGadget');
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const secured = require('../lib/middleware/secured')
@@ -43,10 +44,7 @@ router.get('/gadgets', secured(), (req, res, next) => {
             tier: { $in: ['Basic', 'Good'] }
         })
         .then((gadgets) => {
-            console.log(gadgets)
-            res.render('shop/gadgets', {
-                gadgets
-            });
+            res.render('shop/gadgets', { gadgets });
         })
         .catch((err) => {
             next(err);
@@ -77,7 +75,6 @@ router.get('/zombieDetail', secured(), (req, res, next) => {
 router.post('/zombieDetail', secured(), (req, res, next) => {
     if (req.user) {
         let zombieId = req.query.zombie_id;
-        console.log(zombieId);
         Zombie.findOne({
                 _id: zombieId
             })
@@ -135,7 +132,9 @@ router.post('/gadgets', secured(), (req, res, next) => {
     Gadget.findOne({ _id: gadgetId })
         .then((gadget) => {
             if (gadget.price > req.user.brains) {
-                Gadget.find()
+                Gadget.find({
+                        tier: { $in: ['Basic', 'Good'] }
+                    })
                     .then(gadgets => {
                         res.render('../views/shop/gadgets', {
                             gadgets,
@@ -143,32 +142,45 @@ router.post('/gadgets', secured(), (req, res, next) => {
                         });
                     })
             } else {
-                let userId = req.user._id;
-                let ownedGadgetId = mongoose.Types.ObjectId(gadget._id);
-                let brainsLeft = req.user.brains - gadget.price;
-                let gadgetArr = req.user.gadgetsOwned;
-                gadgetArr.push(ownedGadgetId);
-                let userOwned = {
-                    gadgetsOwned: gadgetArr,
-                    brains: brainsLeft
-                }
-                User.findByIdAndUpdate(userId, userOwned, {
-                        new: true
-                    })
-                    .then((user) => {
-                        debugger
-                        User.populate(gadget, 'gadgetsOwned')
-                        Gadget.find()
-                            .then(gadgets => {
-                                res.render('../views/shop/gadgets', {
-                                    gadgets,
-                                    buy: true
-                                });
-                            })
+                let id = gadget._id;
+                let newOrigin = mongoose.Types.ObjectId(id)
+                var newOwnedGadget = new OwnedGadget({
+                    origin: newOrigin
+                });
 
+                newOwnedGadget.save(
+                        OwnedGadget.populate(newOwnedGadget, 'origin'))
+                    .then((ownedGadget) => {
+                        let userId = req.user._id;
+                        let ownedGadgetId = mongoose.Types.ObjectId(ownedGadget._id);
+                        let brainsLeft = req.user.brains - gadget.price;
+                        let gadgetArr = req.user.gadgetsOwned;
+                        gadgetArr.push(ownedGadgetId);
+                        let userOwned = {
+                            gadgetsOwned: gadgetArr,
+                            brains: brainsLeft
+                        }
+                        User.findByIdAndUpdate(userId, userOwned, {
+                                new: true
+                            })
+                            .then((user) => {
+                                User.populate(gadget, 'gadgetsOwned')
+                                Gadget.find({
+                                        tier: { $in: ['Basic', 'Good'] }
+                                    })
+                                    .then(gadgets => {
+                                        res.render('../views/shop/gadgets', {
+                                            gadgets,
+                                            user,
+                                            buy: true
+                                        });
+                                    })
+                            })
+                    })
+                    .catch(err => {
+                        res.status(500).send("ERROR (BRAAIIIIINS)");
                     })
             }
-
         })
 })
 module.exports = router;

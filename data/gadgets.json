@@ -2,47 +2,56 @@
     "name": "The Axe of Legend",
     "tier": "Basic",
     "icon": "/images/gadgets/axe.png",
-    "price": 10
+    "price": 10,
+    "category": "Weapon"
 }, {
     "name": "Brain Juice Potion",
     "tier": "Good",
     "icon": "/images/gadgets/healingPotion.png",
-    "price": 100
+    "price": 100,
+    "category": "Weapon"
 }, {
     "name": "Indiana Jones' Rope",
     "tier": "Basic",
     "icon": "/images/gadgets/indianaJonesRope.png",
-    "price": 50
+    "price": 50,
+    "category": "Weapon"
 }, {
     "name": "The Lost Pirate Sword",
     "tier": "Good",
     "icon": "/images/gadgets/pirateSword.png",
-    "price": 150
+    "price": 150,
+    "category": "Weapon"
 }, {
     "name": "Elf's Sword",
     "tier": "Rare",
     "icon": "/images/gadgets/superSword.png",
-    "price": 500
+    "price": 500,
+    "category": "Weapon"
 }, {
     "name": "Cave Man's Log",
     "tier": "Good",
     "icon": "/images/gadgets/caveManLog.png",
-    "price": 80
+    "price": 80,
+    "category": "Weapon"
 }, {
     "name": "Fist of Fury",
     "tier": "Good",
     "icon": "/images/gadgets/fistOfFury.png",
-    "price": 30
+    "price": 30,
+    "category": "Weapon"
 }, {
     "name": "Robin Hood's Bow",
     "tier": "Good",
     "icon": "/images/gadgets/robinHoodsBow.png",
-    "price": 120
+    "price": 120,
+    "category": "Weapon"
 }, {
     "name": "Gandalf Staff",
     "tier": "Rare",
     "icon": "/images/gadgets/gandalfStick.png",
-    "price": 280
+    "price": 280,
+    "category": "Weapon"
 }, {
     "name": "Orange is the New Cone",
     "tier": "Basic",

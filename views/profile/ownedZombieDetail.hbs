@@ -4,17 +4,35 @@
                 <img src="{{zombie.origin.image}}">
             </div>
             <div class="gadgetsEquipped">
-                <div id="headWear" class="inventory">
+                <div id="headwear" class="inventory">
                     <p>Headwear</p>
-                    {{!-- <img src="/images/gadgets/axe.png"> --}}
+                    {{#if zombie.gadgets}}
+                    {{#each zombie.gadgets}}
+                    {{#ifvalue category value="Headwear"}}
+                    <img src={{icon}}>
+                    {{/ifvalue}}
+                    {{/each}}
+                    {{/if}}
                 </div>
                 <div id="weapon" class="inventory">
                     <p>Weapon</p>
-                    {{!-- <img src="/images/gadgets/axe.png"> --}}
+                    {{#if zombie.gadgets}}
+                    {{#each zombie.gadgets}}
+                    {{#ifvalue category value="Weapon"}}
+                    <img src={{icon}}>
+                    {{/ifvalue}}
+                    {{/each}}         
+                    {{/if}}       
                 </div>
                 <div id="clothing" class="inventory">
-                    <p>Clothing</p>                    
-                    {{!-- <img src="/images/gadgets/axe.png"> --}}
+                    <p>Clothing</p>   
+                    {{#if zombie.gadgets}}                 
+                    {{#each zombie.gadgets}}
+                    {{#ifvalue category value="Clothing"}}
+                    <img src={{icon}}>
+                    {{/ifvalue}}
+                    {{/each}}    
+                    {{/if}}            
                 </div>
             </div>
         </div>
@@ -33,30 +51,67 @@
     {{/each}}
     </ul>
     {{!-- <form action="/ownedZombieDetail" method="POSR"> --}}
-    <div id="equip">
-    </div>
 
-    <button id="equipBtn" class="butn" type="submit">Equip</button>
+    {{!-- <button id="equipBtn" class="butn" type="submit">Equip</button> --}}
     {{!-- </form> --}}
 </div>
 
 <script>
     window.onload = function () {
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("zombie_id");
+        console.log(c);
         console.log("loaded")
-        document.getElementById("equipBtn").addEventListener("click", function (event) {
-            let selectGadget = document.createElement("div")
-            selectGadget.innerHTML = 
+        document.getElementById("headwear").addEventListener("click", function (event) {
+            let selectHead = document.createElement("div");
+            selectHead.classList.add("headwear");
+            selectHead.innerHTML = 
             `<div class="selectGadget">
-                <form action="/ownedZombieDetail?zombie_id={{~zombie._id~}}" method="POST">
-                    <select name="gadgetChosen" multiple>
-                        {{~#each user.gadgetsOwned~}}
-                        <option value="{{~name~}}">{{~name~}}</option>
-                        {{~/each~}}
-                    </select>
-                </form>
+                {{~#each headwear~}}
+                    <div class="eachGadget">
+                        <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
+                        <p>{{~name~}}</p>
+                        <img src="{{~icon~}}">
+                    </div>
+                {{~/each~}}
+                <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
             </div >`;
-            document.getElementById("equip").appendChild(selectGadget);
-            console.log("popup!")
+            document.getElementsByTagName("body")[0].appendChild(selectHead);
         })
+
+        document.getElementById("weapon").addEventListener("click", function (event) {
+            let selectWeapon = document.createElement("div")
+            selectWeapon.classList.add("headwear")
+            selectWeapon.innerHTML = 
+            `<div class="selectGadget">
+                {{~#each weapon~}}
+                    <div class="eachGadget">
+                        <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
+                        <p>{{~name~}}</p>
+                        <img src="{{~icon~}}">
+                    </div>
+                {{~/each~}}
+                <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
+            </div >`;
+            document.getElementsByTagName("body")[0].appendChild(selectWeapon);
+        })     
+
+        document.getElementById("clothing").addEventListener("click", function (event) {
+            let selectClothing = document.createElement("div")
+            selectClothing.classList.add("headwear")
+            selectClothing.innerHTML = 
+            `<div class="selectGadget">
+                {{~#each clothing~}}
+                    <div class="eachGadget">
+                        <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
+                        <p>{{~name~}}</p>
+                        <img src="{{~icon~}}">
+                    </div>
+                {{~/each~}}
+                <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
+            </div >`;
+            document.getElementsByTagName("body")[0].appendChild(selectClothing);
+        })          
     }
 </script>
