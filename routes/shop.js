@@ -157,27 +157,9 @@ router.post('/gadgets', secured(), (req, res, next) => {
                         let gadgetArr = req.user.gadgetsOwned;
                         gadgetArr.push(ownedGadgetId);
                         let userOwned = {
-                                gadgetsOwned: gadgetArr,
-                                brains: brainsLeft
-                            }
-                            // let id = zombie._id
-                            // var newOwnedZombie = new OwnedZombie({
-                            //     origin: mongoose.Types.ObjectId(id),
-                            //     nickname: req.body.nickname.trim(),
-                            //     owner: req.user._id
-                            // });
-                            // newOwnedZombie.save(
-                            //         OwnedZombie.populate(newOwnedZombie, 'origin'))
-                            //     .then((ownedzombie) => {
-                            //         let userId = req.user._id;
-                            //         let ownedZombieId = mongoose.Types.ObjectId(ownedzombie._id);
-                            //         let brainsLeft = req.user.brains - zombie.price;
-                            //         let zombArr = req.user.zombiesOwned;
-                            //         zombArr.push(ownedZombieId);
-                            //         let userOwned = {
-                            //             zombiesOwned: zombArr,
-                            //             brains: brainsLeft
-                            //         }
+                            gadgetsOwned: gadgetArr,
+                            brains: brainsLeft
+                        }
                         User.findByIdAndUpdate(userId, userOwned, {
                                 new: true
                             })
@@ -198,36 +180,7 @@ router.post('/gadgets', secured(), (req, res, next) => {
                     .catch(err => {
                         res.status(500).send("ERROR (BRAAIIIIINS)");
                     })
-
-                // let userId = req.user._id;
-                // let ownedGadgetId = mongoose.Types.ObjectId(gadget._id);
-                // let brainsLeft = req.user.brains - gadget.price;
-                // let gadgetArr = req.user.gadgetsOwned;
-                // gadgetArr.push(ownedGadgetId);
-                // let userOwned = {
-                //     gadgetsOwned: gadgetArr,
-                //     brains: brainsLeft
-                // }
-                // User.findByIdAndUpdate(userId, userOwned, {
-                //         new: true
-                //     })
-                //     .then((user) => {
-                //         debugger
-                //         User.populate(gadget, 'gadgetsOwned')
-                //         Gadget.find({
-                //                 tier: { $in: ['Basic', 'Good'] }
-                //             })
-                //             .then(gadgets => {
-                //                 res.render('../views/shop/gadgets', {
-                //                     gadgets,
-                //                     user,
-                //                     buy: true
-                //                 });
-                //             })
-
-                //     })
             }
-
         })
 })
 module.exports = router;
