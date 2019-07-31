@@ -23,6 +23,10 @@
       let waiting = document.querySelector(".fightResults .waiting");
       if (info) info.style.display = "block";
       if (waiting) waiting.style.display = "none";
+      {{#ifvalue fight.won value="true"}}
+      let brains = {{fight.rewards.brains}} + {{user.brains}}
+      document.getElementById("numberOfBrains").innerText = brains
+      {{/ifvalue}}
     }, 5000)
   }
 </script>

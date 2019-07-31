@@ -13,7 +13,8 @@
     color: #7d7e73;
 }
 
-nav .numberOfBrains {
+#numberOfBrains {
+    padding-left: 13%;
     color: #b5b69c
 }
 
@@ -47,10 +48,6 @@ ul.collapse.navbar-collapse {
 
 .dailyGiftImg {
     padding-right: 2%;
-}
-
-.numberOfBrains {
-    padding-left: 13%;
 }
 
 #btnGift {

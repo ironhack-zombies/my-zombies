@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="/"><img class="zombIcon" src="/images/favicon.png"> mZ</a>
 {{#if user}}
-        <span class="numberOfBrains">{{user.brains}} <i class="fas fa-brain"></i></span>
+        <span id="numberOfBrains">{{user.brains}} <i class="fas fa-brain"></i></span>
     {{#unless notYet}}
         <a  class="dailyGiftImg" href="/dailyGift"><i class="fas giftNoti fa-gift"></i></a>
     {{else}}
