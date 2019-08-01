@@ -160,10 +160,10 @@
 }
 
 .selectGadget {
-    width: 60%;
     display: flex;
     flex-wrap: wrap;
     max-height: 70%;
+    min-width: 100%;
     overflow-y: scroll;
 }
 
