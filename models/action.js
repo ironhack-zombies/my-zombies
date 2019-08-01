@@ -27,6 +27,6 @@ const actionSchema = new Schema({
 
 const Action = mongoose.model('actions', actionSchema);
 Action.on('index', function(error) {
-  console.log(error)
+  if(error)console.log(error)
 });
 module.exports = Action;
