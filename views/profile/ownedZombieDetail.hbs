@@ -72,7 +72,8 @@
             let selectHead = document.createElement("div");
             selectHead.classList.add("headwear");
             selectHead.innerHTML = 
-            `<div class="selectGadget">
+            `<div>
+                <div class="selectGadget">
                 {{~#each headwear~}}
                     <div class="eachGadget">
                         <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
@@ -80,6 +81,7 @@
                         <img src="{{~origin.icon~}}">
                     </div>
                 {{~/each~}}
+                <div>
                 <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
             </div >`;
             document.getElementsByTagName("body")[0].appendChild(selectHead);

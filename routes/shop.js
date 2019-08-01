@@ -148,11 +148,8 @@ router.post('/gadgets', secured(), (req, res, next) => {
         })
         .then((gadget) => {
             if (gadget.price > req.user.brains) {
-                Gadget.find({
-                        tier: {
-                            $in: ['Basic', 'Good']
-                        }
-                    })
+                Gadget.find()
+                    .sort({ price: 1 })
                     .then(gadgets => {
                         res.render('../views/shop/gadgets', {
                             gadgets,
@@ -183,11 +180,8 @@ router.post('/gadgets', secured(), (req, res, next) => {
                             })
                             .then((user) => {
                                 User.populate(gadget, 'gadgetsOwned')
-                                Gadget.find({
-                                        tier: {
-                                            $in: ['Basic', 'Good']
-                                        }
-                                    })
+                                Gadget.find({})
+                                    .sort({ price: 1 })
                                     .then(gadgets => {
                                         res.render('../views/shop/gadgets', {
                                             gadgets,

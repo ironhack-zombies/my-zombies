@@ -163,10 +163,12 @@
     width: 60%;
     display: flex;
     flex-wrap: wrap;
+    max-height: 70%;
+    overflow-y: scroll;
 }
 
 .selectGadget div {
-    width: 25%;
+    width: 20%;
     margin: 5px;
 }
 
@@ -210,11 +212,6 @@
     .ownedZombieDetail {
         display: flex;
         justify-content: center;
-<<<<<<< HEAD
-        align-items: center;
-        margin: 0;
-=======
->>>>>>> ceb30e9ee9094ddb020c9fdffd5da2054bb45fad
     }
     .zombieImg {
         width: 50%;
