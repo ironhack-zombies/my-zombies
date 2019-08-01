@@ -5,47 +5,71 @@ const secured = require('../lib/middleware/secured')
 
 router.get('/dailyGift', secured(), (req, res, next) => {
     let endDate = new Date().getTime();
-    User.findOne({ _id: req.user.id })
+    User.findOne({
+            _id: req.user.id
+        })
         .then((user) => {
             let timeStart = user.timeStart;
             if (endDate >= timeStart) {
-                res.render("dailyGift", { user, notYet: false })
+                res.render("dailyGift", {
+                    user,
+                    notYet: false
+                })
             } else {
-                User.findOne({ _id: req.user.id })
+                User.findOne({
+                        _id: req.user.id
+                    })
                     .then(user => {
-                        res.render('dailyGift', { user, notYet: true });
+                        res.render('dailyGift', {
+                            user,
+                            notYet: true
+                        });
                     })
             }
         })
 });
 
 router.post('/dailyGift', secured(), (req, res, next) => {
-    res.redirect('/dailyGift');
-})
-
-router.post('/dailyGift/:id', secured(), (req, res, next) => {
-    User.findById(req.params.id)
+    let brainsInBox;
+    let totalBrains;
+    User.findById(req.user._id)
         .then(user => {
             if (!user) {
                 res.status(500).send(`{message: 'User not found'}`)
                 return;
             }
-            debugger
             let brainOwned = req.user.brains
             let timeWait = Math.random() * 1.5 * 3600000;
             let newStart = new Date(new Date().setTime(new Date().getTime() + 5400000 + timeWait)).getTime();
-            let brainsInBox = Math.floor(Math.random() * 20)
-            let totalBrains = brainOwned + brainsInBox;
+            brainsInBox = Math.floor(Math.random() * 20)
+            totalBrains = brainOwned + brainsInBox;
 
-            user.updateOne({
-                    brains: totalBrains,
-                    timeStart: newStart,
+            return user.updateOne({
+                brains: totalBrains,
+                timeStart: newStart,
+            })
+        })
+        .then(docs => {
+            console.log(docs)
+            if (docs.nModified === 1) {
+                res.status(200).send({
+                    boxContent: {
+                        brains: brainsInBox
+                    },
+                    user: {
+                        brains: totalBrains
+                    }
                 })
-                .then(
-                    res.status(200).send({ boxContent: { brains: brainsInBox } }))
-                .catch(error => {
-                    res.status(500).send({ boxContent: { brains: 0 } })
-                })
+            } else {
+                throw new Error("Failed to update user with new brains")
+            }
+        })
+        .catch(error => {
+            res.status(500).send({
+                error: {
+                    message: error.message
+                }
+            })
         })
 });
 module.exports = router;
