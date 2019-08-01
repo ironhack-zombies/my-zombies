@@ -54,10 +54,14 @@
             popup.classList.add("buyVerification")
             popup.innerHTML = `<div class="dialogue">
                 <form action="/shop/zombieDetail?zombie_id={{~zombie._id~}}" method="POST" class="popupForm" >
-                    <label for="nickname">Nickname: </label>
-                    <input id="nickname" type="text" name="nickname" placeholder="Nickname" required autofocus>
-                    <button class="butn" type="submit">BUY</button>
-                    <button class="butn" id="cancelBtn">Cancel</button>
+                    <div>
+                        <label for="nickname">Nickname: </label>
+                        <input id="nickname" type="text" name="nickname" placeholder="Nickname" required autofocus>
+                    </div>
+                    <div class="buttons">
+                        <button class="butn" type="submit">BUY</button>
+                        <button class="butn" id="cancelBtn">Cancel</button>
+                    </div>
                 </form>
             </div >`;
             document.getElementsByTagName("body")[0].appendChild(popup);

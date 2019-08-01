@@ -4,7 +4,7 @@
   <p>Select one of your zombies to fight</p>
   <form class="arena" action="/village/arena/fight" method="POST">
     <div class="selectBox">
-    <select name="zombie" id="zombie">
+    <select autocomplete="off" name="zombie" id="zombie">
       {{#each zombies}}
       <option value="{{_id}}">{{nickname}}</option>
       {{/each}}
