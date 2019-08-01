@@ -83,12 +83,12 @@
 .ownedZombieDetail {
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
     justify-content: space-around;
     align-items: center;
-    height: 250px;
-    margin: 50px 0;
-    /* padding: 0; */
+}
+
+.ownedZombieDetail .gadgetsEquipped div img {
+    padding-bottom: 10px;
 }
 
 .ownedZombie {
@@ -100,23 +100,19 @@
 
 .zombieImg {
     width: 50%;
+    display: flex;
+    justify-content: center;
 }
-
-
-/* 
-.ownedZombieDetail.gadgetsEquipped {
-    width: 45%;
-} */
 
 .zombieImg img {
     width: 70%;
-    margin: 0 0 0 50px;
+    margin: auto;
+    max-height: 350px;
 }
 
 .gadgetsEquipped {
     margin: 0;
     padding: 0;
-    width: 40%;
 }
 
 .inventory {
@@ -135,6 +131,7 @@
     font-size: 10px;
     text-align: center;
     color: #b5b69c !important;
+    margin-bottom: 2px;
 }
 
 .inventory img {
@@ -198,7 +195,7 @@
 }
 
 .detailsZomb {
-    padding-left: 100px;
+    padding: 10px 5%;
 }
 
 @media screen and (min-width: 600px) {
@@ -211,15 +208,19 @@
         height: 100%;
     }
     .ownedZombieDetail {
-        width: 40%;
         display: flex;
         justify-content: center;
+<<<<<<< HEAD
         align-items: center;
         margin: 0;
+=======
+>>>>>>> ceb30e9ee9094ddb020c9fdffd5da2054bb45fad
     }
     .zombieImg {
         width: 50%;
-        padding-top: 8%;
+    }
+    .zombieImg img {
+        max-height: 500px;
     }
     .detailsZomb {
         width: 40%;
