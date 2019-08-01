@@ -1,20 +1,16 @@
 <div class="tabbed">
 <div class="tab">
-  <button class="tablinks active zombies" onclick="openTab(event, 'Zombies')">
-  <i class="fas fa-walking"></i>    
-  <span>Zombies</span>
-  </button>
-  <button class="tablinks" onclick="openTab(event, 'Gadgets')">
-    <i class="fab fa-redhat"></i>    
-    <span>Gadgets</span>
-  </button>
+  <button class="tablinks{{#ifvalue tab value="zombies"}} active{{/ifvalue}}" onclick="openTab(event, 'Zombies')">
+  <i class="fas fa-walking"></i> Zombies</button>
+  <button class="tablinks{{#ifvalue tab value="gadgets"}} active{{/ifvalue}}" onclick="openTab(event, 'Gadgets')">
+    <i class="fab fa-redhat"></i>Gadgets</button>
 </div>
 
-  <div id="Zombies" class="tabcontent">
+  <div id="Zombies" class="tabcontent{{#ifvalue tab value="zombies"}} open{{/ifvalue}}">
    {{>zombiesOwned}}
   </div>
 
-  <div id="Gadgets" class="tabcontent">
+  <div id="Gadgets" class="tabcontent{{#ifvalue tab value="gadgets"}} open{{/ifvalue}}">
    {{>gadgetsOwned}}
   </div>
 </div>

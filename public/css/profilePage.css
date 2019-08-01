@@ -34,10 +34,6 @@
     background-color: #b8b9a9;
 }
 
-#Zombies {
-    display: block;
-}
-
 .tabbed {
     height: 100%;
     display: flex;
@@ -48,6 +44,10 @@
     display: none;
     border-top: none;
     height: 100%;
+}
+
+.tabcontent.open {
+    display: block;
 }
 
 .tabbutton {

@@ -5,6 +5,7 @@ const secured = require('../lib/middleware/secured')
 
 router.get('/user', secured(), (req, res, next) => {
     let userId = req.user._id;
+    let tab = req.query.tab || "zombies";
     User.findOne({ _id: userId })
         .populate({
             path: 'zombiesOwned',
@@ -16,9 +17,8 @@ router.get('/user', secured(), (req, res, next) => {
         })
         .then((user) => {
             console.log(user)
-            res.render('user', { user });
+            res.render('user', { user:user, tab:tab });
         })
-
 });
 
 module.exports = router;

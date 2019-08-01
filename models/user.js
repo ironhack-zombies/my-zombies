@@ -22,7 +22,7 @@ const userSchema = new Schema({
     },
     brains: {
         type: Number,
-        default: 0
+        default: 15
     },
     timeStart: {
         type: Number,

@@ -1,4 +1,4 @@
-<div class="{{#if user.zombiesOwned}}catalog gadgetsCatalog{{else}}nothingToShow{{/if}}">
+<div class="{{#if user.gadgetsOwned}}catalog gadgetsCatalog{{else}}nothingToShow{{/if}}">
 {{#each user.gadgetsOwned}}
       <div class="shopGadget ownedZombie">
         <img src="{{origin.icon}}">
@@ -6,7 +6,7 @@
         <p>Level: {{origin.tier}}</p>
       </div>
 {{else}}
-<p>Nothing to show :(</p>
+<p>Nothing to show <i class="far fa-frown"></i></p>
 <p>You can <a href="/shop/gadgets">buy gadgets in the shop</a></p>
 {{/each}}
 </div>
