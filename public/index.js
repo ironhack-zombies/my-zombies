@@ -99,9 +99,10 @@ function openBox(event) {
                     <h3>A bucket of roten brains</h3>
                     <p>${brainsInBox} <i class="fas fa-brain fa-2x"></i></p>
                 </div>`;
+            document.getElementsByClassName("dailyGiftImg")[0].firstChild.classList.remove("giftNoti");
             document.getElementById("giftBox").innerHTML += boxContentHtml;
-            $(".giftName").addClass("active");
-            document.getElementById("numberOfBrains").innerText = brainsTotal;
+            $(".giftInfo").addClass("active");
+            document.getElementById("numberOfBrains").firstChild.innerText = brainsTotal;
             console.log('post successfull and the response is: ', response);
         })
         .catch(function (error) {

@@ -1,12 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="/"><img class="zombIcon" src="/images/favicon.png"> mZ</a>
 {{#if user}}
-        <span id="numberOfBrains">{{user.brains}} <i class="fas fa-brain"></i></span>
-    {{#unless notYet}}
-        <a  class="dailyGiftImg" href="/dailyGift"><i class="fas giftNoti fa-gift"></i></a>
-    {{else}}
-        <a  class="dailyGiftImg" href="/dailyGift"><button id="btnGift" class="start"><i class="fas fa-gift"></i></button> </a>
-    {{/unless}}
+    <span id="numberOfBrains"><span>{{user.brains}}</span> <i class="fas fa-brain"></i></span>
+    <a  class="dailyGiftImg" href="/dailyGift"><i class="fas{{#unless notYet}} giftNoti{{/unless}} fa-gift"></i></a>
 {{/if}}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
         <span class="navbar-toggler-icon"></span>

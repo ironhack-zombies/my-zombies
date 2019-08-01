@@ -14,50 +14,49 @@
   class Countdown {
     constructor() {
       this.userTime = {{ user.timeStart }}
-    };
       this.currentTime = new Date().getTime();
-  this.timeDifference = this.userTime - this.currentTime;
+      this.timeDifference = this.userTime - this.currentTime;
     }
 
-  start() {
-    this.setTime();
-    this.startClick();
-  }
-
-  setTime() {
-    minutes.innerText = this.getMinutes();
-    seconds.innerText = this.getSeconds();
-    hours.innerText = this.getHours();
-  }
-
-  increase() {
-    this.currentTime = new Date().getTime();
-    this.timeDifference = this.userTime - this.currentTime;
-    this.setTime();
-  }
-
-  startClick() {
-    this.intervalId = setInterval(this.increase.bind(this), 1000);
-  }
-
-  getHours() {
-    return this.twoDigitsNumber(Math.floor((this.timeDifference / 3600000) % 24));
-  }
-  getMinutes() {
-    return this.twoDigitsNumber(Math.floor((this.timeDifference / 60000) % 60));
-  }
-
-  getSeconds() {
-    return this.twoDigitsNumber(Math.floor((this.timeDifference / 1000) % 60));
-  }
-
-  twoDigitsNumber(number) {
-    if (number < 10) {
-      return `0${number}`;
-    } else {
-      return `${number}`;
+    start() {
+      this.setTime();
+      this.startClick();
     }
-  }
+
+    setTime() {
+      minutes.innerText = this.getMinutes();
+      seconds.innerText = this.getSeconds();
+      hours.innerText = this.getHours();
+    }
+
+    increase() {
+      this.currentTime = new Date().getTime();
+      this.timeDifference = this.userTime - this.currentTime;
+      this.setTime();
+    }
+
+    startClick() {
+      this.intervalId = setInterval(this.increase.bind(this), 1000);
+    }
+
+    getHours() {
+      return this.twoDigitsNumber(Math.floor((this.timeDifference / 3600000) % 24));
+    }
+    getMinutes() {
+      return this.twoDigitsNumber(Math.floor((this.timeDifference / 60000) % 60));
+    }
+
+    getSeconds() {
+      return this.twoDigitsNumber(Math.floor((this.timeDifference / 1000) % 60));
+    }
+
+    twoDigitsNumber(number) {
+      if (number < 10) {
+        return `0${number}`;
+      } else {
+        return `${number}`;
+      }
+    }
   }
 
   let countdown = new Countdown();
@@ -69,7 +68,7 @@
 </script>
 {{else}}
 <div class="wrapper">
-  <div class="info">
+  <div class="giftInfo">
     <div id="giftBox">
     </div>
     <a href="/dailyGift">OK, thanks</a>
