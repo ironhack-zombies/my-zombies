@@ -16,7 +16,7 @@ router.get('/zombies', secured(), (req, res, next) => {
                     // case insensitive
                     $options: 'i'
                 }
-            })
+            }).sort({ price: 1 })
             .then(zombies => {
                 res.render('shop/zombies', {
                     zombies: zombies,
@@ -27,7 +27,7 @@ router.get('/zombies', secured(), (req, res, next) => {
                 next(err);
             })
     } else {
-        Zombie.find({})
+        Zombie.find({}).sort({ price: 1 })
             .then(zombies => {
                 res.render('shop/zombies', {
                     zombies
@@ -46,11 +46,8 @@ router.get('/gadgets', secured(), (req, res, next) => {
                     $regex: ".*" + req.query.search + ".*",
                     // case insensitive
                     $options: 'i'
-                },
-                tier: {
-                    $in: ['Basic', 'Good']
                 }
-            })
+            }).sort({ price: 1 })
             .then((gadgets) => {
                 res.render('shop/gadgets', {
                     gadgets: gadgets,
@@ -61,7 +58,7 @@ router.get('/gadgets', secured(), (req, res, next) => {
                 next(err);
             })
     } else {
-        Gadget.find()
+        Gadget.find().sort({ price: 1 })
             .then((gadgets) => {
                 res.render('shop/gadgets', {
                     gadgets
