@@ -14,6 +14,6 @@
   <div>
     <button type="submit" class="butn">Log in</button>
   </div>
+  {{#if message}}<p class="message"><i class="fas fa-skull-crossbones"></i> {{message}}</p>{{/if}}
   <small>No account yet? <a href="/register">Sign up</a></small>
 </form>
-{{#if message}}<p>{{message}}</p>{{/if}}

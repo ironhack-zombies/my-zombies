@@ -1,5 +1,5 @@
-
-.login, .register {
+.login,
+.register {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,14 +7,20 @@
     height: 100%;
 }
 
-.login > div, .register > div {
+.message {
+    color: darkred;
+}
+
+.login>div,
+.register>div {
     width: 400px;
     max-width: 90%;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.login button, .register button {
+.login button,
+.register button {
     width: 100px;
 }
 

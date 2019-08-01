@@ -106,7 +106,7 @@
 }
 
 .inventory {
-    width: 60%;
+    width: 90px;
     height: 90px;
     background-color: #422020;
     border-radius: 10px;
@@ -181,4 +181,8 @@
 
 .eachGadget p {
     font-size: 10px;
+}
+
+.detailsZomb {
+    padding-left: 100px;
 }

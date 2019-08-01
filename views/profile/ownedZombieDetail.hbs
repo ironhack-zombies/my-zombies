@@ -1,57 +1,59 @@
-<div class="ownedZombie">
-        <div class="ownedZombieDetail">
-            <div class="zombieImg">
-                <img src="{{zombieNow.origin.image}}">
+<div class="detailPage">
+    <div class="ownedZombieDetail">
+        <div class="zombieImg">
+            <img src="{{zombieNow.origin.image}}">
+        </div>
+        <div class="gadgetsEquipped">
+            <div id="headwear" class="inventory">
+                <p>Headwear</p>
+                {{#if zombieNow.gadgets}}                 
+                {{#each zombieNow.gadgets}}
+                {{#ifvalue origin.category value="Headwear"}}
+                <img src={{origin.icon}}>
+                {{/ifvalue}}
+                {{/each}}
+                {{/if}}
             </div>
-            <div class="gadgetsEquipped">
-                <div id="headwear" class="inventory">
-                    <p>Headwear</p>
-                    {{#if zombieNow.gadgets}}                 
-                    {{#each zombieNow.gadgets}}
-                    {{#ifvalue origin.category value="Headwear"}}
-                    <img src={{origin.icon}}>
-                    {{/ifvalue}}
-                    {{/each}}
-                    {{/if}}
-                </div>
-                <div id="weapon" class="inventory">
-                    <p>Weapon</p>
-                    {{#if zombieNow.gadgets}}
-                    {{#each zombieNow.gadgets}}
-                    {{#ifvalue origin.category value="Weapon"}}
-                    <img src={{origin.icon}}>
-                    {{/ifvalue}}
-                    {{/each}}         
-                    {{/if}}       
-                </div>
-                <div id="clothing" class="inventory">
-                    <p>Clothing</p>   
-                    {{#if zombieNow.gadgets}}                 
-                    {{#each zombieNow.gadgets}}
-                    {{#ifvalue origin.category value="Clothing"}}
-                    <img src={{origin.icon}}>
-                    {{/ifvalue}}
-                    {{/each}}    
-                    {{/if}}            
-                </div>
+            <div id="weapon" class="inventory">
+                <p>Weapon</p>
+                {{#if zombieNow.gadgets}}
+                {{#each zombieNow.gadgets}}
+                {{#ifvalue origin.category value="Weapon"}}
+                <img src={{origin.icon}}>
+                {{/ifvalue}}
+                {{/each}}         
+                {{/if}}       
+            </div>
+            <div id="clothing" class="inventory">
+                <p>Clothing</p>   
+                {{#if zombieNow.gadgets}}                 
+                {{#each zombieNow.gadgets}}
+                {{#ifvalue origin.category value="Clothing"}}
+                <img src={{origin.icon}}>
+                {{/ifvalue}}
+                {{/each}}    
+                {{/if}}            
             </div>
         </div>
-    <h4>{{zombieNow.nickname}}</h4>
-    <p>Type: {{zombieNow.origin.type}}</p>
+    </div>
+    <div class="detailsZomb">
+        <h4>{{zombieNow.nickname}}</h4>
+        <p>Type: {{zombieNow.origin.type}}</p>
 
-    <p>Description:</p>
-    <ul>
-    {{#each zombieNow.origin.description}}
-        <li>{{this}}</li>
-    {{/each}}
-    </ul>
+        <p>Description:</p>
+        <ul>
+        {{#each zombieNow.origin.description}}
+            <li>{{this}}</li>
+        {{/each}}
+        </ul>
 
-    <p>Ability:</p>   
-    <ul>
-    {{#each zombieNow.origin.abilities}}
-        <li>{{this}}</li>
-    {{/each}}
-    </ul>
+        <p>Ability:</p>   
+        <ul>
+        {{#each zombieNow.origin.abilities}}
+            <li>{{this}}</li>
+        {{/each}}
+        </ul>
+    </div>
     {{!-- <form action="/ownedZombieDetail" method="POSR"> --}}
 
     {{!-- <button id="equipBtn" class="butn" type="submit">Equip</button> --}}
