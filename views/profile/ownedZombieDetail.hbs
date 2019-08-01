@@ -73,9 +73,9 @@
             `<div class="selectGadget">
                 {{~#each headwear~}}
                     <div class="eachGadget">
-                        <a href="/equip?gadget_id={{~ownedGadId~}}&zombie_id=${c}"></a>
-                        <p>{{~name~}}</p>
-                        <img src="{{~icon~}}">
+                        <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
+                        <p>{{~origin.name~}}</p>
+                        <img src="{{~origin.icon~}}">
                     </div>
                 {{~/each~}}
                 <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
@@ -90,9 +90,9 @@
             `<div class="selectGadget">
                 {{~#each weapon~}}
                     <div class="eachGadget">
-                        <a href="/equip?gadget_id={{~ownedGadId~}}&zombie_id=${c}"></a>
-                        <p>{{~name~}}</p>
-                        <img src="{{~icon~}}">
+                        <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
+                        <p>{{~origin.name~}}</p>
+                        <img src="{{~origin.icon~}}">
                     </div>
                 {{~/each~}}
                 <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
@@ -107,9 +107,9 @@
             `<div class="selectGadget">
                 {{~#each clothing~}}
                     <div class="eachGadget">
-                        <a href="/equip?gadget_id={{~ownedGadId~}}&zombie_id=${c}"></a>
-                        <p>{{~name~}}</p>
-                        <img src="{{~icon~}}">
+                        <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
+                        <p>{{~origin.name~}}</p>
+                        <img src="{{~origin.icon~}}">
                     </div>
                 {{~/each~}}
                 <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
