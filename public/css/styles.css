@@ -40,9 +40,29 @@ body {
     display: none;
 }
 
+.about {
+    width: 100%;
+    height: 100%;
+    margin: 100px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-/* button {
-    color: #b8b9a9 !important;
-    width: 120px !important;
-    background-color: #260703 !important;
-} */
+.about img {
+    width: 35%;
+}
+
+.creaters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.creaters div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
