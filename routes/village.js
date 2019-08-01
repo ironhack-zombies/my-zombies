@@ -213,7 +213,6 @@ router.post('/story/:id/like', secured(), function (req, res, next) {
                 })
             }
         }).then(story => {
-            console.log(story)
             res.status(200).send({likes: story.likes.length})
         })
         .catch(error => {
