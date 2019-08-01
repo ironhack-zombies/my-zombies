@@ -42,10 +42,11 @@ mongoose.connect(process.env.MONGODB_URI, {
 const app = express();
 
 app.use(session({
+    name: "session",
     secret: process.env.SECRET,
     store: new MongoStore({
         url: process.env.MONGODB_URI,
-        ttl: 2 * 60 * 60
+        ttl: 2 * 60 * 60 // 2-hour sessions
     }),
     resave: false,
     saveUninitialized: true,
@@ -129,6 +130,7 @@ server.on('error', error => {
     }
 });
 
+let host = process.env.HOST || "localhost"
 server.listen(process.env.PORT, () => {
-    console.log(`Listening on http://localhost:${process.env.PORT}`);
+    console.log(`Listening on http://${host}:${process.env.PORT}`);
 });
