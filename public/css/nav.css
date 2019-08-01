@@ -18,6 +18,21 @@
     color: #b5b69c
 }
 
+#brainsAndGift {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#brainsAndGift i {
+    padding: 0px 5px;
+}
+
+.dailyGiftImg i {
+    padding: 0px 15px;
+}
+
 .dropdown-menu {
     background-color: #422020 !important;
     border: none !important;

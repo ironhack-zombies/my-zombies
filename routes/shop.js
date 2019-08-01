@@ -137,8 +137,6 @@ router.post('/zombieDetail', secured(), (req, res, next) => {
     } else {
         res.redirect('/login')
     }
-
-
 })
 
 router.post('/gadgets', secured(), (req, res, next) => {
