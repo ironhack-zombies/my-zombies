@@ -50,7 +50,6 @@ router.post('/dailyGift', secured(), (req, res, next) => {
             })
         })
         .then(docs => {
-            console.log(docs)
             if (docs.nModified === 1) {
                 res.status(200).send({
                     boxContent: {

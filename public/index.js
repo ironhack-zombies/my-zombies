@@ -103,7 +103,6 @@ function openBox(event) {
             document.getElementById("giftBox").innerHTML += boxContentHtml;
             $(".giftInfo").addClass("active");
             document.getElementById("numberOfBrains").firstChild.innerText = brainsTotal;
-            console.log('post successfull and the response is: ', response);
         })
         .catch(function (error) {
             console.log(error);

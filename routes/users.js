@@ -16,7 +16,6 @@ router.get('/user', secured(), (req, res, next) => {
             populate: { path: 'origin' }
         })
         .then((user) => {
-            console.log(user)
             res.render('user', { user:user, tab:tab });
         })
 });
