@@ -38,9 +38,16 @@
     display: block;
 }
 
+.tabbed {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .tabcontent {
     display: none;
     border-top: none;
+    height: 100%;
 }
 
 .tabbutton {
@@ -48,6 +55,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.nothingToShow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.nothingToShow a {
+    text-decoration: none;
 }
 
 .profile {

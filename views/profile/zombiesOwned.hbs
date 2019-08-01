@@ -1,4 +1,4 @@
-<div class="catalog">
+<div class="{{#if user.zombiesOwned}}catalog{{else}}nothingToShow{{/if}}">
 {{#each user.zombiesOwned}}
         <div class="shopZombie">
         <a href="/ownedZombieDetail?zombie_id={{_id}}"></a>
@@ -8,5 +8,8 @@
         <h3>{{nickname}}</h3>
         <p>{{origin.type}}</p>
     </div>
+{{else}}
+<p>Nothing to show :(</p>
+<p>You can <a href="/shop/zombies">buy zombies in the shop</a></p>
 {{/each}}
 </div>
