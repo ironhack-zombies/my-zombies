@@ -4,17 +4,15 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
 
 .village .divLink {
     position: relative;
-    padding: 10px;
-    margin: 50px 0px;
+    padding: 10px;    
     text-align: center;
-    height: 50%;
-    width: 100%;
+    margin:30px;
 }
 
 .village .divLink a {
@@ -29,7 +27,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 20px 10%;
+    padding: 10px 10%;
 }
 
 .villageBoard hr {
@@ -42,20 +40,22 @@
 /* style for story board */
 
 .eachStory,
-.eachComment {
-    margin: 5px;
-    padding: 10px;
+.eachComment,
+.commentForm input {
     background-color: white;
+    padding: 10px;
+}
+
+.eachStory,
+.eachComment,
+.commentForm {
+    margin: 5px;
     border-radius: 5px;
 }
 
 .eachComment,
 .commentForm {
     margin-left: 10%;
-}
-
-.commentForm input {
-    padding: 10px;
 }
 
 .storyForm {
@@ -119,14 +119,6 @@
     text-align: center;
 }
 
-.arena div {
-    margin-bottom: 20px;
-}
-
-#catFight {
-    padding-bottom: 50px;
-}
-
 .selectBox select {
     background-color: #7d7e73;
     border-radius: 5px;
@@ -142,13 +134,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
+    padding-top: 10px;
 }
-
+.waiting {
+    font-size: 50px;
+}
 .result {
     font-size: 50px;
 }
-
+.info p{
+    font-size: 30px;
+}
 .backButn {
     color: #b8b9a9 !important;
     width: 250px !important;

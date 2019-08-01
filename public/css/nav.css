@@ -18,6 +18,21 @@
     color: #b5b69c
 }
 
+#brainsAndGift {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#brainsAndGift i {
+    padding: 0px 5px;
+}
+
+.dailyGiftImg i {
+    padding: 0px 15px;
+}
+
 .dropdown-menu {
     background-color: #422020 !important;
     border: none !important;
@@ -35,7 +50,7 @@ ul.collapse.navbar-collapse {
     margin: 0px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 600px) {
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 1.5rem !important;
         padding-left: 1.5rem !important;
