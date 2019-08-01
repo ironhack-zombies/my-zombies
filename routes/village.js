@@ -62,34 +62,37 @@ router.get('/village/storyBoard', secured(), (req, res, next) => {
 
 router.get('/village/arena', secured(), (req, res, next) => {
     OwnedZombie.find({
-        _id: {
-            '$in': req.user.zombiesOwned
-        }
-    }).populate("currentState")
-    .then(zombies => {
-        zombies = zombies.filter(zombie => !(zombie.currentState && zombie.currentState.end.getTime() > new Date().getTime()))
-        res.render("village/arena", {zombies: zombies, message: req.flash("message")})
-    }).catch(error => {
-        console.error(error);
-        next(new Error(error.message))
-    })
+            _id: {
+                '$in': req.user.zombiesOwned
+            }
+        }).populate("currentState")
+        .then(zombies => {
+            zombies = zombies.filter(zombie => !(zombie.currentState && zombie.currentState.end.getTime() > new Date().getTime()))
+            res.render("village/arena", {
+                zombies: zombies,
+                message: req.flash("message")
+            })
+        }).catch(error => {
+            console.error(error);
+            next(new Error(error.message))
+        })
 });
 
 router.post('/village/arena/fight', secured(), (req, res, next) => {
     OwnedZombie.findById({
         _id: req.body.zombie
     }).populate("currentState").then(zombie => {
-        if(req.user.brains < brainsPerFight) {
+        if (req.user.brains < brainsPerFight) {
             req.flash("message", `Not enough brains! (${brainsPerFight})`);
             res.redirect("/village/arena");
             return;
         }
-        if(zombie.owner.toString() !== req.user._id.toString()) {
+        if (zombie.owner.toString() !== req.user._id.toString()) {
             req.flash("message", "Not your zombie!");
             res.redirect("/village/arena");
             return;
         }
-        if(zombie.currentState && zombie.currentState.end.getTime() > new Date().getTime()) {
+        if (zombie.currentState && zombie.currentState.end.getTime() > new Date().getTime()) {
             req.flash("message", "This zombie is currently " + zombie.currentState.description);
             res.redirect("/village/arena");
             return;
@@ -101,21 +104,46 @@ router.post('/village/arena/fight', secured(), (req, res, next) => {
             }
         }
         res.locals.user.brains = req.user.brains - brainsPerFight
-        res.render("village/arenaFight", {zombie: zombie, fight: fight})
-        if(fight.won) {
+        res.render("village/arenaFight", {
+            zombie: zombie,
+            fight: fight
+        })
+        if (fight.won) {
             let brains = fight.rewards.brains - brainsPerFight
             return Promise.all([
-                User.findByIdAndUpdate({_id: zombie.owner}, {$inc: { fightsWon: 1, brains: brains }}),
-                zombie.updateOne({$inc: { fightsWon: 1, experiance: 10 }})
+                User.findByIdAndUpdate({
+                    _id: zombie.owner
+                }, {
+                    $inc: {
+                        fightsWon: 1,
+                        brains: brains
+                    }
+                }),
+                zombie.updateOne({
+                    $inc: {
+                        fightsWon: 1,
+                        experiance: 10
+                    }
+                })
             ])
         } else {
             return Promise.all([
-                User.findByIdAndUpdate({_id: zombie.owner}, {$inc: {brains: -brainsPerFight} }),
+                User.findByIdAndUpdate({
+                    _id: zombie.owner
+                }, {
+                    $inc: {
+                        brains: -brainsPerFight
+                    }
+                }),
                 new Action({
                     description: "reattaching " + (Math.random() < 0.3 ? "an arm" : (Math.random() < 0.5 ? "a foot" : "6 toes")),
                     type: "Recovery",
                     end: new Date().setTime(new Date().getTime() + Math.floor((0.5 + Math.random() * 1.5) * 60 * 60 * 1000))
-                }).save().then(action => zombie.updateOne({$set: {currentState: action._id}}))
+                }).save().then(action => zombie.updateOne({
+                    $set: {
+                        currentState: action._id
+                    }
+                }))
             ])
         }
     }).catch(error => {
@@ -162,24 +190,37 @@ router.get('/story/:id', secured(), function (req, res, next) {
 
 router.post('/story/:id/like', secured(), function (req, res, next) {
     Story.findById(req.params.id).then(story => {
-        if (!story) {
-            res.status(500).send(`{liked: false, message: 'Story not found'}`)
-            return;
-        }
-        let userID = req.user._id;
-        if (story.likes.indexOf(userID) > -1) {
-            res.status(500).send(`{liked: false, message: 'User not found'}`)
-            return;
-        }
-        story.updateOne({
-                $addToSet: {
-                    likes: userID
-                }
-            })
-            .then(res.status(200).send(`{liked: true}`))
-    }).catch(error => {
-        res.status(500).send(`{liked: false}`)
-    })
+            if (!story) {
+                res.status(500).send(`{liked: false, message: 'Story not found'}`)
+                return;
+            }
+            let userID = req.user._id;
+            if (story.likes.indexOf(userID) > -1) {
+                return Story.findByIdAndUpdate(story._id, {
+                    $pullAll: {
+                        likes: [userID]
+                    }
+                }, {
+                    new: true
+                })
+            } else {
+                return Story.findByIdAndUpdate(story._id, {
+                    $addToSet: {
+                        likes: userID
+                    }
+                }, {
+                    new: true
+                })
+            }
+        }).then(story => {
+            res.status(200).send({likes: story.likes.length})
+        })
+        .catch(error => {
+            console.error(error)
+            res.status(500).send({error: {
+                message: error.message
+            }})
+        })
 });
 
 router.post('/story/:id/comment', secured(), function (req, res, next) {

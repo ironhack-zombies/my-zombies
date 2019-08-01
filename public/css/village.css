@@ -73,7 +73,7 @@
     color: blue;
 }
 
-.likeButton[disabled] {
+.likeButton.liked {
     color: lightgray;
 }
 
