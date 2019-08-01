@@ -163,11 +163,7 @@
     display: flex;
     flex-wrap: wrap;
     max-height: 70%;
-<<<<<<< HEAD
-    min-width: 100%;
-=======
     min-width: 60%;
->>>>>>> 23832268137f055b87296d2651fe8e5e539f35a2
     overflow-y: scroll;
 }
 
