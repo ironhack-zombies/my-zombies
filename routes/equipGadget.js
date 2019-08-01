@@ -26,7 +26,7 @@ router.get('/equip', (req, res, next) => {
                             debugger
                             if (gadgetArray[i].origin.category === gadgetType) {
                                 let alreadyEquip = gadgetArray[i]._id;
-                                OwnedGadget.update({ _id: alreadyEquip }, { $unset: { attachedTo: 1 } }, { new: true })
+                                OwnedGadget.updateOne({ _id: alreadyEquip }, { $unset: { attachedTo: 1 } }, { new: true })
                                     .catch((err) => {
                                         console.log(err)
                                     })
