@@ -137,6 +137,10 @@
     font-size: 50px;
 }
 
+.waiting p {
+    text-align: center;
+}
+
 .result {
     font-size: 50px;
 }
