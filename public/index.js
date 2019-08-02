@@ -81,7 +81,11 @@ function likeStory(event, storyId) {
         .then(function (response) {
             target.classList.toggle("liked")
             let likes = target.lastChild
-            if (likes) likes.innerText = " " + response.data.likes
+            if (likes) {
+                likes.innerText = " " + response.data.likes
+                if (response.data.likesList.length > 0) likes.title = "Liked by:\n" + response.data.likesList.join(", ")
+                else likes.title = "";
+            }
         })
         .catch(function (error) {
             console.log(error);

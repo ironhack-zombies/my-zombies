@@ -32,6 +32,9 @@ router.get('/equip', (req, res, next) => {
                                     })
                                 gadgetArray.splice(i, 1);
                                 OwnedZombie.findByIdAndUpdate(zombieId, { gadgets: gadgetArray }, { new: true })
+                                    .catch((err) => {
+                                        console.log(err)
+                                    })
                                 i--
                             }
                         }

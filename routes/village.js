@@ -37,9 +37,10 @@ router.get('/village/storyBoard', secured(), (req, res, next) => {
             }
         })
         .populate("author")
+        .populate("likes")
         .then(stories => {
             let now = new Date();
-            for (let story of stories) {
+            stories = stories.map( story => {
                 if (story.text[0].length > 100) {
                     story.short = []
                     story.short[0] = story.text[0].substring(0, 100) + "..."
@@ -48,8 +49,14 @@ router.get('/village/storyBoard', secured(), (req, res, next) => {
                     story.short[0] = story.text[0]
                     story.short[1] = "..."
                 }
+                let likes = story.likes.map(user => user.username)
+                story.likesList = likes.length > 0 ? "Liked by:\n" + likes.join(", ") : ""
+                story.likes = story.likes.map(user => user._id)
                 story.niceTime = formatWrittenAt(story.writtenAt, now);
-            }
+                return story;
+            })
+
+            console.log(stories)
             res.render("village/storyBoard", {
                 stories: stories,
                 message: req.flash('message')
@@ -155,6 +162,7 @@ router.post('/village/arena/fight', secured(), (req, res, next) => {
 router.get('/story/:id', secured(), function (req, res, next) {
     Story.findById(req.params.id)
         .populate("author")
+        .populate("likes")
         .then(story => {
             if (!story) {
                 req.flash("message", "Story not found!")
@@ -172,9 +180,13 @@ router.get('/story/:id', secured(), function (req, res, next) {
                     .populate("author")
                     .then(comments => {
                         let now = new Date();
+                        let likes = story.likes.map(user => user.username)
+                        story.likesList = likes.length > 0 ? "Liked by:\n" + likes.join(", ") : ""
+                        story.likes = story.likes.map(user => user._id)
                         for (let comment of comments) {
                             comment.niceTime = formatWrittenAt(comment.writtenAt, now);
                         }
+                        console.log(story)
                         res.render("story", {
                             story: story,
                             comments: comments
@@ -202,7 +214,7 @@ router.post('/story/:id/like', secured(), function (req, res, next) {
                     }
                 }, {
                     new: true
-                })
+                }).populate("likes").exec()
             } else {
                 return Story.findByIdAndUpdate(story._id, {
                     $addToSet: {
@@ -210,13 +222,17 @@ router.post('/story/:id/like', secured(), function (req, res, next) {
                     }
                 }, {
                     new: true
-                })
+                }).populate("likes").exec()
             }
-        }).then(story => {
-            res.status(200).send({likes: story.likes.length})
+        })
+        .then(story => {
+            res.status(200).send({
+                likes: story.likes.length,
+                likesList: story.likes.map(user => user.username)
+            })
         })
         .catch(error => {
-            console.error(error)
+            console.log(error)
             res.status(500).send({error: {
                 message: error.message
             }})
