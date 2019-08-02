@@ -119,7 +119,8 @@
     height: 100%;
 }
 
-.arena h1 {
+.arena h1,
+p {
     text-align: center;
 }
 

@@ -83,6 +83,6 @@
         align-items: center;
     }
     .description {
-        margin-left: 100px;
+        padding-left: 100px;
     }
 }
