@@ -6,7 +6,7 @@
         <div class="gadgetsEquipped">
             <div id="headwear" class="inventory">
                 <p>Headwear</p>
-                {{#if zombieNow.gadgets}}                 
+                {{#if zombieNow.gadgets}}
                 {{#each zombieNow.gadgets}}
                 {{#ifvalue origin.category value="Headwear"}}
                 <img src={{origin.icon}}>
@@ -21,18 +21,18 @@
                 {{#ifvalue origin.category value="Weapon"}}
                 <img src={{origin.icon}}>
                 {{/ifvalue}}
-                {{/each}}         
-                {{/if}}       
+                {{/each}}
+                {{/if}}
             </div>
             <div id="clothing" class="inventory">
-                <p>Clothing</p>   
-                {{#if zombieNow.gadgets}}                 
+                <p>Clothing</p>
+                {{#if zombieNow.gadgets}}
                 {{#each zombieNow.gadgets}}
                 {{#ifvalue origin.category value="Clothing"}}
                 <img src={{origin.icon}}>
                 {{/ifvalue}}
-                {{/each}}    
-                {{/if}}            
+                {{/each}}
+                {{/if}}
             </div>
         </div>
     </div>
@@ -42,17 +42,20 @@
 
         <p>Description:</p>
         <ul>
-        {{#each zombieNow.origin.description}}
+            {{#each zombieNow.origin.description}}
             <li>{{this}}</li>
-        {{/each}}
+            {{/each}}
         </ul>
 
-        <p>Ability:</p>   
+        <p>Ability:</p>
         <ul>
-        {{#each zombieNow.origin.abilities}}
+            {{#each zombieNow.origin.abilities}}
             <li>{{this}}</li>
-        {{/each}}
+            {{/each}}
         </ul>
+        
+        <p>Status: {{#if zombieNow.currentState.description}}Currently {{zombieNow.currentState.description}} ({{zombieNow.currentState.minutes}}min left){{else}}bored...{{/if}}</p>
+        
     </div>
     {{!-- <form action="/ownedZombieDetail" method="POSR"> --}}
 
@@ -68,8 +71,8 @@
         document.getElementById("headwear").addEventListener("click", function (event) {
             let selectHead = document.createElement("div");
             selectHead.classList.add("headwear");
-            selectHead.innerHTML = 
-            `<div class="selectGadget">
+            selectHead.innerHTML =
+                `<div class="selectGadget">
                 {{~#each headwear~}}
                     <div class="eachGadget">
                         <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
@@ -85,8 +88,8 @@
         document.getElementById("weapon").addEventListener("click", function (event) {
             let selectWeapon = document.createElement("div")
             selectWeapon.classList.add("headwear")
-            selectWeapon.innerHTML = 
-            `<div class="selectGadget">
+            selectWeapon.innerHTML =
+                `<div class="selectGadget">
                 {{~#each weapon~}}
                     <div class="eachGadget">
                         <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
@@ -97,13 +100,13 @@
                 <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
             </div >`;
             document.getElementsByTagName("body")[0].appendChild(selectWeapon);
-        })     
+        })
 
         document.getElementById("clothing").addEventListener("click", function (event) {
             let selectClothing = document.createElement("div")
             selectClothing.classList.add("headwear")
-            selectClothing.innerHTML = 
-            `<div class="selectGadget">
+            selectClothing.innerHTML =
+                `<div class="selectGadget">
                 {{~#each clothing~}}
                     <div class="eachGadget">
                         <a href="/equip?gadget_id={{~_id~}}&zombie_id=${c}"></a>
@@ -114,6 +117,6 @@
                 <a href="/ownedZombieDetail?zombie_id=${c}"><button type="submit" class="butn">Back</button></a>
             </div >`;
             document.getElementsByTagName("body")[0].appendChild(selectClothing);
-        })          
+        })
     }
 </script>

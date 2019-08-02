@@ -10,12 +10,16 @@ router.get('/ownedZombieDetail', secured(), (req, res, next) => {
             _id: req.query.zombie_id
         })
         .populate('origin')
+        .populate('currentState')
         .populate({
             path: 'gadgets',
             populate: { path: 'origin' }
         })
         .then((zombieNow) => {
-            debugger
+            // if action running calc minutes left
+            if (zombieNow.currentState) {
+                zombieNow.currentState.minutes = Math.floor(Math.abs(zombieNow.currentState.end.getTime() - new Date().getTime()) / 60000)
+            }
             // find all gadgets owned by current user
             OwnedGadget.find({
                     _id: {

@@ -1,10 +1,10 @@
 <div class="fightResults">
   <div class="info">
     {{#ifvalue fight.won value="true"}}
-    <h1>You won! Here is your rewards:</h1>
-    <p>{{fight.rewards.brains}} <i class="fas fa-brain fa-3x"></i></p>
+    <h1>You won! Here is your reward:</h1>
+    <p>{{fight.rewards.brains}} <i class="fas fa-brain"></i></p>
     {{else}}
-    <p class="result">Oh no! You lost the fight :(</p>
+    <p class="result">Oh no! You lost the fight <i class="far fa-frown"></i></p>
     {{/ifvalue}}
     <a href="/village/arena"><button class="backButn" type="submit">Back to the arena</button></a>
   </div>
