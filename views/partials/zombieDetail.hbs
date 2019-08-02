@@ -12,7 +12,9 @@
         <p class="notEnoughBrain">You have not enough BRAINS!</p>
     </div>
     {{/if}}
+
 </div>
+
 <div class="zombieDetail">
     <div class="zombImage">
         <img src="{{zombie.image}}">
@@ -46,6 +48,9 @@
         </div>
     </div>
 </div>
+<audio id="myAudio">
+  <source src="/163440__under7dude__zombie-1.wav" type="audio/wav">
+</audio>
 
 <script>
     window.onload = function () {
@@ -64,11 +69,13 @@
                     </div>
                 </form>
             </div >`;
+
             document.getElementsByTagName("body")[0].appendChild(popup);
             document.getElementById("cancelBtn").addEventListener("click", function(event) {
                 let popup = document.getElementsByClassName("buyVerification")[0];
                 popup.parentNode.removeChild(popup)
             })
+                        document.getElementById("myAudio").play();
         })
     }
 </script>
