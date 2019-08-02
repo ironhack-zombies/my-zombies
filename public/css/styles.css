@@ -76,3 +76,12 @@ body {
         align-items: center;
     }
 }
+
+.help {
+    width: 80%;
+    padding: 3%;
+}
+
+.help ul li {
+    margin: 10px 0;
+}
