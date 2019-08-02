@@ -1,11 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="/"><img class="zombIcon" src="/images/favicon.png"> mZ</a>
-{{#if user}}
-<div id="brainsAndGift">
-    <span id="numberOfBrains"><span>{{user.brains}}</span></span><i class="fas fa-brain"></i>
-    <a  class="dailyGiftImg" href="/dailyGift"><i class="fas{{#unless notYet}} giftNoti{{/unless}} fa-gift"></i></a>
+    {{#if user}}
+    <div id="brainsAndGift">
+        <div>
+        <span id="numberOfBrains"><span>{{user.brains}} </span></span><i class="fas fa-brain"></i>
+        </div>
+        <a  class="dailyGiftImg" href="/dailyGift"><i class="fas{{#unless notYet}} giftNoti{{/unless}} fa-gift"></i></a>
     </div>
-{{/if}}
+    {{/if}}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,8 +23,14 @@
                     <a class="dropdown-item" href="/shop/gadgets"><i class="fab fa-redhat"></i> Gadgets</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user"><i class="fas fa-home"></i> Home</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-store"></i> Home</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown02">
+                    <a class="dropdown-item" href="/user?tab=zombies"><i class="fas fa-walking"></i> My zombies</a>
+                    <a class="dropdown-item" href="/user?tab=gadgets"><i class="fab fa-redhat"></i> Gadgets</a>
+                </div>
+                {{!-- <a class="nav-link" href="/user"><i class="fas fa-home"></i> Home</a> --}}
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/village"><i class="fas fa-users"></i> Village</a>

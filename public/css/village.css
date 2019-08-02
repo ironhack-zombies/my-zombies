@@ -10,9 +10,9 @@
 
 .village .divLink {
     position: relative;
-    padding: 10px;    
+    padding: 10px;
     text-align: center;
-    margin:30px;
+    margin: 30px;
 }
 
 .village .divLink a {
@@ -133,22 +133,18 @@
     height: 45px;
 }
 
-.fightResults {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-}
 .waiting {
     font-size: 50px;
 }
+
 .result {
     font-size: 50px;
 }
-.info p{
+
+.info p {
     font-size: 30px;
 }
+
 .backButn {
     color: #b8b9a9 !important;
     width: 250px !important;
