@@ -13,7 +13,7 @@ router.get('/zombies', secured(), (req, res, next) => {
         Zombie.find({
                 type: {
                     $regex: ".*" + req.query.search + ".*",
-                    // case insensitive
+                    // can be both upper and lowercase
                     $options: 'i'
                 }
             }).sort({ price: 1 })

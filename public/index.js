@@ -57,20 +57,14 @@ function checkRegisterForm() {
 
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
-    // Get all elements with class="tabcontent" and hide them
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-
-    // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].classList.remove("active");
-
     }
-
-    // Show the current tab, and add an "active" class to the link that opened the tab
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.classList.add("active");
 }
@@ -78,7 +72,7 @@ function openTab(evt, tabName) {
 function likeStory(event, storyId) {
     const target = event.currentTarget;
     axios.post('/story/' + storyId + '/like')
-        .then(function (response) {
+        .then(function(response) {
             target.classList.toggle("liked")
             let likes = target.lastChild
             if (likes) {
@@ -87,7 +81,7 @@ function likeStory(event, storyId) {
                 else likes.title = "";
             }
         })
-        .catch(function (error) {
+        .catch(function(error) {
             console.log(error);
         });
 }
@@ -108,14 +102,13 @@ function openBox(event) {
             $(".giftInfo").addClass("active");
             document.getElementById("numberOfBrains").firstChild.innerText = brainsTotal;
         })
-        .catch(function (error) {
+        .catch(function(error) {
             console.log(error);
         });
 }
 
 // animation for opening gift box
 function openGift() {
-
     var $Presents = $('#Presents'),
         $box = $('.box'),
         $PresentB = $('#PresentB'),
@@ -152,7 +145,7 @@ function openGift() {
             onCompleteParams: [$thisBox]
         }, "0.2")
 
-        .to($PresentBoxTop, 0.4, {
+    .to($PresentBoxTop, 0.4, {
             rotation: -90,
             transformOrigin: "left center",
             ease: Power4.easeInOut

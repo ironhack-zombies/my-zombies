@@ -1,7 +1,7 @@
 <div class="arena">
-  <h1>Welcome to the zombie arena</h1>
+  <h1 class="textAlign">Welcome to the zombie arena</h1>
   {{#if zombies}}
-  <p>Select one of your zombies to fight</p>
+  <p class="textAlign">Select one of your zombies to fight</p>
   <form class="arena" action="/village/arena/fight" method="POST">
     <div class="selectBox">
     <select autocomplete="off" name="zombie" id="zombie">
@@ -13,7 +13,7 @@
     <button class="backButn" type="submit">Fight! (Cost: 2 <i class="fas fa-brain"></i>)</button>
   </form>
   {{else}}
-  <p>You currently have no zombies that are ready to fight</p>
+  <p class="textAlign">You currently have no zombies that are ready to fight</p>
   {{/if}}
   {{#if message}}
   <p>{{message}}</p>

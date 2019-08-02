@@ -119,9 +119,12 @@
     height: 100%;
 }
 
-.arena h1,
-p {
+.textAlign {
     text-align: center;
+}
+
+.villageBoard {
+    text-align: start !important;
 }
 
 .selectBox select {
