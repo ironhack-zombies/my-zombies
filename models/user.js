@@ -31,6 +31,11 @@ const userSchema = new Schema({
     fightsWon: {
         type: Number,
         default: 0
+    },
+    // new changes
+    isVerified: {
+        type: Boolean,
+        default: false
     }
 }, {
     collection: 'users'

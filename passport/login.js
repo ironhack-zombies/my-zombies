@@ -23,6 +23,14 @@ module.exports = function(passport) {
                         return done(null, false,
                             req.flash('message', 'Invalid username or password'));
                     }
+                    // new changes : adding email verification
+                    if (!user.isVerified) {
+                        return done(null, false,
+                                req.flash('message', 'Your account has not been verified'))
+                            // res.status(401).send({ type: 'not-verified', msg: 'Your account has not been verified.' });
+                    }
+                    res.send({ token: generateToken(user), user: user.toJSON() });
+                    // new changes
                     return done(null, user);
                 }
             )
