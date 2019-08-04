@@ -112,7 +112,10 @@ function delHeadwear(event, gadgetId) {
     axios.post('/deleteGadget/' + gadgetId)
         .then(response => {
             console.log(response);
-            document.getElementById("gadgetImg").style.display = "none";
+            let id = response.data.gadgetDel
+            document.getElementsByClassName(`${id}`)[0].style.display = "none";
+            document.getElementsByClassName(`${id}`)[1].style.display = "none";
+
         })
         .catch(function(error) {
             console.log(error);

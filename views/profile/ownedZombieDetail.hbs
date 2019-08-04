@@ -11,8 +11,8 @@
                 {{#ifvalue origin.category value="Headwear"}}
                 <div>
                 {{!-- <a href="/delete?gadget_id={{_id}}&zombie_id={{attachedTo}}"></a> --}}
-                <i id="delHeadwear" class="fas fa-minus-circle" onclick="delHeadwear(event,'{{_id}}');" ></i>
-                <img id="gadgetImg" src={{origin.icon}}>
+                <i id="delHeadwear" class="fas fa-minus-circle {{_id}}" onclick="delHeadwear(event,'{{_id}}');" ></i>
+                <img class="{{_id}}" src={{origin.icon}}>
                 </div>
                 {{/ifvalue}}
                 {{/each}}
@@ -24,8 +24,8 @@
                 {{#each zombieNow.gadgets}}
                 {{#ifvalue origin.category value="Weapon"}}
                 <div>
-                <a href="/delete?gadget_id={{_id}}&zombie_id={{attachedTo}}"><i class="fas fa-minus-circle"></i></a>
-                <img src={{origin.icon}}>
+                <i id="delHeadwear" class="fas fa-minus-circle {{_id}}" onclick="delHeadwear(event,'{{_id}}');" ></i>
+                <img class="{{_id}}" src={{origin.icon}}>
                 </div>
                 {{/ifvalue}}
                 {{/each}}
@@ -37,8 +37,8 @@
                 {{#each zombieNow.gadgets}}
                 {{#ifvalue origin.category value="Clothing"}}
                 <div>
-                <a href="/delete?gadget_id={{_id}}&zombie_id={{attachedTo}}"><i class="fas fa-minus-circle"></i></a>
-                <img src={{origin.icon}}>
+                <i id="delHeadwear" class="fas fa-minus-circle {{_id}}" onclick="delHeadwear(event,'{{_id}}');" ></i>
+                <img class="{{_id}}" src={{origin.icon}}>
                 </div>
                 {{/ifvalue}}
                 {{/each}}

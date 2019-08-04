@@ -26,7 +26,7 @@ router.post('/deleteGadget/:id', (req, res, next) => {
                         .then((updateZomb) => {
                             OwnedGadget.updateOne({ _id: gadgetId }, { $unset: { attachedTo: 1 } }, { new: true })
                                 .then((gadget) => {
-                                    res.send({ message: deleted })
+                                    res.send({ gadgetDel: gadgetId })
 
                                 })
                         })
