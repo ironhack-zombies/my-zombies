@@ -4,32 +4,41 @@
             <img src="{{zombieNow.origin.image}}">
         </div>
         <div class="gadgetsEquipped">
-            <div id="headwear" class="inventory">
-                <p>Headwear</p>
+            <div class="inventory">
+                <p id="headwear">Headwear</p>
                 {{#if zombieNow.gadgets}}
                 {{#each zombieNow.gadgets}}
                 {{#ifvalue origin.category value="Headwear"}}
+                <div>
+                <a href="/delete?gadget_id={{_id}}&zombie_id={{attachedTo}}"><i class="fas fa-minus-circle"></i></a>
                 <img src={{origin.icon}}>
+                </div>
                 {{/ifvalue}}
                 {{/each}}
                 {{/if}}
             </div>
-            <div id="weapon" class="inventory">
-                <p>Weapon</p>
+            <div class="inventory">
+                <p id="weapon">Weapon</p>
                 {{#if zombieNow.gadgets}}
                 {{#each zombieNow.gadgets}}
                 {{#ifvalue origin.category value="Weapon"}}
+                <div>
+                <a href="/delete?gadget_id={{_id}}&zombie_id={{attachedTo}}"><i class="fas fa-minus-circle"></i></a>
                 <img src={{origin.icon}}>
+                </div>
                 {{/ifvalue}}
                 {{/each}}
                 {{/if}}
             </div>
-            <div id="clothing" class="inventory">
-                <p>Clothing</p>
+            <div class="inventory">
+                <p id="clothing">Clothing</p>
                 {{#if zombieNow.gadgets}}
                 {{#each zombieNow.gadgets}}
                 {{#ifvalue origin.category value="Clothing"}}
+                <div>
+                <a href="/delete?gadget_id={{_id}}&zombie_id={{attachedTo}}"><i class="fas fa-minus-circle"></i></a>
                 <img src={{origin.icon}}>
+                </div>
                 {{/ifvalue}}
                 {{/each}}
                 {{/if}}

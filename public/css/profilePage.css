@@ -136,6 +136,18 @@
     margin: 0 auto;
 }
 
+.inventory div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.fa-minus-circle {
+    position: absolute;
+    margin-left: 45px;
+    color: darkred;
+}
+
 .headwear {
     position: absolute;
     height: 100%;
