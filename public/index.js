@@ -107,6 +107,17 @@ function openBox(event) {
         });
 }
 
+function delHeadwear(event, gadgetId) {
+    debugger
+    axios.post('/deleteGadget/' + gadgetId)
+        .then(response => {
+            console.log(response);
+            document.getElementById("gadgetImg").style.display = "none";
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+}
 // animation for opening gift box
 function openGift() {
     var $Presents = $('#Presents'),
