@@ -36,7 +36,9 @@ const userSchema = new Schema({
     isVerified: {
         type: Boolean,
         default: false
-    }
+    },
+    passwordResetToken: String,
+    passwordResetExpires: Date
 }, {
     collection: 'users'
 })

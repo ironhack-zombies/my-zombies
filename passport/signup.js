@@ -11,7 +11,7 @@ module.exports = function(passport) {
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) {
-
+            debugger
             findOrCreateUser = function() {
                 // find a user in Mongo with provided username
                 User.findOne({
@@ -34,29 +34,38 @@ module.exports = function(passport) {
                         newUser.email = req.body.email;
                         newUser.timeStart = new Date().getTime();
                         // save the user
-                        new User(newUser).save(
-                            // new changes
-                            function(err) {
-                                if (err) { return res.status(500).send({ msg: err.message }); }
+                        new User(newUser).save()
+                            .then(user => {
+                                // function(err) {
+                                //     if (err) { return res.status(500).send({ message: error.message }); }
 
                                 // Create a verification token for this user
                                 var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
 
                                 // Save the verification token
-                                token.save(function(err) {
-                                    if (err) { return res.status(500).send({ msg: err.message }); }
-
-                                    // Send the email
-                                    var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
-                                    var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
-                                    transporter.sendMail(mailOptions, function(err) {
-                                        if (err) { return res.status(500).send({ msg: err.message }); }
-                                        res.status(200).send('A verification email has been sent to ' + user.email + '.');
-                                    });
-                                })
-                            }
+                                token.save()
+                                    .then(token => {
+                                        // Send the email
+                                        var transporter = nodemailer.createTransport({
+                                            service: 'Sendgrid',
+                                            auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD }
+                                        });
+                                        var mailOptions = {
+                                            from: 'no-reply@myzombies.com',
+                                            to: user.email,
+                                            subject: 'Account Verification Token',
+                                            text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n'
+                                        };
+                                        transporter.sendMail(mailOptions, function(err) {
+                                            if (err) { return res.status(500).send({ message: error.message }); }
+                                            res.status(200).send('A verification email has been sent to ' + user.email + '.');
+                                        });
+                                    })
+                                    // }
+                            })
                             // new changes
-                        )
+
+                        // new changes
 
                         // Nikl's part for logging in after sign up 
                         // .then(user => {

@@ -22,7 +22,7 @@ router.get('/register', function(req, res) {
 
 /* Handle Registration POST */
 router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/user',
+    // successRedirect: '/user',
     failureRedirect: '/register',
     failureFlash: true
 }));

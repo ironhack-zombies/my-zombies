@@ -27,7 +27,8 @@ router.use(require("./dailyGift"));
 router.use(require("./ownedZombieDetail"));
 router.use(require("./equipGadget"));
 router.use(require("./deleteGadget"));
-
+router.use(require("./confirmation"));
+router.use(require("./resendToken"));
 
 // catch 404 and render a not-found.hbs template
 router.use((req, res, next) => {
