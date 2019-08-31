@@ -94,7 +94,7 @@ function openBox(event) {
             const brainsTotal = response.data.user.brains;
             const boxContentHtml = `
                 <div class="giftName">
-                    <h3>A bucket of roten brains</h3>
+                    <h3>A bucket of rotten brains</h3>
                     <p>${brainsInBox} <i class="fas fa-brain fa-2x"></i></p>
                 </div>`;
             document.getElementsByClassName("dailyGiftImg")[0].firstChild.classList.remove("giftNoti");
